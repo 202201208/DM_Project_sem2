@@ -1,0 +1,61 @@
+
+{% extends 'tools/template.html' %}
+
+{% block title %}
+  Image Scale
+{% endblock title %}
+
+{% block styles %}
+
+{% endblock styles %}
+
+{% block alert %}
+  
+{% endblock alert %}
+
+{% block output_title %}
+  
+{% endblock output_title %}
+
+{% block output_subtitle %}
+  
+{% endblock output_subtitle %}
+
+{% block section_title %}
+  Image Scaling Tool
+{% endblock section_title %}
+
+{% block section_para %}
+  
+{% endblock section_para %}
+
+{% block notes %}
+  
+
+{% endblock notes %}
+
+{% block additional_form %}
+
+<label for="fx" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Scale Image in X by <span id="fx_value">5.00</span></label>
+<input id="fx" type="range" min="0" max="10" step="0.01" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700" onchange="changeHanderx(this)" oninput="changeHanderx(this)" value="5" name="fx">
+
+<label for="fy" class="block my-2 text-sm font-medium text-gray-900 dark:text-white">Scale Image in X by <span id="fy_value">5.00</span></label>
+<input id="fy" type="range" min="0" max="10" step="0.01" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700" onchange="changeHandery(this)" oninput="changeHandery(this)" value="5" name="fy">
+
+
+{% endblock additional_form %}
+
+{% block img_size %}
+  ( 0 - 500 kb )
+{% endblock img_size %}
+
+{% block script %}
+  <script>
+    function changeHanderx(e){
+      ele = document.getElementById("fx_value").innerText = e.value;
+    }
+    function changeHandery(e){
+      ele = document.getElementById("fy_value").innerText = e.value;
+    }
+  </script>
+{% endblock script %}

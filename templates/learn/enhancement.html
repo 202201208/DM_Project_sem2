@@ -1,0 +1,42 @@
+{% extends 'learn/template.html' %}
+
+{% block title %}
+Image Enhancement
+{% endblock title %}
+
+{% block content %}
+
+<section class="bg-white dark:bg-gray-900 h-screen">
+  <div class="py-4 px-4 mx-auto max-w-screen-xl lg:py-6">
+
+    <h2 class="text-4xl font-extrabold dark:text-white"> Image Enhancement</h2>
+
+
+    <p class="my-3 text-gray-500 dark:text-gray-400 mb-8">
+      Image enhancement is a process of improving appearance of digital image and making image
+      suitable for further analysis . For example improving contrast and brightness ,removing noise ,sharpening images
+      etc..
+    </p>
+    <p class="my-3 text-gray-500 dark:text-gray-400">
+      Image enhancement can be done in two domain :
+    <ol class="max-w-md space-y-1 text-gray-500 list-decimal list-inside dark:text-gray-400">
+      <li>
+        Spatial Domain
+      </li>
+      <li>
+        Frequency Domain
+      </li>
+    </ol>
+    </p>
+
+    <h4 class="text-2xl font-bold dark:text-white mt-8" id="spacial_domain">SPATIAL DOMAIN</h4>
+    <p class="my-3 text-gray-500 dark:text-gray-400 mb-8">
+      In this domain we directly work with original images .We do some operations on pixels directly.
+    </p>
+
+
+
+  </div>
+</section>
+
+{% endblock content %}

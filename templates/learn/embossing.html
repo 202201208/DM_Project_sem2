@@ -1,0 +1,61 @@
+{% extends 'learn/template.html' %}
+
+{% block title %}
+IMAGE EMBOSSING
+{% endblock title %}
+
+{% block content %}
+
+<section class="bg-white dark:bg-gray-900 h-screen">
+  <div class="py-4 px-4 mx-auto max-w-screen-xl lg:py-6">
+
+    <h2 class="text-4xl font-extrabold dark:text-white">Image Embossing</h2>
+
+
+    <p class="my-3 text-gray-500 dark:text-gray-400 mb-8">
+      Image embossing is a computer graphics technique in which each pixel of an image is replaced by a highlight or shadow. Low contrast areas are replaced by a gray color background because there is not much information there. 
+    </p>
+    <p class="my-3 text-gray-500 dark:text-gray-400">
+      If there is a significant difference in brightness or contrast in a specific region of the image, we can modify it during the embossing process. Depending on the direction of embossing, we will replace that region with either a white pixel (highlight) or a dark pixel (shadow).
+    </p>
+    <p class="my-3 text-gray-500 dark:text-gray-400">
+      To apply the embossing effect, a convolution operation is performed between the image and an embossing mask or kernel.
+
+    </p>
+    <p class="my-3 text-gray-500 dark:text-gray-400">
+      <span class="text-md font-bold dark:text-white"> Mask :  </span>
+       The embossing mask is a matrix or a small filter that specifies how the pixels in the image should be adjusted to achieve the desired effect.
+    </p>
+    <p class="my-3 text-gray-500 dark:text-gray-400">
+      The embossing mask, which determines the direction of enhancement, usually consists of four primary filters arranged in a 3x3 size grid, as shown in Figure 1. The choice of embossing mask depends on the lighting direction, such as 0, 45, 90, or 135 degrees. In Figure 1, you can see that the middle value of the embossing mask is 0, and the sum of all the mask coefficients is also 0.
+    </p>
+
+<h5 class="text-xl font-bold dark:text-white mt-8">USES OF EMBOSSING IN REAL LIFE :</h5>
+<ol class="max-w-md space-y-1 text-gray-500 list-decimal list-inside dark:text-gray-400">
+  <li>
+    Medical Imaging
+  </li>
+  <li>
+    Forensic Analysis
+  </li>
+  <li>
+    Satellite Imagery
+  </li>
+  <li>
+    Aerial Photography ….etc.
+  </li>
+  
+</ol>
+
+<p class="my-3 text-gray-500 dark:text-gray-400">
+  <span class="text-md font-bold dark:text-white"> Drawback : </span>
+  it causes the color information to disappear in the embossed image, particularly
+when applied to color images.
+</p>
+
+
+
+  </div>
+</section>
+
+{% endblock content %}

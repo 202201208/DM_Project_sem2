@@ -1,0 +1,199 @@
+{% extends 'learn/template.html' %}
+
+{% block title %}
+Image Encryption
+{% endblock title %}
+
+{% block content %}
+
+<section class="bg-white dark:bg-gray-900 h-screen">
+  <div class="py-4 px-4 mx-auto max-w-screen-xl lg:py-6">
+
+    <h2 class="text-4xl font-extrabold dark:text-white">Image Encryption</h2>
+
+
+    <p class="my-3 text-gray-500 dark:text-gray-400 mb-8">
+      Image encryption refers to the process of converting the content of an image into a secure and unreadable form,
+      making it difficult for unauthorized individuals to access or understand the image without the appropriate
+      decryption key. Encryption is a vital technique for ensuring the confidentiality and integrity of sensitive
+      images, especially during storage, transmission, or when shared across insecure channels.
+    </p>
+    <p class="my-3 text-gray-500 dark:text-gray-400">
+      Image encryption algorithms employ various cryptographic techniques to transform the pixel values or the binary
+      representation of an image into a cipher text. The encryption process typically involves the following steps:
+    </p>
+    <p class="my-3 text-gray-500 dark:text-gray-400">
+      <span class="text-md font-bold dark:text-white"> Key Generation : </span>A secret encryption key is generated, which is known only to the authorized parties involved in
+      the encryption and decryption process.
+    </p>
+    <p class="my-3 text-gray-500 dark:text-gray-400">
+      <span class="text-md font-bold dark:text-white"> Pixel Transformation : </span>
+       The pixels of the image are modified using mathematical operations such as substitution,
+      permutation, bit-shifting, or matrix transformations. These operations alter the pixel values based on the
+      encryption key, making the encrypted image appear random and unintelligible.
+    </p>
+    <p class="my-3 text-gray-500 dark:text-gray-400">
+      <span class="text-md font-bold dark:text-white"> Encryption Algorithm : </span>
+       A specific encryption algorithm is applied to the transformed pixels, which scrambles the
+      data further and generates the cipher text.
+    </p>
+    <p class="my-3 text-gray-500 dark:text-gray-400 mb-8">
+      <span class="text-md font-bold dark:text-white"> Cipher Text Generation : </span>
+      The cipher text is the encrypted version of the original image. It contains the
+      transformed pixel values and metadata required for decryption.
+    </p>
+    <p class="my-3 text-gray-500 dark:text-gray-400">
+      To decrypt the encrypted image and restore it to its original form, the reverse process is followed using the same
+      encryption key. The decryption process involves:
+    </p>
+    <p class="my-3 text-gray-500 dark:text-gray-400">
+      <span class="text-md font-bold dark:text-white"> Key Sharing : </span>
+       The authorized recipient of the encrypted image receives the encryption key securely from the sender.
+    </p>
+    <p class="my-3 text-gray-500 dark:text-gray-400">
+      <span class="text-md font-bold dark:text-white"> Decryption Algorithm : </span>
+       The decryption algorithm, which is the inverse of the encryption algorithm, is applied to
+      the cipher text using the encryption key. This algorithm undoes the transformations applied during encryption,
+      restoring the original pixel values.
+    </p>
+    <p class="my-3 text-gray-500 dark:text-gray-400 mb-8">
+      <span class="text-md font-bold dark:text-white"> Pixel Restoration : </span>
+       The decrypted pixel values are transformed back to their original positions and values,
+      reconstructing the original image.
+    </p>
+    <p class="my-3 text-gray-500 dark:text-gray-400">
+      Image encryption techniques can be classified into two main categories: symmetric key encryption and asymmetric
+      key encryption. Symmetric key encryption uses the same key for both encryption and decryption, while asymmetric
+      key encryption involves the use of different keys: a public key for encryption and a private key for decryption.
+    </p>
+    <p class="my-3 text-gray-500 dark:text-gray-400">
+      Overall, image encryption plays a crucial role in safeguarding the privacy and security of images, ensuring that
+      only authorized individuals can access and understand the content.
+    </p>
+
+
+<h3 class="text-3xl font-bold dark:text-white">Our Algorithm</h3>
+
+
+
+    <p class="my-3 text-gray-500 dark:text-gray-400 mb-3">
+      We used Chaotic Function like Ranyi map and Tent map, DNA Encoding Technique to encrypt an image using given key.
+    </p>
+    
+<figure class="max-w-lg mx-auto">
+  <img class="h-auto max-w-full rounded-lg" src="/static/learn/Encrypt_chart.jpg" alt="image encryption chart">
+  <figcaption class="mt-2 text-sm text-center text-gray-500 dark:text-gray-400">Flowchar of Our Algorithm</figcaption>
+</figure>
+
+
+<h5 class="text-xl font-bold dark:text-white mt-8">Encryption Algorithm :</h5>
+<ol class="max-w-md space-y-1 text-gray-500 list-decimal list-inside dark:text-gray-400">
+  <li>
+    Get Image and Key from User
+  </li>
+  <li>
+    Convert key to hash using SHA-256 algorithm
+  </li>
+  <li>
+    Get Initial values of Chaotic functions from hash
+  </li>
+  <li>
+    Generate Ranyi and Tent Sequence
+  </li>
+  <li>
+    Generate Key Image
+  </li>
+  <li>
+    Encode Key Image
+  </li>
+  <li>
+    Encode Original Image
+  </li>
+  <li>
+    Generate Intermediate Encoded Image using Binary Operations
+  </li>
+  <li>
+    Decode Intermediate Image
+  </li>
+</ol>
+
+<h5 class="text-xl font-bold dark:text-white mt-8">Decryption Algorithm :</h5>
+<ol class="max-w-md space-y-1 text-gray-500 list-decimal list-inside dark:text-gray-400">
+  <li>
+    Get Encrypted Image and Key from User
+  </li>
+  <li>
+    Convert key to hash using SHA-256 algorithm
+  </li>
+  <li>
+    Get Initial values of Chaotic functions from hash
+  </li>
+  <li>
+    Generate Ranyi and Tent Sequence
+  </li>
+  <li>
+    Generate Key Image
+  </li>
+  <li>
+    Encode Key Image
+  </li>
+  <li>
+    Encode Encrypted Image
+  </li>
+  <li>
+    Generate Intermediate Encoded Image using reverse Binary Operations
+  </li>
+  <li>
+    Decode Intermediate Image
+  </li>
+</ol>
+
+<figure class="max-w-lg mx-auto mt-4">
+  <img class="h-auto max-w-full rounded-lg" src="/static/learn/encrypt_1.jpg" alt="image encryption chart">
+  <figcaption class="mt-2 text-sm text-center text-gray-500 dark:text-gray-400">Original Image</figcaption>
+</figure>
+
+<figure class="max-w-lg mx-auto mt-4">
+  <img class="h-auto max-w-full rounded-lg" src="/static/learn/encrypt_2.jpg" alt="image encryption chart">
+  <figcaption class="mt-2 text-sm text-center text-gray-500 dark:text-gray-400">Encrypted Image with key</figcaption>
+</figure>
+
+<figure class="max-w-lg mx-auto mt-4">
+  <img class="h-auto max-w-full rounded-lg" src="/static/learn/encrypt_3.jpg" alt="image encryption chart">
+  <figcaption class="mt-2 text-sm text-center text-gray-500 dark:text-gray-400">Decrypted Image using same key</figcaption>
+</figure>
+
+<figure class="max-w-lg mx-auto mt-4">
+  <img class="h-auto max-w-full rounded-lg" src="/static/learn/encrypt_4.jpg" alt="image encryption chart">
+  <figcaption class="mt-2 text-sm text-center text-gray-500 dark:text-gray-400">Decrypted Image using different key</figcaption>
+</figure>
+
+<h3 class="text-3xl font-bold dark:text-white">Pros and Cons of Algorithm:</h3>
+<h5 class="text-xl font-bold dark:text-white mt-8">Pros:</h5>
+<ul class="space-y-1 text-gray-500 list-disc list-inside dark:text-gray-400">
+  <li>
+    Comparing with other type of encryption, this method is more secure
+  </li>
+  <li>
+    SHA-256 provides one extra layer of security , Because SHA-256 is not reversible.
+  </li>
+</ul>
+
+
+<h5 class="text-xl font-bold dark:text-white mt-8">Cons:</h5>
+<ul class="space-y-1 text-gray-500 list-disc list-inside dark:text-gray-400">
+  <li>
+    SHA-256 takes 2<sup>256</sup> bits of memory and it is time consuming
+  </li>
+  <li>
+    Overall time required to perform the algorithm is high
+  </li>
+</ul>
+<div class="dark:bg-gray-900 text-center">
+  <a type="button" href="/tools/encryption" class="text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-500 dark:focus:ring-blue-800 mt-4">Use Image Encryption Tool</a>
+</div>
+
+  </div>
+</section>
+
+{% endblock content %}

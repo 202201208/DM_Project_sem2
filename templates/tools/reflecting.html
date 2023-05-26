@@ -1,0 +1,55 @@
+{% extends 'tools/template.html' %}
+
+{% block title %}
+  Image Flip Tool
+{% endblock title %}
+
+{% block output_title %}
+  Here is your Fliped Image
+{% endblock output_title %}
+
+{% block output_subtitle %}
+  
+{% endblock output_subtitle %}
+
+{% block section_title %}
+  Image Flip Tool
+{% endblock section_title %}
+
+{% block section_para %}
+  Flip Image about x or y or both axis.
+{% endblock section_para %}
+
+{% block notes %}
+
+{% endblock notes %}
+
+{% block additional_form %}
+<ul class="grid w-full gap-6 md:grid-cols-2">
+    <li>
+        <input type="radio" id="aboutx" name="flip" value="0" class="hidden peer" required>
+        <label for="aboutx" class="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">                           
+            <div class="block">
+                <div class="w-full text-lg font-semibold">About X axis</div>
+            </div>
+        </label>
+    </li>
+    <li>
+        <input type="radio" id="abouty" name="flip" value="1" class="hidden peer">
+        <label for="abouty" class="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
+            <div class="block">
+                <div class="w-full text-lg font-semibold">About Y axis</div>
+            </div>
+        </label>
+    </li>
+    <li>
+        <input type="radio" id="aboutboth" name="flip" value="-1" class="hidden peer">
+        <label for="aboutboth" class="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
+            <div class="block">
+                <div class="w-full text-lg font-semibold">About both axis</div>
+            </div>
+        </label>
+    </li>
+</ul>
+
+{% endblock additional_form %}
