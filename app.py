@@ -5,6 +5,7 @@ import cv2
 
 from image_encryption import encrypt_image, decrypt_image
 from utils import allowed_file, get_cookie
+from image_processing import apply_kernal
 
 UPLOAD_FOLDER = 'static/uploads'
 DOWNLOAD_FOLDER = 'static/downloads'
@@ -79,7 +80,27 @@ def encryption():
        return render_template("tools/encryption.html", output=False, action_path="encryption")
   return render_template("tools/encryption.html", output=False, action_path="encryption")
 
-
+@app.route("/tools/applykernel", methods=['GET', 'POST'])
+def applykernel():
+  mat = [[1, 1, 1], [1, 1, 1], [1, 1, 1]]
+  if(request.method == "POST"):
+    
+    if 'file' not in request.files:
+      return render_template("notFound.html")
+    file = request.files['file']
+    for i in range(3):
+       for j in range(3):
+          mat[i][j] = float(request.form.get(f"mat{i}{j}"))
+    if file and allowed_file(file.filename):
+      filename = secure_filename(file.filename)
+      file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+      img = cv2.imread(f"static/uploads/{filename}")
+      path = f"static/downloads/{filename}"
+      apply_kernal(img, mat, path)
+      return render_template("tools/kernel.html",output=True, original_img=filename, output_img=filename, action_path="applykernel", mat=mat)
+    else:
+       return render_template("tools/kernel.html", output=False, action_path="applykernel", mat=mat)
+  return render_template("tools/kernel.html", output=False, action_path="applykernel", mat=mat)
 
 @app.route('/downloads/<path:filename>')
 def download(filename):
