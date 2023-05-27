@@ -1,0 +1,221 @@
+{% extends 'learn/template.html' %}
+
+{% block title %}
+Image Transformation
+{% endblock title %}
+
+{% block content %}
+
+<section class="bg-white dark:bg-gray-900 h-screen">
+  <div class="py-4 px-4 mx-auto max-w-screen-xl lg:py-6">
+
+    <h2 class="text-4xl font-extrabold dark:text-white"> Image Transformation</h2>
+
+
+    <p class="my-3 text-gray-500 dark:text-gray-400 mb-8">
+      Transformation means changes in size, shape, position and orientation etc. . .
+    </p>
+    <p class="my-3 text-gray-500 dark:text-gray-400">
+      In this transformation, The changes occurs only in Geometry of an image but it’s pixel values
+remain unchanged.
+    </p>
+    <!-- <h3 class="text-3xl font-bold dark:text-white mt-8" id="spacial_domain">SPATIAL DOMAIN</h3> -->
+
+    <p class="my-3 text-gray-500 dark:text-gray-400 mb-8">
+      We can apply different type of operations for Geometric Transformation, But That will only
+change position of pixel without affecting the pixel intensity values.
+    </p>
+    <p class="my-3 text-gray-500 dark:text-gray-400">
+      We can denote Pixel’s position in cartesian co-ordinate system by (x,y) which is the co-ordinate
+of pixel of actual input image and we can transform it in (x’,y’) which is the co-ordinate of
+corresponding pixel of output image by applying different functions on input image
+    </p>
+    <p class="my-3 text-gray-500 dark:text-gray-400">
+      So, basically it will map (x,y) of f(x,y) in g(x’,y’) like this:
+    </p>
+    <p class="my-3 text-gray-500 dark:text-gray-400">
+      x’ = Ax(x,y)
+    </p>
+    <p class="my-3 text-gray-500 dark:text-gray-400"> y’ = Ay(x,y)
+    </p>
+
+    <!-- <h4 class="text-2xl font-bold dark:text-white mt-5" id="intensity_transformation">INTENSITY TRANSFORMATION</h4> -->
+
+    <p class="my-3 text-gray-500 dark:text-gray-400">
+      where Ax(x,y) and Ay(x,y) are both functions, which map (x,y) to (x’,y’).
+    </p>
+    <p class="my-3 text-gray-500 dark:text-gray-400">
+      The basic Geometrical Transformations are:
+    <ol class="max-w-md space-y-1 text-gray-500 list-decimal list-inside dark:text-gray-400">
+      <li>
+        Translation
+      </li>
+      <li>
+        Scaling
+      </li>
+      <li>
+        Rotation
+      <li>
+        Reflection
+      </li>
+      <li>
+        Shearing
+      </li>
+    </ol>
+    </p>
+
+    <h3 class="text-3xl font-bold dark:text-white mt-8" id="translation">Translation :</h3>
+
+    <p class="my-3 text-gray-500 dark:text-gray-400">
+      Translation means shifting the image by horizontally or/and vertically by the given value in both
+direction.
+    </p>
+    <p class="my-3 text-gray-500 dark:text-gray-400">
+      x’=x+∆x ; where ∆x is horizontal translation
+    </p>
+    <p class="my-3 text-gray-500 dark:text-gray-400">
+      y’=y+∆y ; where ∆y is vertical translation
+    </p>
+    <p class="my-3 text-gray-500 dark:text-gray-400">
+      The Matrix Representation of above equations will be:
+    </p>
+    <div class="dark:bg-gray-900 text-center">
+      <a type="button" href="/tools/translate" class="text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-500 dark:focus:ring-blue-800 mt-4">Use Image Translation Tool</a>
+    </div>
+    
+    <h3 class="text-3xl font-bold dark:text-white mt-8" id="scaling">Scaling :</h3>
+
+    <p class="my-3 text-gray-500 dark:text-gray-400">
+      Scaling means resizing an image. It alters the size of an image. It means that we can make image
+bigger or smaller in x or y direction.
+    </p>
+    <p class="my-3 text-gray-500 dark:text-gray-400">
+      We can resize an image or scale it by given scaling factor.
+    </p>
+    <p class="my-3 text-gray-500 dark:text-gray-400">
+      x’ = Sx*x ; Sx = Scaling factor in x-direction 
+      </p>
+      <p class="my-3 text-gray-500 dark:text-gray-400">
+y’ = Sy*y ; Sy = Scaling factor in y-direction
+    </p>
+    <p class="my-3 text-gray-500 dark:text-gray-400">
+      0 <Sx , Sy < 1 ; Size will be decreased
+    </p>
+    <p class="my-3 text-gray-500 dark:text-gray-400">
+      Sx , Sy > 1 ; Size will be increased
+    </p>
+    <p class="my-3 text-gray-500 dark:text-gray-400">
+      The Matrix Representation of above equations will be:
+    </p>
+    <div class="dark:bg-gray-900 text-center">
+      <a type="button" href="/tools/scaling" class="text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-500 dark:focus:ring-blue-800 mt-4">Use Image Scaling Tool</a>
+      <a type="button" href="/tools/resizing" class="text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-500 dark:focus:ring-blue-800 mt-4">Use Image Resizing Tool</a>
+    </div>
+
+    <h3 class="text-3xl font-bold dark:text-white mt-8" id="rotation">ROTATION :</h3>
+
+    <p class="my-3 text-gray-500 dark:text-gray-400">
+      Rotating means rotate an image at given angle θ by specified or given axis or point. It means
+that each pixel of image f(x,y) will be rotated at angle θ.
+    </p>
+    <p class="my-3 text-gray-500 dark:text-gray-400">
+      x’ = xcos θ – ysin θ
+    </p>
+    <p class="my-3 text-gray-500 dark:text-gray-400">
+      y’ = xsin θ + ycos θ
+      </p>
+      <p class="my-3 text-gray-500 dark:text-gray-400">
+        where θ is the angle by which we want to rotate an image
+    </p>
+    <p class="my-3 text-gray-500 dark:text-gray-400">
+      The Matrix Representation of above equations will be:
+    </p>
+    <p class="my-3 text-gray-500 dark:text-gray-400">
+      Anti clockwise Rotation :
+    </p>
+    <p class="my-3 text-gray-500 dark:text-gray-400">
+      Clockwise Rotation(Take (-θ) instead of θ)
+    </p>
+    <p class="my-3 text-gray-500 dark:text-gray-400">
+      Example of Image Rotating is given below:
+    </p>
+    <div class="dark:bg-gray-900 text-center">
+      <a type="button" href="/tools/rotate" class="text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-500 dark:focus:ring-blue-800 mt-4">Use Image Rotation Tool</a>
+    </div>
+
+    <h3 class="text-3xl font-bold dark:text-white mt-8" id="reflection">Reflection :</h3>
+
+    <p class="my-3 text-gray-500 dark:text-gray-400">A Reflection is a Transformation that produces a mirror image of an object.
+    </p>
+    <p class="my-3 text-gray-500 dark:text-gray-400">
+      The mirror image of 2-D reflection is generated relative to an axis of reflection by rotating the
+      object 180°to the reflection axis.
+    </p>
+    <p class="my-3 text-gray-500 dark:text-gray-400">
+      Reflection about different axis:
+      </p>
+      <p class="my-3 text-gray-500 dark:text-gray-400">
+        About x-axis:
+    </p>
+    <p class="my-3 text-gray-500 dark:text-gray-400">
+      About y-axis:
+    </p>
+    <p class="my-3 text-gray-500 dark:text-gray-400">
+      About origin:
+    </p>
+    <p class="my-3 text-gray-500 dark:text-gray-400">
+      Example of Image Reflection is given below:
+    </p>
+    <div class="dark:bg-gray-900 text-center">
+      <a type="button" href="/tools/reflecting" class="text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-500 dark:focus:ring-blue-800 mt-4">Use Image Reflection Tool</a>
+    </div>
+    <h3 class="text-3xl font-bold dark:text-white mt-8" id="shearing">Shearing :</h3>
+
+    <p class="my-3 text-gray-500 dark:text-gray-400">Shearing means changing the size and shape of the 2-D object along x-axis and y-axis
+    </p>
+    <p class="my-3 text-gray-500 dark:text-gray-400">Shear Transformation Slants the shape of an object.
+    </p>
+    <p class="my-3 text-gray-500 dark:text-gray-400">
+      There are two Types of shearing Transformation:
+      </p>
+      <h5 class="text-xl font-bold dark:text-white mt-8">1. X-shearing: </h5>
+      <p class="my-3 text-gray-500 dark:text-gray-400">
+        In x-shearing, y co-ordinates will be preserved while x co-ordinates will change it’s position(value).
+    </p>
+    <p class="my-3 text-gray-500 dark:text-gray-400">
+      So vertical line will be tilted towards Right or Left.
+    </p>
+    <p class="my-3 text-gray-500 dark:text-gray-400">
+      x’ = x + Shx*y ; Shx = shearing factor in x-direction
+    </p>
+    <p class="my-3 text-gray-500 dark:text-gray-400">
+      y’ = y
+    </p>
+    <p class="my-3 text-gray-500 dark:text-gray-400">
+      The Matrix Representation of above equations will be:
+    </p>
+
+      <h5 class="text-xl font-bold dark:text-white mt-8">2. Y-shearing: </h5>
+      <p class="my-3 text-gray-500 dark:text-gray-400">
+        In y-shearing, x co-ordinates will be preserved while y co-ordinates will change it’s position(value).
+    </p>
+    <p class="my-3 text-gray-500 dark:text-gray-400">
+      So horizontal line will be tilted towards Up or Down. x’ = x y’ = y + Shy*x; Shy = shearing
+      factor in y-direction
+    </p>
+    <p class="my-3 text-gray-500 dark:text-gray-400">
+      The Matrix Representation of above equations will be:
+    </p>
+    <p class="my-3 text-gray-500 dark:text-gray-400">
+      • Example of Image shearing in x-direction is given below:
+    </p>
+    
+    <div class="dark:bg-gray-900 text-center">
+      <a type="button" href="/tools/shearing" class="text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-500 dark:focus:ring-blue-800 mt-4">Use Image Shearing Tool</a>
+    </div>
+
+
+  </div>
+</section>
+
+{% endblock content %}

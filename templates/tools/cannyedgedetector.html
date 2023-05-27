@@ -1,0 +1,54 @@
+
+{% extends 'tools/template.html' %}
+
+{% block title %}
+  Canny Edge Detector
+{% endblock title %}
+
+
+{% block output_title %}
+  
+{% endblock output_title %}
+
+{% block output_subtitle %}
+  
+{% endblock output_subtitle %}
+
+{% block section_title %}
+Canny Edge Detector
+{% endblock section_title %}
+
+{% block section_para %}
+  
+{% endblock section_para %}
+
+{% block notes %}
+  
+
+{% endblock notes %}
+
+{% block additional_form %}
+<div>
+  <label for="lower" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Lower Bound</label>
+  <input type="number" id="lower" min="0" max="255" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="0 - 255" required name="lower">
+</div>
+<div>
+  <label for="upper" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Upper Bound</label>
+  <input type="number" id="upper" min="0" max="255" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="0 - 255" required name="upper">
+</div>
+<label for="aperture" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Aperture <span id="aperture_value">3</span>  ( Increase if you want to detect detailed features)</label>
+<input id="aperture" type="range" min="3" max="7" step="2" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700" onchange="changeHanderaperture(this)" oninput="changeHanderaperture(this)" value="3" name="aperture">
+
+{% endblock additional_form %}
+
+{% block img_size %}
+
+{% endblock img_size %}
+
+{% block script %}
+ <script>
+  function changeHanderaperture(e){
+      ele = document.getElementById("aperture_value").innerText = e.value;
+    }
+ </script>
+{% endblock script %}

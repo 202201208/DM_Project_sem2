@@ -1,0 +1,174 @@
+{% extends 'learn/template.html' %}
+
+{% block title %}
+Noise Reduction
+{% endblock title %}
+
+{% block content %}
+
+<section class="bg-white dark:bg-gray-900 h-screen">
+  <div class="py-4 px-4 mx-auto max-w-screen-xl lg:py-6">
+
+    <h2 class="text-4xl font-extrabold dark:text-white">Noise Reduction</h2>
+
+
+    <p class="my-3 text-gray-500 dark:text-gray-400 mb-8">
+      In image processing, noise refers to unwanted random variations or distortions that are introduced
+into an image during its acquisition, transmission, or processing. These variations can degrade
+the quality of the image and affect its visual appearance and analysis.
+    </p>
+    <p class="my-3 text-gray-500 dark:text-gray-400">
+      Noise is typically considered as an additive or multiplicative disturbance that alters the pixel
+values in the image.
+    </p>
+
+    <h3 class="text-3xl font-bold dark:text-white mt-8" id="spacial_domain">DIFFERENT TYPES OF NOISE :</h3>
+    <h5 class="text-xl font-bold dark:text-white mt-8">1. GAUSSIAN NOISE :</h5>
+    <p class="my-3 text-gray-500 dark:text-gray-400 mb-8">
+      Gaussian Noise is a statical additive noise that follows a Gaussian Distribution. Random Gaussian
+function is added to Image function to generate this noise. It is also called as electronic noise
+because it is often cause by electronic components due to poor illumination or high temperature.
+    </p>
+    <h5 class="text-xl font-bold dark:text-white mt-8">2. SALT AND PEPPER NOISE :</h5>
+    <p class="my-3 text-gray-500 dark:text-gray-400 mb-8">
+      Salt and Pepper Noise is also known as impulse noise, it appears as randomly occurring white and
+black pixels in an image, resembling grains of salt and pepper. Salt and pepper noise is typically
+caused by errors in data transmission or faulty image sensors.
+    </p>
+
+
+    <h5 class="text-xl font-bold dark:text-white mt-8">3. POISSON NOISE :</h5>
+    <p class="my-3 text-gray-500 dark:text-gray-400 mb-8">The appearance of this noise is seen due to the statistical nature of electromagnetic waves such
+      as x-rays, visible lights and gamma rays. It is common in low-light conditions and affects images
+      captured with low exposure times. Poisson noise appears as random variations in brightness and
+      can be particularly important in medical imaging
+    </p>
+
+    <h3 class="text-3xl font-bold dark:text-white mt-8" id="spacial_domain">DIFFERENT TYPES OF FILTER :</h3>
+    <h5 class="text-xl font-bold dark:text-white mt-8" id="gaussianfilter">GAUSSIAN FILTER :</h5>
+
+    <p class="my-3 text-gray-500 dark:text-gray-400">
+      For Gaussian Filter, we’ll need the Gaussian function in two dimensions.This Gaussian function
+is given below :
+    </p>
+    <p class="my-3 text-gray-500 dark:text-gray-400">
+      x and y specify the delta from the center pixel (0, 0). For example, if the selected radius for the
+kernel was 3, x and y would range from -3 to 3 (inclusive).
+    </p>
+    <p class="my-3 text-gray-500 dark:text-gray-400">
+      σ- the standard deviation – influences how significantly the center pixel’s neighboring pixels affect
+the computations result.
+    </p>
+    <p class="my-3 text-gray-500 dark:text-gray-400"> The values from this function will create the convolution matrix / kernel that we’ll apply to every
+      pixel in the original image.
+    </p>
+
+    <p class="my-3 text-gray-500 dark:text-gray-400">
+      The Gaussian filter effectively blurs the image, smoothing out variations and reducing the impact
+of random noise. The amount of blurring or smoothing is controlled by the standard deviation
+parameter of the Gaussian distribution, where a higher standard deviation results in more blurring.
+    </p>
+    <p class="my-3 text-gray-500 dark:text-gray-400">
+       By adjusting the size of the filter and the standard deviation of the Gaussian distribution, we can
+control the amount of noise reduction applied to the image
+    </p>
+
+    <p class="my-3 text-gray-500 dark:text-gray-400">
+       It’s important to note that while the Gaussian filter can effectively reduce Gaussian noise, it may
+not be as effective for reducing other types of noise, such as salt-and-pepper noise or impulse
+noise.
+    </p>
+
+
+    <h5 class="text-xl font-bold dark:text-white mt-8" id="medianfilter">MEDIAN FILTER :</h5>
+
+    <p class="my-3 text-gray-500 dark:text-gray-400">
+      The median filter is a popular technique used in digital image processing for noise reduction and
+preserving edges.
+    </p>
+    <p class="my-3 text-gray-500 dark:text-gray-400">
+      The median filter operates by replacing each pixel value with the median value of its neighboring
+pixels within a specified window. The median value is the middle value when the pixel values are
+sorted in ascending or descending order.
+    </p>
+    <p class="my-3 text-gray-500 dark:text-gray-400">
+      The choice of the filter/window size is crucial in the performance of the median filter. A small
+      window size may not adequately reduce noise, while a large window size can blur the image
+    </p>
+    <p class="my-3 text-gray-500 dark:text-gray-400"> The values from this function will create the convolution matrix / kernel that As shown in figure 25, It is particularly effective in reducing impulsive noise, such as salt-andpepper noise, where random pixels are corrupted with very high or very low intensity values.
+    </p>
+
+    <p class="my-3 text-gray-500 dark:text-gray-400">
+      Advantage of the median filter is its ability to effectively reduce noise while preserving sharp edges
+and fine details.
+    </p>
+    <p class="my-3 text-gray-500 dark:text-gray-400">
+      It also has some drawbacks. It can cause blurring of the image, especially when the window size
+      is too large. The processing time for applying the median filter can be relatively slow compared
+      to other filters, especially for larger window sizes.
+    </p>
+
+    <h5 class="text-xl font-bold dark:text-white mt-8" id="meanfilter">MEAN FILTER :</h5>
+
+    <p class="my-3 text-gray-500 dark:text-gray-400">
+      Mean filter is the used to reduce the intensities in an image. It uses convolution mask to process.
+The window has some specific size which calculates the mean by considering the neighborhood
+pixels.
+    </p>
+    <p class="my-3 text-gray-500 dark:text-gray-400">
+      It operates by replacing each pixel value with the average value of its neighboring pixels within a
+specified window
+    </p>
+    <p class="my-3 text-gray-500 dark:text-gray-400">The filter is particularly useful for reducing Gaussian noise. The mean filter tends to produce
+      more blurring compared to the Gaussian filter. The choice of the window size is crucial in the
+      performance of the mean filter. A smaller window size may not adequately reduce noise, while a
+      larger window size can lead to more blurring.
+    </p>
+    <p class="my-3 text-gray-500 dark:text-gray-400"> Advantage of the mean filter is its simplicity and computational efficiency. It is straightforward
+      to implement and can be applied quickly to large images.
+    </p>
+
+    <p class="my-3 text-gray-500 dark:text-gray-400">
+      Some of it’s limitations are that the mean filter may not effectively reduce impulsive noise, such
+      as salt-and-pepper noise, as it treats all pixel values equally and it can cause blurring and loss of
+      fine details, especially if the window size is large.
+    </p>
+
+    <h5 class="text-xl font-bold dark:text-white mt-8" id="minfilter">MIN FILTER :</h5>
+
+    <p class="my-3 text-gray-500 dark:text-gray-400">
+      Min Filter operates by replacing each pixel value with the minimum value of its neighboring pixels
+within a specified window.
+    </p>
+    <p class="my-3 text-gray-500 dark:text-gray-400">
+      It is particularly useful for reducing impulsive noise, such as salt-and-pepper noise, where random
+pixels are corrupted with very high or very low intensity values.
+    </p>
+    <p class="my-3 text-gray-500 dark:text-gray-400">Advantage of the min filter is its ability to preserve sharp edges and fine details in the image.
+      Drawback of this filter is that it can cause darkening or loss of details in areas where noise is
+      present but not desired to be reduced. Additionally, the filter can amplify noise in regions with
+      low-intensity values.
+    </p>
+
+    <h5 class="text-xl font-bold dark:text-white mt-8" id="maxfilter">MAX FILTER :</h5>
+
+    <p class="my-3 text-gray-500 dark:text-gray-400">
+      Max Filter operates by replacing each pixel value with the maximum value of its neighboring
+pixels within a specified window.
+    </p>
+    <p class="my-3 text-gray-500 dark:text-gray-400">
+      It is particularly useful for reducing impulsive noise, such as salt-and-pepper noise, where random
+pixels are corrupted with very high or very low intensity values.
+    </p>
+    <p class="my-3 text-gray-500 dark:text-gray-400">Advantage of the max filter is its ability to preserve sharp edges and fine details in the image.
+    </p>
+    <p class="my-3 text-gray-500 dark:text-gray-400">Drawback of this filter is that it can cause brightening or loss of details in areas where noise is
+      present but not desired to be reduced. Additionally, the filter can amplify noise in regions with
+      high-intensity values.
+    </p>
+
+
+  </div>
+</section>
+
+{% endblock content %}

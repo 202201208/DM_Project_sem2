@@ -1,5 +1,6 @@
 import cv2
 import numpy as np
+from PIL import Image, ImageFilter
 
 def apply_kernal(img, mat, dest):
     mat = np.array(mat)
@@ -47,3 +48,36 @@ def negative_img(img, path):
         img.itemset((i, j, 2) , 255-c)
   cv2.imwrite(path, img)
 
+def logtransformation_img(img, path):
+  c = 255 / np.log(1 + np.max(img))
+  log_img = c * (np.log(img + 1))
+  log_img = np.array(log_img, dtype=np.uint8)
+  cv2.imwrite(path, log_img)
+
+def gammatransformation_img(img, g, path): 
+  log_img = np.array(255*(img / 255) ** g, dtype=np.uint8)
+  cv2.imwrite(path, log_img)
+
+def gaussianfilter_img(opath, path): 
+  img = Image.open(opath)
+  image = img.filter(ImageFilter.GaussianBlur)
+  image.save(path)
+
+def medianfilter_img(opath, path): 
+  img = Image.open(opath)
+  image = img.filter(ImageFilter.MedianFilter(size = 3))
+  image.save(path)
+
+def minfilter_img(opath, path): 
+  img = Image.open(opath)
+  image = img.filter(ImageFilter.MinFilter(size = 3))
+  image.save(path)
+
+def maxfilter_img(opath, path): 
+  img = Image.open(opath)
+  image = img.filter(ImageFilter.MaxFilter(size = 3))
+  image.save(path)
+
+def cannyedgedetector_img(img, l, u, a, path):
+  edge = cv2.Canny(img, l, u, apertureSize=a)
+  cv2.imwrite(path, edge)

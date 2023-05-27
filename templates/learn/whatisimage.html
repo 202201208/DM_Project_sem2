@@ -1,6 +1,91 @@
-{% extends 'Learn/template.html' %}
+{% extends 'learn/template.html' %}
 
 {% block title %}
-  What is image
-{% endblock title %}  
+What is image
+{% endblock title %}
+{% block content %}
 
+<section class="bg-white dark:bg-gray-900 h-screen">
+  <div class="py-4 px-4 mx-auto max-w-screen-xl lg:py-6">
+
+    <h2 class="text-4xl font-extrabold dark:text-white">What is digital image ?</h2>
+
+
+    <p class="my-3 text-gray-500 dark:text-gray-400">Digital image is collection of pixels ,where each pixel has finite
+      and discrete quantity known as intensity .
+      
+    </p>
+    <p class="my-3 text-gray-500 dark:text-gray-400">
+      Pixel is basic element of digital images.
+    </p>
+
+    <h3 class="text-3xl font-bold dark:text-white mt-8" id="spacial_domain">How to represent digital image?
+    </h3>
+    <p class="my-3 text-gray-500 dark:text-gray-400 mb-3">
+      Digital image can be represented as a matrix . where each element of a matrix is a pixel .
+
+    </p>
+    <figure class="max-w-lg mx-auto mt-4">
+      <img class="h-auto max-w-full rounded-lg" src="/static/learn/whatisimage_1.jpg" alt="image encryption chart">
+      <figcaption class="mt-2 text-sm text-center text-gray-500 dark:text-gray-400">Digital Image Representation</figcaption>
+    </figure>
+
+    <p class="my-3 text-gray-500 dark:text-gray-400 mb-3">
+      Here x and y are spatial coordinates,and f(x,y) is value of intensity at point (x,y).
+
+    </p>
+
+    <h3 class="text-3xl font-bold dark:text-white mt-8" id="spacial_domain">Pixel density :
+    </h3>
+    <p class="my-3 text-gray-500 dark:text-gray-400 mb-3">
+      Pixel density tells about how much pixel is there in particular length.
+
+    </p>
+
+
+    <p class="my-3 text-gray-500 dark:text-gray-400 mb-3">
+      Generally , Pixel per density is measured in pixel per inch (PPI) .
+    </p>
+
+    <p class="my-3 text-gray-500 dark:text-gray-400 mb-3">
+      More pixel density impies more resolution.
+
+    </p>
+    <h3 class="text-3xl font-bold dark:text-white mt-8" id="spacial_domain">Bits per pixel (bpp) :
+
+    </h3>
+    <p class="my-3 text-gray-500 dark:text-gray-400 mb-3">
+      Bits per pixel is a number of bits  aquired  by a pixel of an image .
+
+
+    </p>
+
+
+    <p class="my-3 text-gray-500 dark:text-gray-400 mb-3">
+      Generally greyscale image has 8 bpp and colour image has 24 bpp.
+
+    </p>
+
+    <h3 class="text-3xl font-bold dark:text-white mt-8" id="spacial_domain">Histogram of image:
+
+
+    </h3>
+    <p class="my-3 text-gray-500 dark:text-gray-400 mb-3">
+      Histogram is a graph of intensity to number of pixel having that intensity.
+
+    </p>
+
+
+    <p class="my-3 text-gray-500 dark:text-gray-400 mb-3">
+      which gives information about how many pixels of image  have particular intensity.
+
+    </p>
+    <p class="my-3 text-gray-500 dark:text-gray-400 mb-3">
+      In colour ( RGB ) image there are three channel so in color image histogram for different channel                                    there will be a curve .
+    </p>
+
+
+  </div>
+</section>
+
+{% endblock content %}

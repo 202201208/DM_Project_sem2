@@ -28,14 +28,151 @@ Image Enhancement
       </li>
     </ol>
     </p>
+    <h3 class="text-3xl font-bold dark:text-white mt-8" id="spacial_domain">SPATIAL DOMAIN</h3>
 
-    <h4 class="text-2xl font-bold dark:text-white mt-8" id="spacial_domain">SPATIAL DOMAIN</h4>
     <p class="my-3 text-gray-500 dark:text-gray-400 mb-8">
       In this domain we directly work with original images .We do some operations on pixels directly.
     </p>
+    <p class="my-3 text-gray-500 dark:text-gray-400">
+      Spatial domain process is defined by
+    </p>
+    <p class="my-3 text-gray-500 dark:text-gray-400">
+      g(x,y) = T[f(x,y)]
+    </p>
+    <p class="my-3 text-gray-500 dark:text-gray-400">
+      here, f is input image and g is output image.
+    </p>
+    <p class="my-3 text-gray-500 dark:text-gray-400"> operator T is defined over a neighborhood of point (x,y) of image
+      f. neighborhood size can be
+      1x1 , 3x3 ,5x5 etc. . .
+    </p>
+
+    <h4 class="text-2xl font-bold dark:text-white mt-5" id="intensity_transformation">INTENSITY TRANSFORMATION</h4>
+
+    <p class="my-3 text-gray-500 dark:text-gray-400">
+      When neighborhood size is 1x1 then operation is called intensity transformation or point processing as output of
+      function is dependent only on that pixel.
+    </p>
+    <p class="my-3 text-gray-500 dark:text-gray-400">
+      here are some example of intensity transformation
+    <ol class="max-w-md space-y-1 text-gray-500 list-decimal list-inside dark:text-gray-400">
+      <li>
+        image negative
+      </li>
+      <li>
+        log transformation
+      </li>
+      <li>
+        power law transformation /gamma transformation
+      </li>
+      <li>
+        piece wise linear transformation
+      </li>
+    </ol>
+    </p>
+
+    <h5 class="text-xl font-bold dark:text-white mt-8">Image Negative : </h5>
+    <p class="my-3 text-gray-500 dark:text-gray-400">
+      Operation for this is : T (r) = (L - 1) - r
+    </p>
+    <p class="my-3 text-gray-500 dark:text-gray-400">
+      where L = 2<sup>bits per pixel</sup>
+    </p>
+    <p class="my-3 text-gray-500 dark:text-gray-400">
+      Example :
+    </p>
+    <p class="my-3 text-gray-500 dark:text-gray-400">
+      Let suppose we have an RGB color image which has 24 bits per pixel value . 8 bit per pixel for
+      each channel then we will subtract all channel intensity from 255 to get negative .
+    </p>
+    <p class="my-3 text-gray-500 dark:text-gray-400">
+      It is obvious that S will have three component S<sub>R</sub> , S<sub>G</sub> , S<sub>B</sub> same with R.
+    </p>
+    <p class="my-3 text-gray-500 dark:text-gray-400">
+      Where T operator performs following task :
+    </p>
+    <p class="my-3 text-gray-500 dark:text-gray-400">
+      S<sub>R</sub> = (L<sub>R</sub>-1 ) - R<sub>R</sub>
+    </p>
+    <p class="my-3 text-gray-500 dark:text-gray-400">
+      S<sub>G</sub> = (L<sub>G</sub>-1 ) - R<sub>G</sub>
+    </p>
+    <p class="my-3 text-gray-500 dark:text-gray-400">
+      S<sub>B</sub> = (L<sub>B</sub>-1 ) - R<sub>B</sub>
+    </p>
+    <p class="my-3 text-gray-500 dark:text-gray-400">
+      Sx = intensity of channel x in image S.
+    </p>
+    <p class="my-3 text-gray-500 dark:text-gray-400">
+
+      Lx = bits per pixel value for channel x.
+    </p>
+    <div class="dark:bg-gray-900 text-center">
+      <a type="button" href="/tools/negative" class="text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-500 dark:focus:ring-blue-800 mt-4">Use Image Negative Tool</a>
+    </div>
+
+    <h5 class="text-xl font-bold dark:text-white mt-8">LOG TRANSFORMATION : </h5>
+    <p class="my-3 text-gray-500 dark:text-gray-400">
+      For an image log transformation is defined as below :
+    </p>
+    <p class="my-3 text-gray-500 dark:text-gray-400">
+      s = c*log( 1+ r)
+    </p>
+    <p class="my-3 text-gray-500 dark:text-gray-400">
+      where c is constant , generally we take
+    </p>
+    <p class="my-3 text-gray-500 dark:text-gray-400">
+      c = (L - 1)/log(1 + MAX - V AL)
+    </p>
+    <p class="my-3 text-gray-500 dark:text-gray-400">
+      because for this value of c output lies between 0 to L - 1 ,means all intensities covered by output,
+      hence range of intensity is covered by output hence range of intensity is covered optimally
+    </p>
+    <p class="my-3 text-gray-500 dark:text-gray-400">
+      In graph you can see that narrow range of lower intensity is extended to wider range and wider
+      range of higher intensity is compressed into narrow range.So images which have majorly lower
+      intensity should be given as input
+    </p>
 
 
+    <h5 class="text-xl font-bold dark:text-white mt-8">POWER LAW TRANSFORMATION / GAMMA TRANSFORMATION :</h5>
+    <p class="my-3 text-gray-500 dark:text-gray-400">
+      power law transformation or gamma transformation can be define as below
+    </p>
+    <p class="my-3 text-gray-500 dark:text-gray-400">
+      s = cr<sup>r</sup>
+    </p>
+    <p class="my-3 text-gray-500 dark:text-gray-400">
+      Where c and τ are constant.
+    </p>
+    <p class="my-3 text-gray-500 dark:text-gray-400">
+      Generally c =(L-1) , because we want to use range of intensity optimally.
+    </p>
+    <p class="my-3 text-gray-500 dark:text-gray-400">
+      From the above graph you can see that for τ < 1 function behaves similarly as log transformation and for τ> 1
+        behaves exactly opposite .
+    </p>
 
+
+    <h3 class="text-3xl font-bold dark:text-white mt-8" id="frequency_domain">FREQUENCY DOMAIN</h3>
+    <p class="my-3 text-gray-500 dark:text-gray-400">
+      In spatial domain we deal with images directly .but in frequency domain we deal with rate at
+      which the pixel values are changing in spatial domain.
+    </p>
+    <p class="my-3 text-gray-500 dark:text-gray-400">
+      Here,we first convert image in frequency domain then we perform operation on it and convert
+      result into spatial domain .
+    </p>
+    <p class="my-3 text-gray-500 dark:text-gray-400">
+      There are many method to convert image in frequency domain like Fourier series ,Fourier transformation ,Laplace
+      transformation , Z transformation but here we will see about Fourier transformation only.
+    </p>
+
+    <h5 class="text-xl font-bold dark:text-white mt-8">FOURIER TRANSFORMATION :</h5>
+    <p class="my-3 text-gray-500 dark:text-gray-400">
+      According to Fourier transformation any non periodic signals whose area under the curve is finite
+can be represented as integrals of the sines and cosines .after being multiplied by a certain weight
+    </p>
   </div>
 </section>
 

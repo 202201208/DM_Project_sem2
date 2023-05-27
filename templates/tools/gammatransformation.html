@@ -1,0 +1,53 @@
+
+{% extends 'tools/template.html' %}
+
+{% block title %}
+  Gamma Transformation Tool
+{% endblock title %}
+
+{% block styles %}
+
+{% endblock styles %}
+
+
+{% block output_title %}
+  
+{% endblock output_title %}
+Your Output Image
+{% block output_subtitle %}
+  
+{% endblock output_subtitle %}
+
+{% block section_title %}
+Gamma Transformation Tool
+{% endblock section_title %}
+
+{% block section_para %}
+  
+{% endblock section_para %}
+
+{% block notes %}
+  
+
+{% endblock notes %}
+
+{% block additional_form %}
+
+<label for="g" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Gamma Value  <span id="g_value">0.50</span></label>
+<input id="g" type="range" min="0" max="10" step="0.01" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700" onchange="changeHanderx(this)" oninput="changeHanderx(this)" value="0.50" name="g">
+
+
+
+{% endblock additional_form %}
+
+{% block img_size %}
+  ( 0 - 500 kb )
+{% endblock img_size %}
+
+{% block script %}
+  <script>
+    function changeHanderx(e){
+      ele = document.getElementById("g_value").innerText = e.value;
+    }
+  </script>
+{% endblock script %}

@@ -1,11 +1,12 @@
 import os
+from PIL import Image
 from flask import Flask, redirect, render_template, request, send_file, after_this_request, session
 from werkzeug.utils import secure_filename
 import cv2
 
 from image_encryption import encrypt_image, decrypt_image
 from utils import allowed_file
-from image_processing import apply_kernal, negative_img, reflecting_img, resize_img, rotate_img, scale_img, shearing_img, translate_img
+from image_processing import apply_kernal, cannyedgedetector_img, gammatransformation_img, gaussianfilter_img, logtransformation_img, maxfilter_img, medianfilter_img, minfilter_img, negative_img, reflecting_img, resize_img, rotate_img, scale_img, shearing_img, translate_img
 
 UPLOAD_FOLDER = 'static/uploads'
 DOWNLOAD_FOLDER = 'static/downloads'
@@ -53,6 +54,10 @@ def learn():
 def learn_intro():
     return render_template("learn/introduction.html")
 
+@app.route("/learn/whatisimage")
+def learn_whatisimage():
+    return render_template("learn/whatisimage.html")
+
 @app.route("/learn/encryption")
 def learn_encryption():
     return render_template("learn/encryption.html")
@@ -64,6 +69,14 @@ def learn_embossing():
 @app.route("/learn/enhancement")
 def learn_enhancement():
     return render_template("learn/enhancement.html")
+
+@app.route("/learn/transformation")
+def learn_transformation():
+    return render_template("learn/transformation.html")
+
+@app.route("/learn/noisereduction")
+def learn_noisereduction():
+    return render_template("learn/noisereduction.html")
 
 @app.route("/tools/encryption", methods=['GET', 'POST'])
 def encryption():
@@ -241,6 +254,109 @@ def negative():
        return render_template("tools/negative.html", output=False, action_path="negative")
   return render_template("tools/negative.html", output=False, action_path="negative")
 
+@app.route("/tools/logtransformation", methods=['GET', 'POST'])
+def logtransformation():
+  if(request.method == "POST"):
+    if 'file' not in request.files:
+      return render_template("notFound.html")
+    file = request.files['file']
+    if file and allowed_file(file.filename):
+      filename = secure_filename(file.filename)
+      file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+      img = cv2.imread(f"static/uploads/{filename}")
+      path = f"static/downloads/{filename}"
+      logtransformation_img(img, path)
+      return render_template("tools/logtransformation.html",output=True, original_img=filename, output_img=filename, action_path="logtransformation")
+    else:
+       return render_template("tools/logtransformation.html", output=False, action_path="logtransformation")
+  return render_template("tools/logtransformation.html", output=False, action_path="logtransformation")
+
+@app.route("/tools/gammatransformation", methods=['GET', 'POST'])
+def gammatransformation():
+  if(request.method == "POST"):
+    if 'file' not in request.files:
+      return render_template("notFound.html")
+    file = request.files['file']
+    g = float(request.form.get("g"))
+    if file and allowed_file(file.filename):
+      filename = secure_filename(file.filename)
+      file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+      img = cv2.imread(f"static/uploads/{filename}")
+      path = f"static/downloads/{filename}"
+      gammatransformation_img(img, g, path)
+      return render_template("tools/gammatransformation.html",output=True, original_img=filename, output_img=filename, action_path="gammatransformation")
+    else:
+       return render_template("tools/gammatransformation.html", output=False, action_path="gammatransformation")
+  return render_template("tools/gammatransformation.html", output=False, action_path="gammatransformation")
+
+@app.route("/tools/gaussianfilter", methods=['GET', 'POST'])
+def gaussianfilter():
+  if(request.method == "POST"):
+    if 'file' not in request.files:
+      return render_template("notFound.html")
+    file = request.files['file']
+    if file and allowed_file(file.filename):
+      filename = secure_filename(file.filename)
+      file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+      original_path = f"static/uploads/{filename}"
+      path = f"static/downloads/{filename}"
+      gaussianfilter_img(original_path, path)
+      return render_template("tools/gaussianfilter.html",output=True, original_img=filename, output_img=filename, action_path="gaussianfilter")
+    else:
+       return render_template("tools/gaussianfilter.html", output=False, action_path="gaussianfilter")
+  return render_template("tools/gaussianfilter.html", output=False, action_path="gaussianfilter")
+
+@app.route("/tools/medianfilter", methods=['GET', 'POST'])
+def medianfilter():
+  if(request.method == "POST"):
+    if 'file' not in request.files:
+      return render_template("notFound.html")
+    file = request.files['file']
+    if file and allowed_file(file.filename):
+      filename = secure_filename(file.filename)
+      file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+      original_path = f"static/uploads/{filename}"
+      path = f"static/downloads/{filename}"
+      medianfilter_img(original_path, path)
+      return render_template("tools/medianfilter.html",output=True, original_img=filename, output_img=filename, action_path="medianfilter")
+    else:
+       return render_template("tools/medianfilter.html", output=False, action_path="medianfilter")
+  return render_template("tools/medianfilter.html", output=False, action_path="medianfilter")
+
+@app.route("/tools/minfilter", methods=['GET', 'POST'])
+def minfilter():
+  if(request.method == "POST"):
+    if 'file' not in request.files:
+      return render_template("notFound.html")
+    file = request.files['file']
+    if file and allowed_file(file.filename):
+      filename = secure_filename(file.filename)
+      file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+      original_path = f"static/uploads/{filename}"
+      path = f"static/downloads/{filename}"
+      minfilter_img(original_path, path)
+      return render_template("tools/minfilter.html",output=True, original_img=filename, output_img=filename, action_path="minfilter")
+    else:
+       return render_template("tools/minfilter.html", output=False, action_path="minfilter")
+  return render_template("tools/minfilter.html", output=False, action_path="minfilter")
+
+@app.route("/tools/maxfilter", methods=['GET', 'POST'])
+def maxfilter():
+  if(request.method == "POST"):
+    if 'file' not in request.files:
+      return render_template("notFound.html")
+    file = request.files['file']
+    if file and allowed_file(file.filename):
+      filename = secure_filename(file.filename)
+      file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+      original_path = f"static/uploads/{filename}"
+      path = f"static/downloads/{filename}"
+      maxfilter_img(original_path, path)
+      return render_template("tools/maxfilter.html",output=True, original_img=filename, output_img=filename, action_path="maxfilter")
+    else:
+       return render_template("tools/maxfilter.html", output=False, action_path="maxfilter")
+  return render_template("tools/maxfilter.html", output=False, action_path="maxfilter")
+
 @app.route('/downloads/<path:filename>')
 def download(filename):
     downloads = os.path.join(app.config['DOWNLOAD_FOLDER'], filename)
@@ -254,6 +370,25 @@ def download(filename):
         return response
     return send_file(downloads, download_name=filename, as_attachment=True )
     
+@app.route("/tools/cannyedgedetector", methods=['GET', 'POST'])
+def cannyedgedetector():
+  if(request.method == "POST"):
+    if 'file' not in request.files:
+      return render_template("notFound.html")
+    file = request.files['file']
+    l = int(request.form.get("lower"))
+    u = int(request.form.get("upper"))
+    a = int(request.form.get("aperture"))
+    if file and allowed_file(file.filename):
+      filename = secure_filename(file.filename)
+      file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+      img = cv2.imread(f"static/uploads/{filename}")
+      path = f"static/downloads/{filename}"
+      cannyedgedetector_img(img, l, u, a, path)
+      return render_template("tools/cannyedgedetector.html",output=True, original_img=filename, output_img=filename, action_path="cannyedgedetector")
+    else:
+       return render_template("tools/cannyedgedetector.html", output=False, action_path="cannyedgedetector")
+  return render_template("tools/cannyedgedetector.html", output=False, action_path="cannyedgedetector")
 
 @app.errorhandler(404)
 def not_found(e):
