@@ -19,7 +19,6 @@ Image Transformation
       In this transformation, The changes occurs only in Geometry of an image but it’s pixel values
 remain unchanged.
     </p>
-    <!-- <h3 class="text-3xl font-bold dark:text-white mt-8" id="spacial_domain">SPATIAL DOMAIN</h3> -->
 
     <p class="my-3 text-gray-500 dark:text-gray-400 mb-8">
       We can apply different type of operations for Geometric Transformation, But That will only
@@ -38,8 +37,6 @@ corresponding pixel of output image by applying different functions on input ima
     </p>
     <p class="my-3 text-gray-500 dark:text-gray-400"> y’ = Ay(x,y)
     </p>
-
-    <!-- <h4 class="text-2xl font-bold dark:text-white mt-5" id="intensity_transformation">INTENSITY TRANSFORMATION</h4> -->
 
     <p class="my-3 text-gray-500 dark:text-gray-400">
       where Ax(x,y) and Ay(x,y) are both functions, which map (x,y) to (x’,y’).
@@ -79,6 +76,16 @@ direction.
     <p class="my-3 text-gray-500 dark:text-gray-400">
       The Matrix Representation of above equations will be:
     </p>
+
+    <figure class="max-w-lg mx-auto mt-4">
+      <img class="h-auto max-w-full rounded-lg" src="/static/learn/transformation_1.png" alt="Equation">
+    </figure>
+
+    <!-- <figure class="max-w-lg mx-auto">
+      <img class="h-auto max-w-full rounded-lg" src="/static/learn/translation.jpg" alt="Image Translation">
+      <figcaption class="mt-2 text-sm text-center text-gray-500 dark:text-gray-400">Image Translation</figcaption>
+    </figure> -->
+
     <div class="dark:bg-gray-900 text-center">
       <a type="button" href="/tools/translate" class="text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-500 dark:focus:ring-blue-800 mt-4">Use Image Translation Tool</a>
     </div>
@@ -99,7 +106,7 @@ bigger or smaller in x or y direction.
 y’ = Sy*y ; Sy = Scaling factor in y-direction
     </p>
     <p class="my-3 text-gray-500 dark:text-gray-400">
-      0 <Sx , Sy < 1 ; Size will be decreased
+      0 < Sx , Sy < 1 ; Size will be decreased
     </p>
     <p class="my-3 text-gray-500 dark:text-gray-400">
       Sx , Sy > 1 ; Size will be increased
@@ -107,6 +114,16 @@ y’ = Sy*y ; Sy = Scaling factor in y-direction
     <p class="my-3 text-gray-500 dark:text-gray-400">
       The Matrix Representation of above equations will be:
     </p>
+
+    <figure class="max-w-lg mx-auto mt-4">
+      <img class="h-auto max-w-full rounded-lg" src="/static/learn/transformation_2.png" alt="Equation">
+    </figure>
+
+    <!-- <figure class="max-w-lg mx-auto">
+      <img class="h-auto max-w-full rounded-lg" src="/static/learn/scaling.jpg" alt="Image Scaling">
+      <figcaption class="mt-2 text-sm text-center text-gray-500 dark:text-gray-400">Image Scaling</figcaption>
+    </figure> -->
+
     <div class="dark:bg-gray-900 text-center">
       <a type="button" href="/tools/scaling" class="text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-500 dark:focus:ring-blue-800 mt-4">Use Image Scaling Tool</a>
       <a type="button" href="/tools/resizing" class="text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-500 dark:focus:ring-blue-800 mt-4">Use Image Resizing Tool</a>
@@ -133,12 +150,22 @@ that each pixel of image f(x,y) will be rotated at angle θ.
     <p class="my-3 text-gray-500 dark:text-gray-400">
       Anti clockwise Rotation :
     </p>
+    <figure class="max-w-lg mx-auto mt-4">
+      <img class="h-auto max-w-full rounded-lg" src="/static/learn/transformation_3.png" alt="Equation">
+    </figure>
     <p class="my-3 text-gray-500 dark:text-gray-400">
       Clockwise Rotation(Take (-θ) instead of θ)
     </p>
+    <figure class="max-w-lg mx-auto mt-4">
+      <img class="h-auto max-w-full rounded-lg" src="/static/learn/transformation_4.png" alt="Equation">
+    </figure>
     <p class="my-3 text-gray-500 dark:text-gray-400">
       Example of Image Rotating is given below:
     </p>
+    <!-- <figure class="max-w-lg mx-auto">
+      <img class="h-auto max-w-full rounded-lg" src="/static/learn/scaling.jpg" alt="Image Scaling">
+      <figcaption class="mt-2 text-sm text-center text-gray-500 dark:text-gray-400">Image Scaling</figcaption>
+    </figure> -->
     <div class="dark:bg-gray-900 text-center">
       <a type="button" href="/tools/rotate" class="text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-500 dark:focus:ring-blue-800 mt-4">Use Image Rotation Tool</a>
     </div>
@@ -157,15 +184,33 @@ that each pixel of image f(x,y) will be rotated at angle θ.
       <p class="my-3 text-gray-500 dark:text-gray-400">
         About x-axis:
     </p>
+    <figure class="max-w-lg mx-auto mt-4">
+      <img class="h-auto max-w-full rounded-lg" src="/static/learn/transformation_5.png" alt="Equation">
+    </figure>
     <p class="my-3 text-gray-500 dark:text-gray-400">
       About y-axis:
     </p>
+    <figure class="max-w-lg mx-auto mt-4">
+      <img class="h-auto max-w-full rounded-lg" src="/static/learn/transformation_6.png" alt="Equation">
+    </figure>
     <p class="my-3 text-gray-500 dark:text-gray-400">
       About origin:
     </p>
+    <figure class="max-w-lg mx-auto mt-4">
+      <img class="h-auto max-w-full rounded-lg" src="/static/learn/transformation_7.png" alt="Equation">
+    </figure>
     <p class="my-3 text-gray-500 dark:text-gray-400">
       Example of Image Reflection is given below:
     </p>
+<!-- <figure class="max-w-lg mx-auto">
+      <img class="h-auto max-w-full rounded-lg" src="/static/learn/scaling.jpg" alt="Image Scaling">
+      <figcaption class="mt-2 text-sm text-center text-gray-500 dark:text-gray-400">Image Scaling</figcaption>
+    </figure> -->
+    <!-- <figure class="max-w-lg mx-auto">
+      <img class="h-auto max-w-full rounded-lg" src="/static/learn/scaling.jpg" alt="Image Scaling">
+      <figcaption class="mt-2 text-sm text-center text-gray-500 dark:text-gray-400">Image Scaling</figcaption>
+    </figure> -->
+
     <div class="dark:bg-gray-900 text-center">
       <a type="button" href="/tools/reflecting" class="text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-500 dark:focus:ring-blue-800 mt-4">Use Image Reflection Tool</a>
     </div>
@@ -194,6 +239,9 @@ that each pixel of image f(x,y) will be rotated at angle θ.
     <p class="my-3 text-gray-500 dark:text-gray-400">
       The Matrix Representation of above equations will be:
     </p>
+    <figure class="max-w-lg mx-auto mt-4">
+      <img class="h-auto max-w-full rounded-lg" src="/static/learn/transformation_8.png" alt="Equation">
+    </figure>
 
       <h5 class="text-xl font-bold dark:text-white mt-8">2. Y-shearing: </h5>
       <p class="my-3 text-gray-500 dark:text-gray-400">
@@ -206,9 +254,16 @@ that each pixel of image f(x,y) will be rotated at angle θ.
     <p class="my-3 text-gray-500 dark:text-gray-400">
       The Matrix Representation of above equations will be:
     </p>
+    <figure class="max-w-lg mx-auto mt-4">
+      <img class="h-auto max-w-full rounded-lg" src="/static/learn/transformation_9.png" alt="Equation">
+    </figure>
     <p class="my-3 text-gray-500 dark:text-gray-400">
-      • Example of Image shearing in x-direction is given below:
+       Example of Image shearing in x-direction is given below:
     </p>
+    <!-- <figure class="max-w-lg mx-auto">
+      <img class="h-auto max-w-full rounded-lg" src="/static/learn/scaling.jpg" alt="Image Scaling">
+      <figcaption class="mt-2 text-sm text-center text-gray-500 dark:text-gray-400">Image Scaling</figcaption>
+    </figure> -->
     
     <div class="dark:bg-gray-900 text-center">
       <a type="button" href="/tools/shearing" class="text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-500 dark:focus:ring-blue-800 mt-4">Use Image Shearing Tool</a>
