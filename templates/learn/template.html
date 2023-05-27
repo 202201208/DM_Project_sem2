@@ -18,8 +18,8 @@
 </button>
 </div>
 
-<aside id="sidebar-multi-level-sidebar class={{ 'dark' if session.get('theme') == 'dark' }}"
-  class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0"
+<aside id="sidebar-multi-level-sidebar"  class="{{ 'dark' if session.get('theme') == 'dark' }}
+  fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0"
   aria-label="Sidebar">
   <div class="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
     <ul class="space-y-2 font-medium">
@@ -57,7 +57,7 @@
         </button>
         <ul id="transformation" class="hidden py-2 space-y-2">
           <li>
-            <a href="/learn/transformation#Translation"
+            <a href="/learn/transformation#translation"
               class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">3.1
               Translation</a>
           </li>
@@ -209,15 +209,15 @@
         </button>
         <ul id="edgedetection" class="hidden py-2 space-y-2">
           <li>
-            <a href="#"
+            <a href="/learn/edgedetection#perwitfilter"
               class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">6.1 Perwit Filter</a>
           </li>
           <li>
-            <a href="#"
+            <a href="/learn/edgedetection#sobelfilter"
               class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">6.2 Sobel Filter</a>
           </li>
           <li>
-            <a href="#"
+            <a href="/learn/edgedetection#cannyedgedetector"
               class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">6.3 Canny Edge Detector</a>
           </li>
           
@@ -253,8 +253,6 @@
   
 {% endblock content %}
 </div>
-<script type="text/javascript" async="" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML">
-</script>
 <script type="text/javascript" async="" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML">
 </script>
 {% endblock body %}

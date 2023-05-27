@@ -1,0 +1,65 @@
+{% extends 'tools/template.html' %}
+
+{% block title %}
+ Image Embossing
+{% endblock title %}
+
+{% block styles %}
+{% endblock styles %}
+
+
+
+{% block output_title %}
+  
+{% endblock output_title %}
+
+{% block output_subtitle %}
+  
+{% endblock output_subtitle %}
+
+{% block section_title %}
+ Image Embossing
+{% endblock section_title %}
+
+{% block section_para %}
+  
+{% endblock section_para %}
+
+{% block notes %}
+  
+
+{% endblock notes %}
+
+{% block additional_form %}
+
+<div class="grid grid-cols-3 gap-4">
+  <div>
+    <input type="text" inputmode="numeric" id="mat00" name="mat00" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" value="{{mat[0][0]}}" required>
+  </div>
+  <div>
+    <input type="text" inputmode="numeric" id="mat01" name="mat01" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" value="{{mat[0][1]}}" required>
+  </div>
+  <div>
+    <input type="text" inputmode="numeric" id="mat02" name="mat02" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" value="{{mat[0][2]}}" required>
+  </div>
+  <div>
+    <input type="text" inputmode="numeric" id="mat10" name="mat10" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" value="{{mat[1][0]}}" required>
+  </div>
+  <div>
+    <input type="text" inputmode="numeric" id="mat11" name="mat11" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" value="{{mat[1][1]}}" required>
+  </div>
+  <div>
+    <input type="text" inputmode="numeric" id="mat12" name="mat12" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" value="{{mat[1][2]}}" required>
+  </div>
+  <div>
+    <input type="text" inputmode="numeric" id="mat20" name="mat20" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" value="{{mat[2][0]}}" required>
+  </div>
+  <div>
+    <input type="text" inputmode="numeric" id="mat21" name="mat21" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" value="{{mat[2][1]}}" required>
+  </div>
+  <div>
+    <input type="text" inputmode="numeric" id="mat22" name="mat22" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" value="{{mat[2][2]}}" required>
+  </div>
+</div>
+
+{% endblock additional_form %}

@@ -1,0 +1,265 @@
+{% extends 'learn/template.html' %}
+
+{% block title %}
+Edge Detection
+{% endblock title %}
+
+{% block content %}
+
+<section class="bg-white dark:bg-gray-900">
+  <div class="py-4 px-4 mx-auto max-w-screen-xl lg:py-6">
+
+    <h2 class="text-4xl font-extrabold dark:text-white">Edge Detection</h2>
+
+
+    <p class="my-3 text-gray-500 dark:text-gray-400">
+      An edge in an image is a significant local change in the image intensity. As the name suggests,
+edge detection is the process of detecting the edges in an image.
+    </p>
+    <p class="my-3 text-gray-500 dark:text-gray-400">
+      There are many types of filter for Edge Detection.
+    </p>
+
+    <h3 class="text-3xl font-bold dark:text-white mt-8" id="frequency_domain">1<sup>st</sup> Order Derivative Filters :</h3>
+    <p class="my-3 text-gray-500 dark:text-gray-400">
+      First order derivatives in x and y direction as it gives large values when there is large changes in
+intensities (at edges) so we use it as an edge detector.
+    </p>
+    <p class="my-3 text-gray-500 dark:text-gray-400">
+      x, y derivatives of the image are also called x, y gradients of the image.
+    </p>
+
+    <h4 class="text-2xl font-bold dark:text-white mt-8" id="intensity_transformation">Perwit Filter :</h4>
+
+    <p class="my-3 text-gray-500 dark:text-gray-400">
+      Let us see how we can calculate the y gradient, the same kind of logic will apply for x gradient.
+    </p>
+    <p class="my-3 text-gray-500 dark:text-gray-400">
+      We want to find the change or difference in intensity for every pixel, so we want for every pixel is
+to tell us the difference between the top and bottom pixel.
+    </p>
+    <p class="my-3 text-gray-500 dark:text-gray-400"> operator T is defined over a neighborhood of point (x,y) of image
+      Therefore, we just have to subtract the top and bottom pixel and store the gradient in the current
+pixel.
+    </p>
+    <p class="my-3 text-gray-500 dark:text-gray-400"> operator T is defined over a neighborhood of point (x,y) of image
+      For achieving that we have kernel shown below :
+    </p>
+
+    <figure class="max-w-lg mx-auto mt-4">
+      <img class="h-auto max-w-full rounded-lg" src="/static/learn/edge_1.png" alt="image encryption chart">
+    </figure>
+
+    <p class="my-3 text-gray-500 dark:text-gray-400">
+      Similarly if we wanted to calculate the horizontal gradient we would use a kernal given below :
+    </p>
+    <figure class="max-w-lg mx-auto mt-4">
+      <img class="h-auto max-w-full rounded-lg" src="/static/learn/edge_2.png" alt="image encryption chart">
+    </figure>
+
+    <p class="my-3 text-gray-500 dark:text-gray-400">
+      We will use matrix instead of the vector because if we take more pixels in account we will get
+better estimate of the gradient. So we will use 3X3 matrix.
+    </p>
+
+    <p class="my-3 text-gray-500 dark:text-gray-400">
+      To calculate y gradient we can use this matrix :
+    </p>
+    <figure class="max-w-lg mx-auto mt-4">
+      <img class="h-auto max-w-full rounded-lg" src="/static/learn/edge_3.png" alt="image encryption chart">
+    </figure>
+
+    <p class="my-3 text-gray-500 dark:text-gray-400">
+      To calculate x gradient we can use this matrix :
+    </p>
+    <figure class="max-w-lg mx-auto mt-4">
+      <img class="h-auto max-w-full rounded-lg" src="/static/learn/edge_4.png" alt="image encryption chart">
+    </figure>
+
+    <p class="my-3 text-gray-500 dark:text-gray-400">
+      And this filters are called the Prewitt filters.
+    </p>
+
+    <p class="my-3 text-gray-500 dark:text-gray-400">
+     Limitation of this Prewitt filter is that it is sensitive to noise in the image and it responds to
+high-frequency components, which can include noise, resulting into false edge detection.
+    </p>
+
+    <h4 class="text-2xl font-bold dark:text-white mt-8" id="intensity_transformation">Sobel Filter :</h4>
+
+
+    <p class="my-3 text-gray-500 dark:text-gray-400">
+      To overcome the limitation of Prewitt filter we use Sobel Filters.
+    </p>
+    <p class="my-3 text-gray-500 dark:text-gray-400">
+      We can make gradient calculation more accurate and noise free if we perform some noise reduction
+technique such as Gaussian blurring on the image before applying gradient filter.
+    </p>
+    <p class="my-3 text-gray-500 dark:text-gray-400">Blurring is convolution operation and gradient is also a convolution operation so we can combine
+      both of these into a single convolution operation.
+    </p>
+    <p class="my-3 text-gray-500 dark:text-gray-400">So resulting Sobel filter in x and y direction is :
+    </p>
+    <figure class="max-w-lg mx-auto mt-4">
+      <img class="h-auto max-w-full rounded-lg" src="/static/learn/edge_5.png" alt="image encryption chart">
+    </figure>
+    <figure class="max-w-lg mx-auto mt-4">
+      <img class="h-auto max-w-full rounded-lg" src="/static/learn/edge_6.png" alt="image encryption chart">
+    </figure>
+    <p class="my-3 text-gray-500 dark:text-gray-400">Now we can calculate Gradient value G using these two values of Gx and Gy by this equation:
+    </p>
+    <div class="center dark:bg-gray-900 text-center">
+      <p class="dark:text-white"><span class="math inline">\(G = \sqrt{G{y}^{2} + G{y}^{2}}\)</span></p>
+    </div>
+
+
+
+    <div class="center dark:bg-gray-900 text-center mt-3">
+      <p class="dark:text-white"><span class="math inline">\(\theta\)</span>=<span
+      class="math inline">\(\tan^{-1}(G{y}/G{x})\)</span></p>
+      </div>
+
+          <!-- image -->
+          <h3 class="text-3xl font-bold dark:text-white mt-8" id="frequency_domain">2<sup>nd</sup> Order Derivative Filters :</h3>
+          <h4 class="text-2xl font-bold dark:text-white mt-8" id="intensity_transformation">Laplacian Filter :</h4>
+
+          <p class="my-3 text-gray-500 dark:text-gray-400">Sobel Filter take one derivative and find an edge in either of the horizontal direction or in the
+            vertical direction (x or y).
+          </p>   
+          <p class="my-3 text-gray-500 dark:text-gray-400">In Laplacian filter, we can get edges in both dimensions for this we have to take double derivative
+            of the intensities. At the edges double derivation of the graph points to zero. So we will check
+            those pixels which lead to zero and then mark them as edge points.
+          </p>   
+          <p class="my-3 text-gray-500 dark:text-gray-400">For double derivation of every pixel we can use this equation :
+          </p>   
+          <figure class="max-w-lg mx-auto mt-4">
+            <img class="h-auto max-w-full rounded-lg" src="/static/learn/edge_7.jpg" alt="image encryption chart">
+          </figure>
+
+          <p class="my-3 text-gray-500 dark:text-gray-400">Some of the most common filter to create Laplacian are :
+          </p> 
+          <figure class="max-w-lg mx-auto mt-4">
+            <img class="h-auto max-w-full rounded-lg" src="/static/learn/edge_8.png" alt="image encryption chart">
+          </figure>
+          <p class="my-3 text-gray-500 dark:text-gray-400">This kernel are derived from the above equation.
+          </p> 
+          <p class="my-3 text-gray-500 dark:text-gray-400">Laplacian filter is too sensitive to noise. So, it will work badly if there is noise in the image
+            and therefore we apply Gaussian Blur to smooth the image and make the Laplacian filter more
+            effective.
+          </p> 
+          <p class="my-3 text-gray-500 dark:text-gray-400">Due to this addition of the gaussian filter, the overall filter is always in a pair. So this is usually
+            call Laplacian over the Gaussian Filter (LoG).
+          </p> 
+          <p class="my-3 text-gray-500 dark:text-gray-400">And this LoG operator is shown below :
+          </p> 
+          <figure class="max-w-lg mx-auto mt-4">
+            <img class="h-auto max-w-full rounded-lg" src="/static/learn/edge_9.jpg" alt="image encryption chart">
+          </figure>
+
+
+          <h4 class="text-2xl font-bold dark:text-white mt-8" id="intensity_transformation">The Canny Edge Detector :</h4>
+          <p class="my-3 text-gray-500 dark:text-gray-400">
+            The Canny edge detector is the most well known and the most used edge detector in image
+processing.
+          </p> 
+          <p class="my-3 text-gray-500 dark:text-gray-400">
+            The gradient representation is a bit noisy so if we use that filter we are left with a lots of noise
+            inside the image.
+          </p> 
+          <p class="my-3 text-gray-500 dark:text-gray-400">
+            So instead of gradient we’ll use Canny Edge detector.
+          </p> 
+          <p class="my-3 text-gray-500 dark:text-gray-400">
+            Canny Edge detection is a multi-step processing which contain 4 steps.
+          </p> 
+          <ol class="max-w-md space-y-1 text-gray-500 list-decimal list-inside dark:text-gray-400">
+            <li>
+              Applying Gaussian smoothing to the image to help reduce noise.
+            </li>
+            <li>
+              Computing the value of Gx and Gy using the Sobel kernel.
+            </li>
+            <li>
+              Applying non-maxima suppression to keep only the local maxima of gradient magnitude pixels.
+            </li>
+            <li>
+              Defining and applying the Tupper and Tlower thresholds for Hysteresis thresholding.
+            </li>
+          </ol>
+          <p class="my-3 text-gray-500 dark:text-gray-400">
+            First 2 steps are same as above Sobel Filter.
+          </p> 
+          <p class="my-3 text-gray-500 dark:text-gray-400">
+            So we’ll see next 2 steps.
+          </p> 
+
+          <h5 class="text-xl font-bold dark:text-white mt-8">NON-MAXIMA SUPPRESSION :</h5>
+          <p class="my-3 text-gray-500 dark:text-gray-400">
+            It’s an edge thinning process.
+          </p> 
+          <p class="my-3 text-gray-500 dark:text-gray-400">
+            In most of the cases the edges are not sharp and clear, so at the end the algorithm will detect
+multiple edges for a single edge because the surrounding area around the edges also have high
+gradients.
+          </p> 
+          <p class="my-3 text-gray-500 dark:text-gray-400">
+            To resolve this, we can apply edge thinning using non-maxima suppression. This filters out
+unnecessary and weak detections.
+          </p> 
+          <p class="my-3 text-gray-500 dark:text-gray-400">
+            To apply non-maxima suppression, we need to examine the gradient magnitude G and orientation
+            θ at each pixel in the image and:
+          </p> 
+          <ol class="max-w-md space-y-1 text-gray-500 list-decimal list-inside dark:text-gray-400">
+            <li>
+              Compare the current pixel to the 3X3 neighborhood pixels surrounding it.
+            </li>
+            <li>
+              Decide in which direction orientation is pointing:
+              <p class="my-3 text-gray-500 dark:text-gray-400">
+                If it’s pointing towards the north or south, then examine the north and south magnitude.
+              </p> 
+              <p class="my-3 text-gray-500 dark:text-gray-400">
+                If it’s pointing towards the east or west, then examine the east and west pixels.
+              </p> 
+            </li>
+            <li>
+              If the center pixel magnitude is greater than both the pixels it is being compared to, then store
+the magnitude. Otherwise, discard it.
+            </li>
+          </ol>
+
+          <h5 class="text-xl font-bold dark:text-white mt-8">Hysteresis thresholding</h5>
+          <p class="my-3 text-gray-500 dark:text-gray-400">After applying non-maxima suppression, we may have to remove regions of an image that are not
+            really edges, but still responded as edges after applying the gradient magnitude and non-maximum
+            suppression.
+          </p>
+          <p class="my-3 text-gray-500 dark:text-gray-400">
+            To ignore these unnecessary edges of an image, we need to define 2 thresholds: Tupper and Tlower.
+          </p>
+          <p class="my-3 text-gray-500 dark:text-gray-400">
+            For any gradient value G >Tupper is sure that it’s an edge.
+          </p>
+          <p class="my-3 text-gray-500 dark:text-gray-400">
+            Any gradient value G < Tlower is surely not an edge, so immediately discard that edge.
+          </p>
+          <p class="my-3 text-gray-500 dark:text-gray-400">
+            And for gradient value that falls into the range Tlower < G < Tupper needs to check these two
+conditions:
+          </p>
+          <p class="my-3 text-gray-500 dark:text-gray-400">
+            If the particular gradient value is connected to an edge >Tupper then consider that pixel as an
+edge.
+          </p>
+          <p class="my-3 text-gray-500 dark:text-gray-400">
+            If the gradient pixel is not connected to an edge, then discard it.
+          </p>
+          <p class="my-3 text-gray-500 dark:text-gray-400">
+            And that’s how Hysteresis thresholding works.
+          </p>
+          
+          <!-- image -->
+  </div>
+</section>
+
+{% endblock content %}

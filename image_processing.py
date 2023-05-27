@@ -29,7 +29,7 @@ def rotate_img(img, x, y, deg, scale, path):
 def shearing_img(img, sx, sy, path):
   height, width = img.shape[:2]
   M = np.float32([[1, sx, 0], [sy, 1, 0], [0, 0, 1]])
-  sheared_img = cv2.warpPerspective(img, M, (int(width*2), int(height*2)))
+  sheared_img = cv2.warpPerspective(img, M, (int(width*2), int(height*2 )))
   cv2.imwrite(path, sheared_img)
 
 def reflecting_img(img, f, path):
@@ -58,9 +58,9 @@ def gammatransformation_img(img, g, path):
   log_img = np.array(255*(img / 255) ** g, dtype=np.uint8)
   cv2.imwrite(path, log_img)
 
-def gaussianfilter_img(opath, path): 
+def gaussianfilter_img(opath,r,  path): 
   img = Image.open(opath)
-  image = img.filter(ImageFilter.GaussianBlur)
+  image = img.filter(ImageFilter.GaussianBlur(radius=r))
   image.save(path)
 
 def medianfilter_img(opath, path): 
@@ -81,3 +81,9 @@ def maxfilter_img(opath, path):
 def cannyedgedetector_img(img, l, u, a, path):
   edge = cv2.Canny(img, l, u, apertureSize=a)
   cv2.imwrite(path, edge)
+
+def embossing_img(img, mat, dest):
+    mat = np.array(mat)
+    gray_img = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
+    output = cv2.filter2D(gray_img, -1, mat) + 128
+    cv2.imwrite(dest, output)

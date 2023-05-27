@@ -6,7 +6,7 @@ Image Enhancement
 
 {% block content %}
 
-<section class="bg-white dark:bg-gray-900 h-screen">
+<section class="bg-white dark:bg-gray-900">
   <div class="py-4 px-4 mx-auto max-w-screen-xl lg:py-6">
 
     <h2 class="text-4xl font-extrabold dark:text-white"> Image Enhancement</h2>
@@ -36,7 +36,7 @@ Image Enhancement
     <p class="my-3 text-gray-500 dark:text-gray-400">
       Spatial domain process is defined by
     </p>
-    <p class="my-3 text-gray-500 dark:text-gray-400">
+    <p class="my-3 text-gray-500 dark:text-gray-400 text-center dark:text-white">
       g(x,y) = T[f(x,y)]
     </p>
     <p class="my-3 text-gray-500 dark:text-gray-400">
@@ -73,7 +73,7 @@ Image Enhancement
 
     <h5 class="text-xl font-bold dark:text-white mt-8">Image Negative : </h5>
     <p class="my-3 text-gray-500 dark:text-gray-400">
-      Operation for this is : T (r) = (L - 1) - r
+      Operation for this is : <span class="dark:text-white"> T (r) = (L - 1) - r </span>
     </p>
     <p class="my-3 text-gray-500 dark:text-gray-400">
       where L = 2<sup>bits per pixel</sup>
@@ -91,15 +91,18 @@ Image Enhancement
     <p class="my-3 text-gray-500 dark:text-gray-400">
       Where T operator performs following task :
     </p>
-    <p class="my-3 text-gray-500 dark:text-gray-400">
-      S<sub>R</sub> = (L<sub>R</sub>-1 ) - R<sub>R</sub>
-    </p>
-    <p class="my-3 text-gray-500 dark:text-gray-400">
-      S<sub>G</sub> = (L<sub>G</sub>-1 ) - R<sub>G</sub>
-    </p>
-    <p class="my-3 text-gray-500 dark:text-gray-400">
-      S<sub>B</sub> = (L<sub>B</sub>-1 ) - R<sub>B</sub>
-    </p>
+    <div class="center dark:bg-gray-900 dark:text-white">
+      <p><span class="math inline"><em>S</em><sub><em>R</em></sub></span> =
+      (<span class="math inline"><em>L</em><sub><em>R</em></sub></span>-1 ) -
+      <span class="math inline"><em>R</em><sub><em>R</em></sub></span><br />
+      <span class="math inline"><em>S</em><sub><em>G</em></sub></span> =
+      (<span class="math inline"><em>L</em><sub><em>G</em></sub></span>-1 ) -
+      <span class="math inline"><em>R</em><sub><em>G</em></sub></span><br />
+      <span class="math inline"><em>S</em><sub><em>B</em></sub></span> =
+      (<span class="math inline"><em>L</em><sub><em>B</em></sub></span>-1 ) -
+      <span class="math inline"><em>R</em><sub><em>B</em></sub></span><br />
+      </p>
+      </div>
     <p class="my-3 text-gray-500 dark:text-gray-400">
       Sx = intensity of channel x in image S.
     </p>
@@ -115,44 +118,66 @@ Image Enhancement
     <p class="my-3 text-gray-500 dark:text-gray-400">
       For an image log transformation is defined as below :
     </p>
-    <p class="my-3 text-gray-500 dark:text-gray-400">
+    <p class="my-3 text-gray-500 dark:text-gray-400 dark:text-white text-center">
       s = c*log( 1+ r)
     </p>
     <p class="my-3 text-gray-500 dark:text-gray-400">
       where c is constant , generally we take
     </p>
-    <p class="my-3 text-gray-500 dark:text-gray-400">
+    <p class="my-3 text-gray-500 dark:text-gray-400 dark:text-white text-center">
       c = (L - 1)/log(1 + MAX - V AL)
     </p>
     <p class="my-3 text-gray-500 dark:text-gray-400">
       because for this value of c output lies between 0 to L - 1 ,means all intensities covered by output,
       hence range of intensity is covered by output hence range of intensity is covered optimally
     </p>
+
+    <!-- Image -->
+
     <p class="my-3 text-gray-500 dark:text-gray-400">
       In graph you can see that narrow range of lower intensity is extended to wider range and wider
       range of higher intensity is compressed into narrow range.So images which have majorly lower
       intensity should be given as input
     </p>
 
+    <!-- Image -->
 
     <h5 class="text-xl font-bold dark:text-white mt-8">POWER LAW TRANSFORMATION / GAMMA TRANSFORMATION :</h5>
     <p class="my-3 text-gray-500 dark:text-gray-400">
       power law transformation or gamma transformation can be define as below
     </p>
-    <p class="my-3 text-gray-500 dark:text-gray-400">
+    <p class="my-3 text-gray-500 dark:text-gray-400 dark:text-white text-center">
       s = cr<sup>r</sup>
     </p>
     <p class="my-3 text-gray-500 dark:text-gray-400">
       Where c and τ are constant.
     </p>
     <p class="my-3 text-gray-500 dark:text-gray-400">
-      Generally c =(L-1) , because we want to use range of intensity optimally.
+      Generally <span class="dark:text-white">c =(L-1)</span> , because we want to use range of intensity optimally.
     </p>
+
+    <!-- Image -->
+
     <p class="my-3 text-gray-500 dark:text-gray-400">
       From the above graph you can see that for τ < 1 function behaves similarly as log transformation and for τ> 1
         behaves exactly opposite .
     </p>
 
+    <h5 class="text-xl font-bold dark:text-white mt-8">HISTOGRAM EQUALIZATION :</h5>
+    <p class="my-3 text-gray-500 dark:text-gray-400">
+      By this process we try to make histogram of image to be flat so that contrast can be enhanced.
+    </p>
+<!-- Image -->
+
+    <p class="my-3 text-gray-500 dark:text-gray-400">
+      We can see histogram equalization in above image but this is ideal equalization in real life one
+can hardly get almost flat histogram.
+    </p>
+    <p class="my-3 text-gray-500 dark:text-gray-400">
+      Here is method of equalizing histogram :
+    </p>
+
+    <!-- image -->
 
     <h3 class="text-3xl font-bold dark:text-white mt-8" id="frequency_domain">FREQUENCY DOMAIN</h3>
     <p class="my-3 text-gray-500 dark:text-gray-400">
@@ -173,6 +198,58 @@ Image Enhancement
       According to Fourier transformation any non periodic signals whose area under the curve is finite
 can be represented as integrals of the sines and cosines .after being multiplied by a certain weight
     </p>
+
+    <h6 class="text-lg font-bold dark:text-white mt-3">DISCRETE FOURIER TRANSFORM ( DFT ) :</h6>
+    <!-- Image -->
+
+    <h6 class="text-lg font-bold dark:text-white mt-3">INVERSE DISCRETE FOURIER TRANSFORM ( IDFT ) :</h6>
+<!-- Image -->
+
+<!-- Image -->
+
+
+<p class="my-3 text-gray-500 dark:text-gray-400">
+  In frequency domain there are certain type of filters like
+</p>
+
+<ol class="max-w-md space-y-1 text-gray-500 list-decimal list-inside dark:text-gray-400">
+  <li>
+    Low Pass Filter
+  </li>
+  <li>
+    High Pass Filter
+  </li>
+  <li>
+    Gaussian Low Pass Filter
+  </li>
+  <li>
+    Gaussian High Pass Filter
+  </li>
+</ol>
+
+
+<h5 class="text-xl font-bold dark:text-white mt-8">Law Pass Filter :</h5>
+<!-- Image -->
+<p class="my-3 text-gray-500 dark:text-gray-400">
+  Low frequency part contains smooth part and high frequency part contains sharp edges .So by
+applying low pass filter the images gets blurred .
+</p>
+
+<h5 class="text-xl font-bold dark:text-white mt-8">High Pass Filter :</h5>
+<!-- image -->
+<p class="my-3 text-gray-500 dark:text-gray-400">
+  High pass filter remove smooth or constant intensity part so we get only edges.
+</p>
+
+<h5 class="text-xl font-bold dark:text-white mt-8">Gaussian Filter :</h5>
+<p class="my-3 text-gray-500 dark:text-gray-400">
+  In spatial domain we have to perform operation on every pixel to apply gaussian filter but here
+  we have to convert gaussian filter in frequency domain an multiply with image to get output here
+  is an example of gaussian smoothing filter in frequency domain .
+</p>
+
+<!-- Image -->
+
   </div>
 </section>
 

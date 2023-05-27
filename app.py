@@ -6,7 +6,7 @@ import cv2
 
 from image_encryption import encrypt_image, decrypt_image
 from utils import allowed_file
-from image_processing import apply_kernal, cannyedgedetector_img, gammatransformation_img, gaussianfilter_img, logtransformation_img, maxfilter_img, medianfilter_img, minfilter_img, negative_img, reflecting_img, resize_img, rotate_img, scale_img, shearing_img, translate_img
+from image_processing import apply_kernal, cannyedgedetector_img, embossing_img, gammatransformation_img, gaussianfilter_img, logtransformation_img, maxfilter_img, medianfilter_img, minfilter_img, negative_img, reflecting_img, resize_img, rotate_img, scale_img, shearing_img, translate_img
 
 UPLOAD_FOLDER = 'static/uploads'
 DOWNLOAD_FOLDER = 'static/downloads'
@@ -77,6 +77,10 @@ def learn_transformation():
 @app.route("/learn/noisereduction")
 def learn_noisereduction():
     return render_template("learn/noisereduction.html")
+
+@app.route("/learn/edgedetection")
+def learn_edgedetection():
+    return render_template("learn/edgedetection.html")
 
 @app.route("/tools/encryption", methods=['GET', 'POST'])
 def encryption():
@@ -295,12 +299,13 @@ def gaussianfilter():
     if 'file' not in request.files:
       return render_template("notFound.html")
     file = request.files['file']
+    r = int(float(request.form.get("radius")))
     if file and allowed_file(file.filename):
       filename = secure_filename(file.filename)
       file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
       original_path = f"static/uploads/{filename}"
       path = f"static/downloads/{filename}"
-      gaussianfilter_img(original_path, path)
+      gaussianfilter_img(original_path,r,  path)
       return render_template("tools/gaussianfilter.html",output=True, original_img=filename, output_img=filename, action_path="gaussianfilter")
     else:
        return render_template("tools/gaussianfilter.html", output=False, action_path="gaussianfilter")
@@ -390,8 +395,29 @@ def cannyedgedetector():
        return render_template("tools/cannyedgedetector.html", output=False, action_path="cannyedgedetector")
   return render_template("tools/cannyedgedetector.html", output=False, action_path="cannyedgedetector")
 
+@app.route("/tools/embossing", methods=['GET', 'POST'])
+def embossing():
+  mat = [[1, 1, 1], [1, 1, 1], [1, 1, 1]]
+  if(request.method == "POST"):
+    if 'file' not in request.files:
+      return render_template("notFound.html")
+    file = request.files['file']
+    for i in range(3):
+       for j in range(3):
+          mat[i][j] = int(float(request.form.get(f"mat{i}{j}")))
+    if file and allowed_file(file.filename):
+      filename = secure_filename(file.filename)
+      file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+      img = cv2.imread(f"static/uploads/{filename}")
+      path = f"static/downloads/{filename}"
+      embossing_img(img, mat, path)
+      return render_template("tools/embossing.html",output=True, original_img=filename, output_img=filename, action_path="embossing", mat=mat)
+    else:
+       return render_template("tools/embossing.html", output=False, action_path="embossing", mat=mat)
+  return render_template("tools/embossing.html", output=False, action_path="embossing", mat=mat)
+
 @app.errorhandler(404)
 def not_found(e):
    return render_template("notFound.html", e=e)
 
-app.run(debug=True, port=3000)
+app.run(debug=True, host="0.0.0.0", port=8000)
