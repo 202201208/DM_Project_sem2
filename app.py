@@ -5,6 +5,7 @@ from werkzeug.utils import secure_filename
 import cv2
 
 from image_encryption import encrypt_image, decrypt_image
+from image_steganography import decode_image, encode_image
 from utils import allowed_file
 from image_processing import apply_kernal, cannyedgedetector_img, embossing_img, gammatransformation_img, gaussianfilter_img, logtransformation_img, maxfilter_img, medianfilter_img, minfilter_img, negative_img, reflecting_img, resize_img, rotate_img, scale_img, shearing_img, translate_img
 
@@ -82,6 +83,10 @@ def learn_noisereduction():
 def learn_edgedetection():
     return render_template("learn/edgedetection.html")
 
+@app.route("/learn/steganography")
+def learn_steganography():
+    return render_template("learn/steganography.html")
+
 @app.route("/tools/encryption", methods=['GET', 'POST'])
 def encryption():
   if(request.method == "POST"):
@@ -99,10 +104,10 @@ def encryption():
         encrypt_image(img, path, key)
       else:
         decrypt_image(img, path, key)
-      return render_template("tools/encryption.html",output=True, original_img=filename, output_img=filename, action_path="encryption")
+      return render_template("tools/encryption.html",output=True, original_img=filename, output_img=filename, action_path="encryption", text=False)
     else:
-       return render_template("tools/encryption.html", output=False, action_path="encryption")
-  return render_template("tools/encryption.html", output=False, action_path="encryption")
+       return render_template("tools/encryption.html", output=False, action_path="encryption", text=False)
+  return render_template("tools/encryption.html", output=False, action_path="encryption", text=False)
 
 @app.route("/tools/applykernel", methods=['GET', 'POST'])
 def applykernel():
@@ -121,10 +126,10 @@ def applykernel():
       img = cv2.imread(f"static/uploads/{filename}")
       path = f"static/downloads/{filename}"
       apply_kernal(img, mat, path)
-      return render_template("tools/kernel.html",output=True, original_img=filename, output_img=filename, action_path="applykernel", mat=mat)
+      return render_template("tools/kernel.html",output=True, original_img=filename, output_img=filename, action_path="applykernel", mat=mat, text=False)
     else:
-       return render_template("tools/kernel.html", output=False, action_path="applykernel", mat=mat)
-  return render_template("tools/kernel.html", output=False, action_path="applykernel", mat=mat)
+       return render_template("tools/kernel.html", output=False, action_path="applykernel", mat=mat, text=False)
+  return render_template("tools/kernel.html", output=False, action_path="applykernel", mat=mat, text=False)
 
 @app.route("/tools/scaling", methods=['GET', 'POST'])
 def scaling():
@@ -140,10 +145,10 @@ def scaling():
       img = cv2.imread(f"static/uploads/{filename}")
       path = f"static/downloads/{filename}"
       scale_img(img, fx, fy, path)
-      return render_template("tools/scaling.html",output=True, original_img=filename, output_img=filename, action_path="scaling")
+      return render_template("tools/scaling.html",output=True, original_img=filename, output_img=filename, action_path="scaling", text=False)
     else:
-       return render_template("tools/scaling.html", output=False, action_path="scaling")
-  return render_template("tools/scaling.html", output=False, action_path="scaling")  
+       return render_template("tools/scaling.html", output=False, action_path="scaling", text=False)
+  return render_template("tools/scaling.html", output=False, action_path="scaling", text=False)  
 
 @app.route("/tools/resizing", methods=['GET', 'POST'])
 def resizing():
@@ -159,10 +164,10 @@ def resizing():
       img = cv2.imread(f"static/uploads/{filename}")
       path = f"static/downloads/{filename}"
       resize_img(img, width, height, path)
-      return render_template("tools/resizing.html",output=True, original_img=filename, output_img=filename, action_path="resizing")
+      return render_template("tools/resizing.html",output=True, original_img=filename, output_img=filename, action_path="resizing", text=False)
     else:
-       return render_template("tools/resizing.html", output=False, action_path="resizing")
-  return render_template("tools/resizing.html", output=False, action_path="resizing")  
+       return render_template("tools/resizing.html", output=False, action_path="resizing", text=False)
+  return render_template("tools/resizing.html", output=False, action_path="resizing", text=False)  
 
 @app.route("/tools/translate", methods=['GET', 'POST'])
 def translate():
@@ -178,10 +183,10 @@ def translate():
       img = cv2.imread(f"static/uploads/{filename}")
       path = f"static/downloads/{filename}"
       translate_img(img, tx, ty, path)
-      return render_template("tools/translate.html",output=True, original_img=filename, output_img=filename, action_path="translate")
+      return render_template("tools/translate.html",output=True, original_img=filename, output_img=filename, action_path="translate", text=False)
     else:
-       return render_template("tools/translate.html", output=False, action_path="translate")
-  return render_template("tools/translate.html", output=False, action_path="translate")
+       return render_template("tools/translate.html", output=False, action_path="translate", text=False)
+  return render_template("tools/translate.html", output=False, action_path="translate", text=False)
 
 @app.route("/tools/rotate", methods=['GET', 'POST'])
 def rotate():
@@ -197,10 +202,10 @@ def rotate():
       img = cv2.imread(f"static/uploads/{filename}")
       path = f"static/downloads/{filename}"
       rotate_img(img, deg, scale, path)
-      return render_template("tools/rotate.html",output=True, original_img=filename, output_img=filename, action_path="rotate")
+      return render_template("tools/rotate.html",output=True, original_img=filename, output_img=filename, action_path="rotate", text=False)
     else:
-       return render_template("tools/rotate.html", output=False, action_path="rotate")
-  return render_template("tools/rotate.html", output=False, action_path="rotate")
+       return render_template("tools/rotate.html", output=False, action_path="rotate", text=False)
+  return render_template("tools/rotate.html", output=False, action_path="rotate", text=False)
 
 @app.route("/tools/shearing", methods=['GET', 'POST'])
 def shearing():
@@ -216,10 +221,10 @@ def shearing():
       img = cv2.imread(f"static/uploads/{filename}")
       path = f"static/downloads/{filename}"
       shearing_img(img, sx, sy, path)
-      return render_template("tools/shearing.html",output=True, original_img=filename, output_img=filename, action_path="shearing")
+      return render_template("tools/shearing.html",output=True, original_img=filename, output_img=filename, action_path="shearing", text=False)
     else:
-       return render_template("tools/shearing.html", output=False, action_path="shearing")
-  return render_template("tools/shearing.html", output=False, action_path="shearing")
+       return render_template("tools/shearing.html", output=False, action_path="shearing", text=False)
+  return render_template("tools/shearing.html", output=False, action_path="shearing", text=False)
 
 @app.route("/tools/reflecting", methods=['GET', 'POST'])
 def reflecting():
@@ -234,10 +239,10 @@ def reflecting():
       img = cv2.imread(f"static/uploads/{filename}")
       path = f"static/downloads/{filename}"
       reflecting_img(img, f, path)
-      return render_template("tools/reflecting.html",output=True, original_img=filename, output_img=filename, action_path="reflecting")
+      return render_template("tools/reflecting.html",output=True, original_img=filename, output_img=filename, action_path="reflecting", text=False)
     else:
-       return render_template("tools/reflecting.html", output=False, action_path="reflecting")
-  return render_template("tools/reflecting.html", output=False, action_path="reflecting")
+       return render_template("tools/reflecting.html", output=False, action_path="reflecting", text=False)
+  return render_template("tools/reflecting.html", output=False, action_path="reflecting", text=False)
 
 @app.route("/tools/negative", methods=['GET', 'POST'])
 def negative():
@@ -251,10 +256,10 @@ def negative():
       img = cv2.imread(f"static/uploads/{filename}")
       path = f"static/downloads/{filename}"
       negative_img(img, path)
-      return render_template("tools/negative.html",output=True, original_img=filename, output_img=filename, action_path="negative")
+      return render_template("tools/negative.html",output=True, original_img=filename, output_img=filename, action_path="negative", text=False)
     else:
-       return render_template("tools/negative.html", output=False, action_path="negative")
-  return render_template("tools/negative.html", output=False, action_path="negative")
+       return render_template("tools/negative.html", output=False, action_path="negative", text=False)
+  return render_template("tools/negative.html", output=False, action_path="negative", text=False)
 
 @app.route("/tools/logtransformation", methods=['GET', 'POST'])
 def logtransformation():
@@ -268,10 +273,10 @@ def logtransformation():
       img = cv2.imread(f"static/uploads/{filename}")
       path = f"static/downloads/{filename}"
       logtransformation_img(img, path)
-      return render_template("tools/logtransformation.html",output=True, original_img=filename, output_img=filename, action_path="logtransformation")
+      return render_template("tools/logtransformation.html",output=True, original_img=filename, output_img=filename, action_path="logtransformation", text=False)
     else:
-       return render_template("tools/logtransformation.html", output=False, action_path="logtransformation")
-  return render_template("tools/logtransformation.html", output=False, action_path="logtransformation")
+       return render_template("tools/logtransformation.html", output=False, action_path="logtransformation", text=False)
+  return render_template("tools/logtransformation.html", output=False, action_path="logtransformation", text=False)
 
 @app.route("/tools/gammatransformation", methods=['GET', 'POST'])
 def gammatransformation():
@@ -286,10 +291,10 @@ def gammatransformation():
       img = cv2.imread(f"static/uploads/{filename}")
       path = f"static/downloads/{filename}"
       gammatransformation_img(img, g, path)
-      return render_template("tools/gammatransformation.html",output=True, original_img=filename, output_img=filename, action_path="gammatransformation")
+      return render_template("tools/gammatransformation.html",output=True, original_img=filename, output_img=filename, action_path="gammatransformation", text=False)
     else:
-       return render_template("tools/gammatransformation.html", output=False, action_path="gammatransformation")
-  return render_template("tools/gammatransformation.html", output=False, action_path="gammatransformation")
+       return render_template("tools/gammatransformation.html", output=False, action_path="gammatransformation", text=False)
+  return render_template("tools/gammatransformation.html", output=False, action_path="gammatransformation", text=False)
 
 @app.route("/tools/gaussianfilter", methods=['GET', 'POST'])
 def gaussianfilter():
@@ -304,10 +309,10 @@ def gaussianfilter():
       original_path = f"static/uploads/{filename}"
       path = f"static/downloads/{filename}"
       gaussianfilter_img(original_path,r,  path)
-      return render_template("tools/gaussianfilter.html",output=True, original_img=filename, output_img=filename, action_path="gaussianfilter")
+      return render_template("tools/gaussianfilter.html",output=True, original_img=filename, output_img=filename, action_path="gaussianfilter", text=False)
     else:
-       return render_template("tools/gaussianfilter.html", output=False, action_path="gaussianfilter")
-  return render_template("tools/gaussianfilter.html", output=False, action_path="gaussianfilter")
+       return render_template("tools/gaussianfilter.html", output=False, action_path="gaussianfilter", text=False)
+  return render_template("tools/gaussianfilter.html", output=False, action_path="gaussianfilter", text=False)
 
 @app.route("/tools/medianfilter", methods=['GET', 'POST'])
 def medianfilter():
@@ -321,10 +326,10 @@ def medianfilter():
       original_path = f"static/uploads/{filename}"
       path = f"static/downloads/{filename}"
       medianfilter_img(original_path, path)
-      return render_template("tools/medianfilter.html",output=True, original_img=filename, output_img=filename, action_path="medianfilter")
+      return render_template("tools/medianfilter.html",output=True, original_img=filename, output_img=filename, action_path="medianfilter", text=False)
     else:
-       return render_template("tools/medianfilter.html", output=False, action_path="medianfilter")
-  return render_template("tools/medianfilter.html", output=False, action_path="medianfilter")
+       return render_template("tools/medianfilter.html", output=False, action_path="medianfilter", text=False)
+  return render_template("tools/medianfilter.html", output=False, action_path="medianfilter", text=False)
 
 @app.route("/tools/minfilter", methods=['GET', 'POST'])
 def minfilter():
@@ -338,10 +343,10 @@ def minfilter():
       original_path = f"static/uploads/{filename}"
       path = f"static/downloads/{filename}"
       minfilter_img(original_path, path)
-      return render_template("tools/minfilter.html",output=True, original_img=filename, output_img=filename, action_path="minfilter")
+      return render_template("tools/minfilter.html",output=True, original_img=filename, output_img=filename, action_path="minfilter", text=False)
     else:
-       return render_template("tools/minfilter.html", output=False, action_path="minfilter")
-  return render_template("tools/minfilter.html", output=False, action_path="minfilter")
+       return render_template("tools/minfilter.html", output=False, action_path="minfilter", text=False)
+  return render_template("tools/minfilter.html", output=False, action_path="minfilter", text=False)
 
 @app.route("/tools/maxfilter", methods=['GET', 'POST'])
 def maxfilter():
@@ -355,10 +360,10 @@ def maxfilter():
       original_path = f"static/uploads/{filename}"
       path = f"static/downloads/{filename}"
       maxfilter_img(original_path, path)
-      return render_template("tools/maxfilter.html",output=True, original_img=filename, output_img=filename, action_path="maxfilter")
+      return render_template("tools/maxfilter.html",output=True, original_img=filename, output_img=filename, action_path="maxfilter", text=False)
     else:
-       return render_template("tools/maxfilter.html", output=False, action_path="maxfilter")
-  return render_template("tools/maxfilter.html", output=False, action_path="maxfilter")
+       return render_template("tools/maxfilter.html", output=False, action_path="maxfilter", text=False)
+  return render_template("tools/maxfilter.html", output=False, action_path="maxfilter", text=False)
 
 @app.route('/downloads/<path:filename>')
 def download(filename):
@@ -388,10 +393,10 @@ def cannyedgedetector():
       img = cv2.imread(f"static/uploads/{filename}")
       path = f"static/downloads/{filename}"
       cannyedgedetector_img(img, l, u, a, path)
-      return render_template("tools/cannyedgedetector.html",output=True, original_img=filename, output_img=filename, action_path="cannyedgedetector")
+      return render_template("tools/cannyedgedetector.html",output=True, original_img=filename, output_img=filename, action_path="cannyedgedetector", text=False)
     else:
-       return render_template("tools/cannyedgedetector.html", output=False, action_path="cannyedgedetector")
-  return render_template("tools/cannyedgedetector.html", output=False, action_path="cannyedgedetector")
+       return render_template("tools/cannyedgedetector.html", output=False, action_path="cannyedgedetector", text=False)
+  return render_template("tools/cannyedgedetector.html", output=False, action_path="cannyedgedetector", text=False)
 
 @app.route("/tools/embossing", methods=['GET', 'POST'])
 def embossing():
@@ -409,10 +414,34 @@ def embossing():
       img = cv2.imread(f"static/uploads/{filename}")
       path = f"static/downloads/{filename}"
       embossing_img(img, mat, path)
-      return render_template("tools/embossing.html",output=True, original_img=filename, output_img=filename, action_path="embossing", mat=mat)
+      return render_template("tools/embossing.html",output=True, original_img=filename, output_img=filename, action_path="embossing", mat=mat, text=False)
     else:
-       return render_template("tools/embossing.html", output=False, action_path="embossing", mat=mat)
-  return render_template("tools/embossing.html", output=False, action_path="embossing", mat=mat)
+       return render_template("tools/embossing.html", output=False, action_path="embossing", mat=mat, text=False)
+  return render_template("tools/embossing.html", output=False, action_path="embossing", mat=mat, text=False)
+
+@app.route("/tools/steganography", methods = ['GET', 'POST'])
+def steganography():
+  if(request.method == "POST"):
+    if 'file' not in request.files:
+      return render_template("notFound.html")
+    file = request.files['file']
+    text = request.form.get("secret")
+    encode = int(request.form.get("encode"))
+    if file and allowed_file(file.filename):
+      filename = secure_filename(file.filename)
+      file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+      img = f"static/uploads/{filename}"
+      d_path = f"static/downloads/"
+      if(encode == 1):
+        output = encode_image(img, text, d_path, filename)
+        return render_template("tools/steganography.html",output=True, original_img=filename, output_img=output, action_path="steganography", text=False)
+      else:
+        secret = decode_image(img)
+        print(secret)
+        return render_template("tools/steganography.html",output=True, original_img=filename, output_img=filename, action_path="steganography", text=True, secret=secret)
+    else:
+       return render_template("tools/steganography.html", output=False, action_path="steganography", text=False)
+  return render_template("tools/steganography.html", output=False, action_path="steganography", text=False)
 
 @app.errorhandler(404)
 def not_found(e):
