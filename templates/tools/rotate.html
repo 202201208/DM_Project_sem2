@@ -29,20 +29,13 @@
 {% endblock section_para %}
 
 {% block notes %}
-  
+
 {% endblock notes %}
 
 {% block additional_form %}
 
-<div>
-  <label for="x" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Center of Rotation x-cordinate</label>
-  <input type="number" id="x" min="0" max="5000" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="0 - 5000px" required name="x">
-</div>
-<div>
-  <label for="y" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Center of Rotation y-cordinate</label>
-  <input type="number" id="y" min="0" max="5000" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="0 - 5000px" required name="y">
-</div>
-<label for="deg" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Rotate Image by <span id="deg_value">90.0</span> degrees</label>
+
+<label for="deg" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Rotate Image by <span id="deg_value">90.0</span> degrees ( Anti Clockwise )</label>
 <input id="deg" type="range" min="0" max="360" step="0.1" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700" onchange="changeHanderdeg(this)" oninput="changeHanderdeg(this)" value="90" name="deg">
 
 <label for="scale" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Scale Image by <span id="scale_value">1.0</span></label>

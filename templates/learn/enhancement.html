@@ -37,7 +37,7 @@ Image Enhancement
       Spatial domain process is defined by
     </p>
     <p class="my-3 text-gray-500 dark:text-gray-400 text-center dark:text-white">
-      g(x,y) = T[f(x,y)]
+      g ( x, y ) = T [ f ( x, y) ]
     </p>
     <p class="my-3 text-gray-500 dark:text-gray-400">
       here, f is input image and g is output image.
@@ -110,6 +110,18 @@ Image Enhancement
 
       Lx = bits per pixel value for channel x.
     </p>
+
+    <figure class="max-w-lg mx-auto flex flex-row gap-4">
+      <div>
+      <img class="rounded-lg" src="/static/learn/enhancement_2.jpg" alt="Image Before">
+      <figcaption class="mt-2 text-sm text-center text-gray-500 dark:text-gray-400">Image Before</figcaption>
+    </div>
+    <div>
+      <img class="rounded-lg border" src="/static/learn/enhancement_3.jpg" alt="Image After">
+      <figcaption class="mt-2 text-sm text-center text-gray-500 dark:text-gray-400">Image After</figcaption>
+    </div>
+    </figure>
+
     <div class="dark:bg-gray-900 text-center">
       <a type="button" href="/tools/negative" class="text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-500 dark:focus:ring-blue-800 mt-4">Use Image Negative Tool</a>
     </div>
@@ -143,25 +155,26 @@ Image Enhancement
       intensity should be given as input
     </p>
 
-    <figure class="max-w-lg mx-auto">
-      <img class="h-auto max-w-full rounded-lg" src="/static/learn/enhancement_2.png" alt="Image Before">
+    <figure class="max-w-lg mx-auto flex flex-row gap-4">
+      <div>
+      <img class="rounded-lg" src="/static/learn/enhancement_5.jpg" alt="Image Before">
       <figcaption class="mt-2 text-sm text-center text-gray-500 dark:text-gray-400">Image Before</figcaption>
-    </figure>
-
-    <figure class="max-w-lg mx-auto">
-      <img class="h-auto max-w-full rounded-lg" src="/static/learn/enhancement_3.png" alt="Image After">
+    </div>
+    <div>
+      <img class="rounded-lg" src="/static/learn/enhancement_6.jpg" alt="Image After">
       <figcaption class="mt-2 text-sm text-center text-gray-500 dark:text-gray-400">Image After</figcaption>
+    </div>
     </figure>
 
     <p class="my-3 text-gray-500 dark:text-gray-400">
       In the above example you can see how log transformation has done mind blowing work.
     </p>
 
+    <div class="dark:bg-gray-900 text-center">
+      <a type="button" href="/tools/logtransformation" class="text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-500 dark:focus:ring-blue-800 mt-4">Use Log Transformation Tool</a>
+    </div>
 
-
-    <!-- Image -->
-
-    <h5 class="text-xl font-bold dark:text-white mt-8">POWER LAW TRANSFORMATION / GAMMA TRANSFORMATION :</h5>
+    <h5 class="text-xl font-bold dark:text-white mt-8">Power Law Transformation / Gamma Transformation :</h5>
     <p class="my-3 text-gray-500 dark:text-gray-400">
       power law transformation or gamma transformation can be define as below
     </p>
@@ -175,18 +188,40 @@ Image Enhancement
       Generally <span class="dark:text-white">c =(L-1)</span> , because we want to use range of intensity optimally.
     </p>
 
-    <!-- Image -->
+    
 
     <p class="my-3 text-gray-500 dark:text-gray-400">
       From the above graph you can see that for τ < 1 function behaves similarly as log transformation and for τ> 1
         behaves exactly opposite .
     </p>
+    <figure class="max-w-xs mx-auto">
+      <img class="h-auto max-w-full rounded-lg" src="/static/learn/enhancement_8.jpg" alt="Gamma Transformation example">
+      <figcaption class="mt-2 text-sm text-center text-gray-500 dark:text-gray-400">Original Image</figcaption>
+    </figure>
+
+    <figure class="max-w-xl mx-auto flex flex-row gap-4 mt-4">
+    <div>
+      <img class="rounded-lg" src="/static/learn/enhancement_9.jpg" alt="Image After">
+      <figcaption class="mt-2 text-sm text-center text-gray-500 dark:text-gray-400">Gamma = 2</figcaption>
+    </div>
+    <div>
+      <img class="rounded-lg" src="/static/learn/enhancement_10.jpg" alt="Image After">
+      <figcaption class="mt-2 text-sm text-center text-gray-500 dark:text-gray-400">Gamma = 0.4</figcaption>
+    </div>
+    </figure>
+
+    <div class="dark:bg-gray-900 text-center">
+      <a type="button" href="/tools/gammatransformation" class="text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-500 dark:focus:ring-blue-800 mt-4">Use Gamma Transformation Tool</a>
+    </div>
 
     <h5 class="text-xl font-bold dark:text-white mt-8">HISTOGRAM EQUALIZATION :</h5>
     <p class="my-3 text-gray-500 dark:text-gray-400">
       By this process we try to make histogram of image to be flat so that contrast can be enhanced.
     </p>
-<!-- Image -->
+    <figure class="max-w-lg mx-auto">
+      <img class="h-auto max-w-full rounded-lg" src="/static/learn/enhancement_12.jpg" alt="image encryption chart">
+      <figcaption class="mt-2 text-sm text-center text-gray-500 dark:text-gray-400">Graph</figcaption>
+    </figure>
 
     <p class="my-3 text-gray-500 dark:text-gray-400">
       We can see histogram equalization in above image but this is ideal equalization in real life one
@@ -268,6 +303,113 @@ applying low pass filter the images gets blurred .
 </p>
 
 <!-- Image -->
+
+<h4 class="text-2xl font-bold dark:text-white mt-5" id="intensity_transformation">Smoothing :</h4>
+<p class="my-3 text-gray-500 dark:text-gray-400">
+  Smoothing is used to make images less pixelated or to lessen noise. Although low-pass filters are
+the foundation of the majority of smoothing techniques, we can also smooth an image by using
+the average or median value of a group of pixels (a kernel) that moves across the image.
+</p>
+<h3 class="text-3xl font-bold dark:text-white mt-8" id="frequency_domain">Blur :</h3>
+<p class="my-3 text-gray-500 dark:text-gray-400">
+  If a blurred image is carefully examined, a we found out that the image is smooth, which means
+that edges are not visible. Low pass filters are used to blur images because they let low frequency
+waves in while blocking out high frequency ones. Frequency in this context refers to pixel value
+changes. Since the blurred image is smooth around the edges, high frequency should be filtered
+out.
+</p>
+<p class="my-3 text-gray-500 dark:text-gray-400">
+  Because a pixel value needs to be close to its neighbour value in order to blur an image, a filter
+with every call having value 1 is used for this purpose.
+</p>
+<p class="my-3 text-gray-500 dark:text-gray-400">
+  Since the goal is to reduce contrast, the filter divides the value of each pixel by 9 to maintain
+  normalisation.
+</p>
+
+<h5 class="text-xl font-bold dark:text-white mt-8">Gaussian Blur :</h5>
+<p class="my-3 text-gray-500 dark:text-gray-400">
+  This filter gives different weight to each entries in matrix as entries in kernel. The closer pixel to
+the selected pixel has greater weight while the further pixel has lower weight.
+</p>
+<p class="my-3 text-gray-500 dark:text-gray-400">
+  In actual use, the Gaussian function is estimated using an odd-sized kernel, each of whose entries
+represents the estimation of the Gaussian function at that particular pixel. Moreover, this kernel
+cannot be sufficiently large because the further pixel give smaller contribution to the value of
+kernel. Often, we ignore the σ and just give it to the program to determine the suitable value for
+the given size kernel. For example, the approximation of 3 x 3 Gaussian kernel is
+</p>
+<figure class="max-w-lg mx-auto">
+  <img class="h-auto max-w-full rounded-lg" src="/static/learn/enhancement_4.jpg" alt="Matrix">
+</figure>
+
+<h5 class="text-xl font-bold dark:text-white mt-8">Box Blur :</h5>
+<p class="my-3 text-gray-500 dark:text-gray-400">
+  This filter substitutes the central pixel with the kernel’s average of the pixels. This kernel’s
+components are all same and add up to 1. There must be an odd size kernel. So, if the dimension
+of the kernel matrix is a x b, then the box filter kernel is
+</p>
+<figure class="max-w-lg mx-auto">
+  <img class="h-auto max-w-full rounded-lg" src="/static/learn/enhancement_7.jpg" alt="Matrix">
+</figure>
+<p class="my-3 text-gray-500 dark:text-gray-400">
+  Order of this matrix should be odd. The sum of all the elements should be 1.
+</p>
+<p class="my-3 text-gray-500 dark:text-gray-400">
+  All the elements should be same. It is a 3x3 mask, therefore it has 9 cells. By dividing each value
+by 9, the requirement that the element sums of all the elements must equal 1 can be achieved.
+</p>
+
+
+<h4 class="text-2xl font-bold dark:text-white mt-5" id="intensity_transformation">Sharpening :</h4>
+<p class="my-3 text-gray-500 dark:text-gray-400">
+  In image processing, sharpening refers to a technique used to enhance the details and edges in an
+image, making it appear more visually clear. It is usually used to improve the overall quality and
+impact of images.
+</p>
+<p class="my-3 text-gray-500 dark:text-gray-400">
+  The process of sharpening involves emphasizing the high-frequency components in an image,
+which correspond to the edges and fine details. The basic idea is to enhance the contrast between
+adjacent pixels along the edges, making them more different.
+</p>
+<p class="my-3 text-gray-500 dark:text-gray-400">
+  Here’s a step-by-step explanation of the sharpening process in image processing.
+</p>
+<p class="my-3 text-gray-500 dark:text-gray-400">
+  We have to convert the image to grayscale if it’s not already in that format. This step simplifies
+the sharpening process as it focuses on the brightness values of the image.
+</p>
+<p class="my-3 text-gray-500 dark:text-gray-400">
+  A sharpening kernel is a filter that is applied to the image. It defines how the pixel values in the
+image will be modified to achieve the sharpening effect. The kernel typically has negative values
+at its centre, surrounded by positive values. The negative centre value enhances the edges and
+details, while the positive values blend the surrounding pixels to create a smooth transition.
+</p>
+<figure class="max-w-lg mx-auto">
+  <img class="h-auto max-w-full rounded-lg" src="/static/learn/enhancement_11.png" alt="Matrix">
+</figure>
+<p class="my-3 text-gray-500 dark:text-gray-400">
+  Apply the sharpening kernel to the grayscale image. This process involves convolving the kernel
+with each pixel in the image to calculate the new pixel values. The convolution operation calculates
+the weighted sum of the kernel values and the corresponding pixel values.
+</p>
+<p class="my-3 text-gray-500 dark:text-gray-400">
+  The resulting sharpened image may have amplified noise and artifacts due to the high-frequency
+emphasis. To less these effects, you can adjust the pixel values. Techniques such as clipping the
+pixel values to a specific range, applying a threshold, or using noise reduction algorithms can be
+employed to improve the image quality.
+</p>
+<p class="my-3 text-gray-500 dark:text-gray-400">
+  The process of sharpening involves increasing the contrast around edges, which makes them ap-
+pear more pronounced.
+</p>
+
+<h5 class="text-xl font-bold dark:text-white mt-8">Laplacian Sharpening :</h5>
+<p class="my-3 text-gray-500 dark:text-gray-400">
+  We can also use Laplacian filter to sharpen the edges of an image. Which has already discussed
+in Laplacian filter in edge detection. So, to get more detail you can check Laplacian Filter topic
+covered in Edge detection.
+</p>
 
   </div>
 </section>

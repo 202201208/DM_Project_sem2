@@ -29,7 +29,7 @@ intensities (at edges) so we use it as an edge detector.
       x, y derivatives of the image are also called x, y gradients of the image.
     </p>
 
-    <h4 class="text-2xl font-bold dark:text-white mt-8" id="intensity_transformation">Perwit Filter :</h4>
+    <h4 class="text-2xl font-bold dark:text-white mt-8" id="perwitfilter">Perwit Filter :</h4>
 
     <p class="my-3 text-gray-500 dark:text-gray-400">
       Let us see how we can calculate the y gradient, the same kind of logic will apply for x gradient.
@@ -47,14 +47,14 @@ pixel.
     </p>
 
     <figure class="max-w-lg mx-auto mt-4">
-      <img class="h-auto max-w-full rounded-lg" src="/static/learn/edge_1.png" alt="image encryption chart">
+      <img class="h-auto max-w-full rounded-lg" src="/static/learn/edge_1.png" alt="matrix">
     </figure>
 
     <p class="my-3 text-gray-500 dark:text-gray-400">
       Similarly if we wanted to calculate the horizontal gradient we would use a kernal given below :
     </p>
     <figure class="max-w-lg mx-auto mt-4">
-      <img class="h-auto max-w-full rounded-lg" src="/static/learn/edge_2.png" alt="image encryption chart">
+      <img class="h-auto max-w-full rounded-lg" src="/static/learn/edge_2.png" alt="matrix">
     </figure>
 
     <p class="my-3 text-gray-500 dark:text-gray-400">
@@ -66,14 +66,14 @@ better estimate of the gradient. So we will use 3X3 matrix.
       To calculate y gradient we can use this matrix :
     </p>
     <figure class="max-w-lg mx-auto mt-4">
-      <img class="h-auto max-w-full rounded-lg" src="/static/learn/edge_3.png" alt="image encryption chart">
+      <img class="h-auto max-w-full rounded-lg" src="/static/learn/edge_3.png" alt="matrix">
     </figure>
 
     <p class="my-3 text-gray-500 dark:text-gray-400">
       To calculate x gradient we can use this matrix :
     </p>
     <figure class="max-w-lg mx-auto mt-4">
-      <img class="h-auto max-w-full rounded-lg" src="/static/learn/edge_4.png" alt="image encryption chart">
+      <img class="h-auto max-w-full rounded-lg" src="/static/learn/edge_4.png" alt="matrix">
     </figure>
 
     <p class="my-3 text-gray-500 dark:text-gray-400">
@@ -85,7 +85,7 @@ better estimate of the gradient. So we will use 3X3 matrix.
 high-frequency components, which can include noise, resulting into false edge detection.
     </p>
 
-    <h4 class="text-2xl font-bold dark:text-white mt-8" id="intensity_transformation">Sobel Filter :</h4>
+    <h4 class="text-2xl font-bold dark:text-white mt-8" id="sobelfilter">Sobel Filter :</h4>
 
 
     <p class="my-3 text-gray-500 dark:text-gray-400">
@@ -101,10 +101,10 @@ technique such as Gaussian blurring on the image before applying gradient filter
     <p class="my-3 text-gray-500 dark:text-gray-400">So resulting Sobel filter in x and y direction is :
     </p>
     <figure class="max-w-lg mx-auto mt-4">
-      <img class="h-auto max-w-full rounded-lg" src="/static/learn/edge_5.png" alt="image encryption chart">
+      <img class="h-auto max-w-full rounded-lg" src="/static/learn/edge_5.png" alt="matrix">
     </figure>
     <figure class="max-w-lg mx-auto mt-4">
-      <img class="h-auto max-w-full rounded-lg" src="/static/learn/edge_6.png" alt="image encryption chart">
+      <img class="h-auto max-w-full rounded-lg" src="/static/learn/edge_6.png" alt="matrix">
     </figure>
     <p class="my-3 text-gray-500 dark:text-gray-400">Now we can calculate Gradient value G using these two values of Gx and Gy by this equation:
     </p>
@@ -121,7 +121,7 @@ technique such as Gaussian blurring on the image before applying gradient filter
 
           <!-- image -->
           <h3 class="text-3xl font-bold dark:text-white mt-8" id="frequency_domain">2<sup>nd</sup> Order Derivative Filters :</h3>
-          <h4 class="text-2xl font-bold dark:text-white mt-8" id="intensity_transformation">Laplacian Filter :</h4>
+          <h4 class="text-2xl font-bold dark:text-white mt-8" id="laplacianfilter">Laplacian Filter :</h4>
 
           <p class="my-3 text-gray-500 dark:text-gray-400">Sobel Filter take one derivative and find an edge in either of the horizontal direction or in the
             vertical direction (x or y).
@@ -133,13 +133,13 @@ technique such as Gaussian blurring on the image before applying gradient filter
           <p class="my-3 text-gray-500 dark:text-gray-400">For double derivation of every pixel we can use this equation :
           </p>   
           <figure class="max-w-lg mx-auto mt-4">
-            <img class="h-auto max-w-full rounded-lg" src="/static/learn/edge_7.jpg" alt="image encryption chart">
+            <img class="h-auto max-w-full rounded-lg" src="/static/learn/edge_7.jpg" alt="matrix">
           </figure>
 
           <p class="my-3 text-gray-500 dark:text-gray-400">Some of the most common filter to create Laplacian are :
           </p> 
           <figure class="max-w-lg mx-auto mt-4">
-            <img class="h-auto max-w-full rounded-lg" src="/static/learn/edge_8.png" alt="image encryption chart">
+            <img class="h-auto max-w-full rounded-lg" src="/static/learn/edge_8.png" alt="matrix">
           </figure>
           <p class="my-3 text-gray-500 dark:text-gray-400">This kernel are derived from the above equation.
           </p> 
@@ -153,11 +153,11 @@ technique such as Gaussian blurring on the image before applying gradient filter
           <p class="my-3 text-gray-500 dark:text-gray-400">And this LoG operator is shown below :
           </p> 
           <figure class="max-w-lg mx-auto mt-4">
-            <img class="h-auto max-w-full rounded-lg" src="/static/learn/edge_9.jpg" alt="image encryption chart">
+            <img class="h-auto max-w-full rounded-lg" src="/static/learn/edge_9.jpg" alt="matrix">
           </figure>
 
 
-          <h4 class="text-2xl font-bold dark:text-white mt-8" id="intensity_transformation">The Canny Edge Detector :</h4>
+          <h4 class="text-2xl font-bold dark:text-white mt-8" id="cannyedgedetector">The Canny Edge Detector :</h4>
           <p class="my-3 text-gray-500 dark:text-gray-400">
             The Canny edge detector is the most well known and the most used edge detector in image
 processing.

@@ -20,9 +20,9 @@ def translate_img(img, tx, ty, path):
   dst = cv2.warpAffine(img,M,(img.shape[1],img.shape[0]))
   cv2.imwrite(path, dst)
 
-def rotate_img(img, x, y, deg, scale, path):
+def rotate_img(img, deg, scale, path):
   height, width = img.shape[:2]
-  matrix = cv2.getRotationMatrix2D((x,y), deg, scale)
+  matrix = cv2.getRotationMatrix2D((width/2,height/2), deg, scale)
   translated = cv2.warpAffine(img, matrix, (width, height))
   cv2.imwrite(path, translated)
 

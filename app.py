@@ -189,8 +189,6 @@ def rotate():
     if 'file' not in request.files:
       return render_template("notFound.html")
     file = request.files['file']
-    x = int(request.form.get("x"))
-    y = int(request.form.get("y"))
     deg = float(request.form.get("deg"))
     scale = float(request.form.get("scale"))
     if file and allowed_file(file.filename):
@@ -198,7 +196,7 @@ def rotate():
       file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
       img = cv2.imread(f"static/uploads/{filename}")
       path = f"static/downloads/{filename}"
-      rotate_img(img, x, y, deg, scale, path)
+      rotate_img(img, deg, scale, path)
       return render_template("tools/rotate.html",output=True, original_img=filename, output_img=filename, action_path="rotate")
     else:
        return render_template("tools/rotate.html", output=False, action_path="rotate")
@@ -420,4 +418,4 @@ def embossing():
 def not_found(e):
    return render_template("notFound.html", e=e)
 
-app.run(debug=True, host="0.0.0.0", port=8000)
+app.run(debug=True, host="0.0.0.0", port=3000)

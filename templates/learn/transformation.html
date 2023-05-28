@@ -32,10 +32,10 @@ corresponding pixel of output image by applying different functions on input ima
     <p class="my-3 text-gray-500 dark:text-gray-400">
       So, basically it will map (x,y) of f(x,y) in g(x’,y’) like this:
     </p>
-    <p class="my-3 text-gray-500 dark:text-gray-400">
-      x’ = Ax(x,y)
+    <p class="my-3 text-gray-500 dark:text-white text-center">
+      x’ = A<sub>x</sub> ( x, y )
     </p>
-    <p class="my-3 text-gray-500 dark:text-gray-400"> y’ = Ay(x,y)
+    <p class="my-3 text-gray-500 dark:text-white text-center"> y’ = A<sub>y</sub> ( x, y )
     </p>
 
     <p class="my-3 text-gray-500 dark:text-gray-400">
@@ -67,11 +67,17 @@ corresponding pixel of output image by applying different functions on input ima
       Translation means shifting the image by horizontally or/and vertically by the given value in both
 direction.
     </p>
-    <p class="my-3 text-gray-500 dark:text-gray-400">
-      x’=x+∆x ; where ∆x is horizontal translation
+    <p class="my-3 text-gray-500 dark:text-white text-center">
+      x’ = x + ∆x 
     </p>
     <p class="my-3 text-gray-500 dark:text-gray-400">
-      y’=y+∆y ; where ∆y is vertical translation
+      where ∆x is horizontal translation
+    </p>
+    <p class="my-3 text-gray-500 dark:text-white text-center">
+      y’ = y + ∆y 
+    </p>
+    <p class="my-3 text-gray-500 dark:text-gray-400">
+      where ∆y is vertical translation
     </p>
     <p class="my-3 text-gray-500 dark:text-gray-400">
       The Matrix Representation of above equations will be:
@@ -81,10 +87,16 @@ direction.
       <img class="h-auto max-w-full rounded-lg" src="/static/learn/transformation_1.png" alt="Equation">
     </figure>
 
-    <!-- <figure class="max-w-lg mx-auto">
-      <img class="h-auto max-w-full rounded-lg" src="/static/learn/translation.jpg" alt="Image Translation">
-      <figcaption class="mt-2 text-sm text-center text-gray-500 dark:text-gray-400">Image Translation</figcaption>
-    </figure> -->
+    <figure class="max-w-lg mx-auto flex flex-row gap-4 mt-4">
+      <div>
+      <img class="rounded-lg" src="/static/learn/transformation_10.jpg" alt="Original Image">
+      <figcaption class="mt-2 text-sm text-center text-gray-500 dark:text-gray-400">Image Before</figcaption>
+    </div>
+    <div>
+      <img class="rounded-lg" src="/static/learn/transformation_11.jpg" alt="Translated Image">
+      <figcaption class="mt-2 text-sm text-center text-gray-500 dark:text-gray-400">Image After</figcaption>
+    </div>
+    </figure>
 
     <div class="dark:bg-gray-900 text-center">
       <a type="button" href="/tools/translate" class="text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-500 dark:focus:ring-blue-800 mt-4">Use Image Translation Tool</a>
@@ -99,17 +111,23 @@ bigger or smaller in x or y direction.
     <p class="my-3 text-gray-500 dark:text-gray-400">
       We can resize an image or scale it by given scaling factor.
     </p>
-    <p class="my-3 text-gray-500 dark:text-gray-400">
-      x’ = Sx*x ; Sx = Scaling factor in x-direction 
-      </p>
-      <p class="my-3 text-gray-500 dark:text-gray-400">
-y’ = Sy*y ; Sy = Scaling factor in y-direction
+    <p class="my-3 text-gray-500 dark:text-white text-center">
+      x’ = S<sub>x</sub> * x 
     </p>
     <p class="my-3 text-gray-500 dark:text-gray-400">
-      0 < Sx , Sy < 1 ; Size will be decreased
+      Sx = Scaling factor in x-direction 
+    </p>
+    <p class="my-3 text-gray-500 dark:text-white text-center">
+      y’ = S<sub>y</sub> * y 
     </p>
     <p class="my-3 text-gray-500 dark:text-gray-400">
-      Sx , Sy > 1 ; Size will be increased
+       S<sub>y</sub> = Scaling factor in y-direction
+    </p>
+    <p class="my-3 text-gray-500 dark:text-gray-400">
+      0 < S<sub>x</sub> , S<sub>y</sub> < 1 ; Size will be decreased
+    </p>
+    <p class="my-3 text-gray-500 dark:text-gray-400">
+      S<sub>x</sub> , S<sub>y</sub> > 1 ; Size will be increased
     </p>
     <p class="my-3 text-gray-500 dark:text-gray-400">
       The Matrix Representation of above equations will be:
@@ -119,26 +137,26 @@ y’ = Sy*y ; Sy = Scaling factor in y-direction
       <img class="h-auto max-w-full rounded-lg" src="/static/learn/transformation_2.png" alt="Equation">
     </figure>
 
-    <!-- <figure class="max-w-lg mx-auto">
-      <img class="h-auto max-w-full rounded-lg" src="/static/learn/scaling.jpg" alt="Image Scaling">
-      <figcaption class="mt-2 text-sm text-center text-gray-500 dark:text-gray-400">Image Scaling</figcaption>
-    </figure> -->
+    <figure class="max-w-lg mx-auto mt-4">
+      <img class="h-auto max-w-full rounded-lg" src="/static/learn/transformation_12.png" alt="Image Scaling">
+      <figcaption class="mt-2 text-sm text-center text-gray-500 dark:text-gray-400">Image Scaled by 2.5 Factor</figcaption>
+    </figure>
 
     <div class="dark:bg-gray-900 text-center">
       <a type="button" href="/tools/scaling" class="text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-500 dark:focus:ring-blue-800 mt-4">Use Image Scaling Tool</a>
       <a type="button" href="/tools/resizing" class="text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-500 dark:focus:ring-blue-800 mt-4">Use Image Resizing Tool</a>
     </div>
 
-    <h3 class="text-3xl font-bold dark:text-white mt-8" id="rotation">ROTATION :</h3>
+    <h3 class="text-3xl font-bold dark:text-white mt-8" id="rotation">Rotation :</h3>
 
     <p class="my-3 text-gray-500 dark:text-gray-400">
       Rotating means rotate an image at given angle θ by specified or given axis or point. It means
 that each pixel of image f(x,y) will be rotated at angle θ.
     </p>
-    <p class="my-3 text-gray-500 dark:text-gray-400">
+    <p class="my-3 text-gray-500 dark:text-white text-center">
       x’ = xcos θ – ysin θ
     </p>
-    <p class="my-3 text-gray-500 dark:text-gray-400">
+    <p class="my-3 text-gray-500 dark:text-white text-center">
       y’ = xsin θ + ycos θ
       </p>
       <p class="my-3 text-gray-500 dark:text-gray-400">
@@ -230,10 +248,13 @@ that each pixel of image f(x,y) will be rotated at angle θ.
     <p class="my-3 text-gray-500 dark:text-gray-400">
       So vertical line will be tilted towards Right or Left.
     </p>
-    <p class="my-3 text-gray-500 dark:text-gray-400">
-      x’ = x + Shx*y ; Shx = shearing factor in x-direction
+    <p class="my-3 text-gray-500 dark:text-white text-center">
+      x’ = x + Sh<sub>x</sub> * y
     </p>
     <p class="my-3 text-gray-500 dark:text-gray-400">
+      Shx = shearing factor in x-direction
+    </p>
+    <p class="my-3 text-gray-500 dark:text-white text-center">
       y’ = y
     </p>
     <p class="my-3 text-gray-500 dark:text-gray-400">
@@ -248,8 +269,16 @@ that each pixel of image f(x,y) will be rotated at angle θ.
         In y-shearing, x co-ordinates will be preserved while y co-ordinates will change it’s position(value).
     </p>
     <p class="my-3 text-gray-500 dark:text-gray-400">
-      So horizontal line will be tilted towards Up or Down. x’ = x y’ = y + Shy*x; Shy = shearing
-      factor in y-direction
+      So horizontal line will be tilted towards Up or Down. 
+    </p>
+    <p class="my-3 text-gray-500 dark:text-white text-center">
+      x’ = x 
+    </p>
+    <p class="my-3 text-gray-500 dark:text-white text-center">
+      y’ = y + Sh<sub>y</sub> * x;
+    </p>
+    <p class="my-3 text-gray-500 dark:text-gray-400">
+      Shy = shearing factor in y-direction
     </p>
     <p class="my-3 text-gray-500 dark:text-gray-400">
       The Matrix Representation of above equations will be:
