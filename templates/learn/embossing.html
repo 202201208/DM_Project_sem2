@@ -30,6 +30,32 @@ IMAGE EMBOSSING
       The embossing mask, which determines the direction of enhancement, usually consists of four primary filters arranged in a 3x3 size grid, as shown in Figure 1. The choice of embossing mask depends on the lighting direction, such as 0, 45, 90, or 135 degrees. In Figure 1, you can see that the middle value of the embossing mask is 0, and the sum of all the mask coefficients is also 0.
     </p>
 
+    <figure class="max-w-xl mx-auto flex flex-row gap-4 mt-4">
+      <div>
+        <img class="rounded-lg border mx-auto" src="/static/learn/embossing_2.png" alt="matrix">
+        <figcaption class="mt-2 text-sm text-center text-gray-500 dark:text-gray-400">0 degree</figcaption>
+      </div>
+      <div>
+        <img class="rounded-lg border mx-auto" src="/static/learn/embossing_4.png" alt="matrix">
+        <figcaption class="mt-2 text-sm text-center text-gray-500 dark:text-gray-400">45 degree</figcaption>
+      </div>
+      <div>
+        <img class="rounded-lg border mx-auto" src="/static/learn/embossing_1.png" alt="matrix">
+        <figcaption class="mt-2 text-sm text-center text-gray-500 dark:text-gray-400">90 degree</figcaption>
+      </div>
+      <div>
+        <img class="rounded-lg border mx-auto" src="/static/learn/embossing_3.png" alt="matrix">
+        <figcaption class="mt-2 text-sm text-center text-gray-500 dark:text-gray-400">135 degree</figcaption>
+      </div>
+      </figure>
+
+
+      <p class="my-3 text-gray-500 dark:text-gray-400">
+        To control the depth of edges, We can enlarge the emboss filter masks, such as :
+      </p>
+      <figure class="max-w-xl mx-auto flex flex-row gap-4 mt-4">
+          <img class="rounded-lg border mx-auto" src="/static/learn/embossing_5.png" alt="matrix">
+        </figure>
 <h5 class="text-xl font-bold dark:text-white mt-8">USES OF EMBOSSING IN REAL LIFE :</h5>
 <ol class="max-w-md space-y-1 text-gray-500 list-decimal list-inside dark:text-gray-400">
   <li>
@@ -53,9 +79,16 @@ IMAGE EMBOSSING
 when applied to color images.
 </p>
 
-<div class="dark:bg-gray-900 text-center">
+<figure class="max-w-lg mx-auto flex flex-col gap-4 mt-4">
+  <img class="rounded-lg border mx-auto" src="/static/learn/embossing_6.jpg" alt="matrix">
+    <figcaption class="mt-2 text-sm text-center text-gray-500 dark:text-gray-400">Example of Image Embossing</figcaption>
+</figure>
+
+<div class="dark:bg-gray-900 text-center mt-4">
   <a type="button" href="/tools/embossing" class="text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-500 dark:focus:ring-blue-800 mt-4">Use Image Embossing Tool</a>
 </div>
+
+
 
 
   </div>

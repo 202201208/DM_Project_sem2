@@ -1,0 +1,50 @@
+{% extends 'tools/template.html' %}
+
+{% block title %}
+  High Pass Filter
+{% endblock title %}
+
+{% block styles %}
+
+{% endblock styles %}
+
+{% block alert %}
+
+{% endblock alert %}
+
+{% block output_title %}
+  Here is your Filtered Image
+{% endblock output_title %}
+
+{% block output_subtitle %}
+  
+{% endblock output_subtitle %}
+
+{% block section_title %}
+ High Pass Filter
+{% endblock section_title %}
+
+{% block section_para %}
+  
+{% endblock section_para %}
+
+{% block notes %}
+
+{% endblock notes %}
+
+{% block additional_form %}
+
+
+<label for="radius" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Radius <span id="radius_value">30</span> </label>
+<input id="radius" type="range" min="0" max="100" step="1" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700" onchange="changeHanderradius(this)" oninput="changeHanderradius(this)" value="30" name="radius">
+
+
+{% endblock additional_form %}
+
+{% block script %}
+  <script>
+    function changeHanderradius(e){
+      ele = document.getElementById("radius_value").innerText = e.value;
+    }
+  </script>
+{% endblock script %}

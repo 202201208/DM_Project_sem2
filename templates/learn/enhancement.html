@@ -28,7 +28,7 @@ Image Enhancement
       </li>
     </ol>
     </p>
-    <h3 class="text-3xl font-bold dark:text-white mt-8" id="spacial_domain">SPATIAL DOMAIN</h3>
+    <h3 class="text-3xl font-bold dark:text-white mt-8" id="spacial_domain">Spatial Domain</h3>
 
     <p class="my-3 text-gray-500 dark:text-gray-400 mb-8">
       In this domain we directly work with original images .We do some operations on pixels directly.
@@ -36,7 +36,7 @@ Image Enhancement
     <p class="my-3 text-gray-500 dark:text-gray-400">
       Spatial domain process is defined by
     </p>
-    <p class="my-3 text-gray-500 dark:text-gray-400 text-center dark:text-white">
+    <p class="my-3 text-gray-900 dark:text-white text-center dark:text-white">
       g ( x, y ) = T [ f ( x, y) ]
     </p>
     <p class="my-3 text-gray-500 dark:text-gray-400">
@@ -47,7 +47,7 @@ Image Enhancement
       1x1 , 3x3 ,5x5 etc. . .
     </p>
 
-    <h4 class="text-2xl font-bold dark:text-white mt-5" id="intensity_transformation">INTENSITY TRANSFORMATION</h4>
+    <h4 class="text-2xl font-bold dark:text-white mt-5" id="intensity_transformation">Intensity Transformation</h4>
 
     <p class="my-3 text-gray-500 dark:text-gray-400">
       When neighborhood size is 1x1 then operation is called intensity transformation or point processing as output of
@@ -71,9 +71,9 @@ Image Enhancement
     </ol>
     </p>
 
-    <h5 class="text-xl font-bold dark:text-white mt-8">Image Negative : </h5>
+    <h5 class="text-xl font-bold dark:text-white mt-8">1. Image Negative : </h5>
     <p class="my-3 text-gray-500 dark:text-gray-400">
-      Operation for this is : <span class="dark:text-white"> T (r) = (L - 1) - r </span>
+      Operation for this is : <span class="dark:text-white text-gray-900"> T (r) = (L - 1) - r </span>
     </p>
     <p class="my-3 text-gray-500 dark:text-gray-400">
       where L = 2<sup>bits per pixel</sup>
@@ -113,11 +113,11 @@ Image Enhancement
 
     <figure class="max-w-lg mx-auto flex flex-row gap-4">
       <div>
-      <img class="rounded-lg" src="/static/learn/enhancement_2.jpg" alt="Image Before">
+      <img class="rounded-lg border mx-auto" src="/static/learn/enhancement_2.jpg" alt="Image Before">
       <figcaption class="mt-2 text-sm text-center text-gray-500 dark:text-gray-400">Image Before</figcaption>
     </div>
     <div>
-      <img class="rounded-lg border" src="/static/learn/enhancement_3.jpg" alt="Image After">
+      <img class="rounded-lg border mx-auto" src="/static/learn/enhancement_3.jpg" alt="Image After">
       <figcaption class="mt-2 text-sm text-center text-gray-500 dark:text-gray-400">Image After</figcaption>
     </div>
     </figure>
@@ -126,27 +126,27 @@ Image Enhancement
       <a type="button" href="/tools/negative" class="text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-500 dark:focus:ring-blue-800 mt-4">Use Image Negative Tool</a>
     </div>
 
-    <h5 class="text-xl font-bold dark:text-white mt-8">LOG TRANSFORMATION : </h5>
-    <p class="my-3 text-gray-500 dark:text-gray-400">
+    <h5 class="text-xl font-bold dark:text-white mt-8">2. Log Transformation : </h5>
+    <p class="my-3 text-gray-500 dark:text-white">
       For an image log transformation is defined as below :
     </p>
-    <p class="my-3 text-gray-500 dark:text-gray-400 dark:text-white text-center">
+    <p class="my-3 text-gray-900 dark:text-white dark:text-white text-center">
       s = c*log( 1+ r)
     </p>
-    <p class="my-3 text-gray-500 dark:text-gray-400">
+    <p class="my-3 text-gray-500 dark:text-white">
       where c is constant , generally we take
     </p>
-    <p class="my-3 text-gray-500 dark:text-gray-400 dark:text-white text-center">
+    <p class="my-3 text-gray-900 dark:text-white dark:text-white text-center">
       c = (L - 1)/log(1 + MAX - V AL)
     </p>
-    <p class="my-3 text-gray-500 dark:text-gray-400">
+    <p class="my-3 text-gray-500 dark:text-white">
       because for this value of c output lies between 0 to L - 1 ,means all intensities covered by output,
       hence range of intensity is covered by output hence range of intensity is covered optimally
     </p>
 
     <figure class="max-w-lg mx-auto">
-      <img class="h-auto max-w-full rounded-lg" src="/static/learn/enhancement_1.jpeg" alt="Log Transformation">
-      <figcaption class="mt-2 text-sm text-center text-gray-500 dark:text-gray-400">Log Transformation</figcaption>
+      <img class="h-auto max-w-full rounded-lg mx-auto border" src="/static/learn/enhancement_1.jpeg" alt="Log Transformation">
+      <figcaption class="mt-2 text-sm text-center text-gray-500 dark:text-gray-400">Log Transformation ( source : theailearner.com )</figcaption>
     </figure>
 
     <p class="my-3 text-gray-500 dark:text-gray-400">
@@ -157,11 +157,11 @@ Image Enhancement
 
     <figure class="max-w-lg mx-auto flex flex-row gap-4">
       <div>
-      <img class="rounded-lg" src="/static/learn/enhancement_5.jpg" alt="Image Before">
+      <img class="rounded-lg border mx-auto" src="/static/learn/enhancement_5.jpg" alt="Image Before">
       <figcaption class="mt-2 text-sm text-center text-gray-500 dark:text-gray-400">Image Before</figcaption>
     </div>
     <div>
-      <img class="rounded-lg" src="/static/learn/enhancement_6.jpg" alt="Image After">
+      <img class="rounded-lg border mx-auto" src="/static/learn/enhancement_6.jpg" alt="Image After">
       <figcaption class="mt-2 text-sm text-center text-gray-500 dark:text-gray-400">Image After</figcaption>
     </div>
     </figure>
@@ -174,11 +174,11 @@ Image Enhancement
       <a type="button" href="/tools/logtransformation" class="text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-500 dark:focus:ring-blue-800 mt-4">Use Log Transformation Tool</a>
     </div>
 
-    <h5 class="text-xl font-bold dark:text-white mt-8">Power Law Transformation / Gamma Transformation :</h5>
+    <h5 class="text-xl font-bold dark:text-white mt-8">3. Power Law Transformation / Gamma Transformation :</h5>
     <p class="my-3 text-gray-500 dark:text-gray-400">
       power law transformation or gamma transformation can be define as below
     </p>
-    <p class="my-3 text-gray-500 dark:text-gray-400 dark:text-white text-center">
+    <p class="my-3 text-gray-900 dark:text-white dark:text-white text-center">
       s = cr<sup>r</sup>
     </p>
     <p class="my-3 text-gray-500 dark:text-gray-400">
@@ -188,24 +188,27 @@ Image Enhancement
       Generally <span class="dark:text-white">c =(L-1)</span> , because we want to use range of intensity optimally.
     </p>
 
-    
+    <figure class="max-w-lg mx-auto mt-8">
+      <img class="h-auto max-w-full rounded-lg mx-auto border" src="/static/learn/enhancement_29.png" alt="">
+      <figcaption class="mt-2 text-sm text-center text-gray-500 dark:text-gray-400">( source : researchgate.net )</figcaption>
+    </figure>
 
     <p class="my-3 text-gray-500 dark:text-gray-400">
       From the above graph you can see that for τ < 1 function behaves similarly as log transformation and for τ> 1
         behaves exactly opposite .
     </p>
     <figure class="max-w-xs mx-auto">
-      <img class="h-auto max-w-full rounded-lg" src="/static/learn/enhancement_8.jpg" alt="Gamma Transformation example">
+      <img class="h-auto max-w-full rounded-lg mx-auto border" src="/static/learn/enhancement_8.jpg" alt="Gamma Transformation example">
       <figcaption class="mt-2 text-sm text-center text-gray-500 dark:text-gray-400">Original Image</figcaption>
     </figure>
 
     <figure class="max-w-xl mx-auto flex flex-row gap-4 mt-4">
     <div>
-      <img class="rounded-lg" src="/static/learn/enhancement_9.jpg" alt="Image After">
+      <img class="rounded-lg border mx-auto" src="/static/learn/enhancement_9.jpg" alt="Image After">
       <figcaption class="mt-2 text-sm text-center text-gray-500 dark:text-gray-400">Gamma = 2</figcaption>
     </div>
     <div>
-      <img class="rounded-lg" src="/static/learn/enhancement_10.jpg" alt="Image After">
+      <img class="rounded-lg border mx-auto" src="/static/learn/enhancement_10.jpg" alt="Image After">
       <figcaption class="mt-2 text-sm text-center text-gray-500 dark:text-gray-400">Gamma = 0.4</figcaption>
     </div>
     </figure>
@@ -214,12 +217,12 @@ Image Enhancement
       <a type="button" href="/tools/gammatransformation" class="text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-500 dark:focus:ring-blue-800 mt-4">Use Gamma Transformation Tool</a>
     </div>
 
-    <h5 class="text-xl font-bold dark:text-white mt-8">HISTOGRAM EQUALIZATION :</h5>
+    <h5 class="text-xl font-bold dark:text-white mt-8" id="histogram">Histogram Equalization :</h5>
     <p class="my-3 text-gray-500 dark:text-gray-400">
       By this process we try to make histogram of image to be flat so that contrast can be enhanced.
     </p>
     <figure class="max-w-lg mx-auto">
-      <img class="h-auto max-w-full rounded-lg" src="/static/learn/enhancement_12.jpg" alt="image encryption chart">
+      <img class="h-auto max-w-full rounded-lg mx-auto border" src="/static/learn/enhancement_12.jpg" alt="">
       <figcaption class="mt-2 text-sm text-center text-gray-500 dark:text-gray-400">Graph</figcaption>
     </figure>
 
@@ -231,86 +234,62 @@ can hardly get almost flat histogram.
       Here is method of equalizing histogram :
     </p>
 
-    <!-- image -->
+    <figure class="max-w-lg mx-auto">
+      <img class="h-auto max-w-full rounded-lg mx-auto border" src="/static/learn/enhancement_15.jpeg" alt="">
+      <figcaption class="mt-2 text-sm text-center text-gray-500 dark:text-gray-400">Original Image Histogram</figcaption>
+    </figure>
 
-    <h3 class="text-3xl font-bold dark:text-white mt-8" id="frequency_domain">FREQUENCY DOMAIN</h3>
+    <figure class="max-w-lg mx-auto mt-8">
+      <img class="h-auto max-w-full rounded-lg mx-auto border" src="/static/learn/enhancement_16.png" alt="">
+    </figure>
+    <figure class="max-w-lg mx-auto mt-8">
+      <img class="h-auto max-w-full rounded-lg mx-auto border" src="/static/learn/enhancement_17.png" alt="">
+    </figure>
+
+    <figure class="max-w-lg mx-auto mt-8">
+      <img class="h-auto max-w-full rounded-lg mx-auto border" src="/static/learn/enhancement_18.png" alt="">
+      <figcaption class="mt-2 text-sm text-center text-gray-500 dark:text-gray-400">Equalized Image Histogram</figcaption>
+    </figure>
+
     <p class="my-3 text-gray-500 dark:text-gray-400">
-      In spatial domain we deal with images directly .but in frequency domain we deal with rate at
-      which the pixel values are changing in spatial domain.
-    </p>
-    <p class="my-3 text-gray-500 dark:text-gray-400">
-      Here,we first convert image in frequency domain then we perform operation on it and convert
-      result into spatial domain .
-    </p>
-    <p class="my-3 text-gray-500 dark:text-gray-400">
-      There are many method to convert image in frequency domain like Fourier series ,Fourier transformation ,Laplace
-      transformation , Z transformation but here we will see about Fourier transformation only.
+      Here is an example of Histogram Equalization :
     </p>
 
-    <h5 class="text-xl font-bold dark:text-white mt-8">FOURIER TRANSFORMATION :</h5>
-    <p class="my-3 text-gray-500 dark:text-gray-400">
-      According to Fourier transformation any non periodic signals whose area under the curve is finite
-can be represented as integrals of the sines and cosines .after being multiplied by a certain weight
-    </p>
-
-    <h6 class="text-lg font-bold dark:text-white mt-3">DISCRETE FOURIER TRANSFORM ( DFT ) :</h6>
-    <!-- Image -->
-
-    <h6 class="text-lg font-bold dark:text-white mt-3">INVERSE DISCRETE FOURIER TRANSFORM ( IDFT ) :</h6>
-<!-- Image -->
-
-<!-- Image -->
+    <figure class="max-w-xl mx-auto flex flex-row gap-4 my-4">
+      <div>
+        <img class="rounded-lg border mx-auto" src="/static/learn/enhancement_19.webp" alt="Image After">
+        <figcaption class="mt-2 text-sm text-center text-gray-500 dark:text-gray-400">Original Image</figcaption>
+      </div>
+      <div>
+        <img class="rounded-lg border mx-auto" src="/static/learn/enhancement_20.webp" alt="Image After">
+        <figcaption class="mt-2 text-sm text-center text-gray-500 dark:text-gray-400">Equalized Image</figcaption>
+      </div>
+      </figure>
 
 
-<p class="my-3 text-gray-500 dark:text-gray-400">
-  In frequency domain there are certain type of filters like
-</p>
+    <figure class="max-w-xl mx-auto flex flex-row gap-4 my-4">
+      <div>
+        <img class="rounded-lg border mx-auto" src="/static/learn/enhancement_21.png" alt="Image After">
+        <figcaption class="mt-2 text-sm text-center text-gray-500 dark:text-gray-400">Original Image Histogram</figcaption>
+      </div>
+      <div>
+        <img class="rounded-lg border mx-auto" src="/static/learn/enhancement_22.png" alt="Image After">
+        <figcaption class="mt-2 text-sm text-center text-gray-500 dark:text-gray-400">Equalized Image Histogram</figcaption>
+      </div>
+      </figure>
 
-<ol class="max-w-md space-y-1 text-gray-500 list-decimal list-inside dark:text-gray-400">
-  <li>
-    Low Pass Filter
-  </li>
-  <li>
-    High Pass Filter
-  </li>
-  <li>
-    Gaussian Low Pass Filter
-  </li>
-  <li>
-    Gaussian High Pass Filter
-  </li>
-</ol>
-
-
-<h5 class="text-xl font-bold dark:text-white mt-8">Law Pass Filter :</h5>
-<!-- Image -->
-<p class="my-3 text-gray-500 dark:text-gray-400">
-  Low frequency part contains smooth part and high frequency part contains sharp edges .So by
-applying low pass filter the images gets blurred .
-</p>
-
-<h5 class="text-xl font-bold dark:text-white mt-8">High Pass Filter :</h5>
-<!-- image -->
-<p class="my-3 text-gray-500 dark:text-gray-400">
-  High pass filter remove smooth or constant intensity part so we get only edges.
-</p>
-
-<h5 class="text-xl font-bold dark:text-white mt-8">Gaussian Filter :</h5>
-<p class="my-3 text-gray-500 dark:text-gray-400">
-  In spatial domain we have to perform operation on every pixel to apply gaussian filter but here
-  we have to convert gaussian filter in frequency domain an multiply with image to get output here
-  is an example of gaussian smoothing filter in frequency domain .
-</p>
-
-<!-- Image -->
-
-<h4 class="text-2xl font-bold dark:text-white mt-5" id="intensity_transformation">Smoothing :</h4>
+      <div class="dark:bg-gray-900 text-center">
+        <a type="button" href="/tools/histogramequalization" class="text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-500 dark:focus:ring-blue-800 mt-4">Use Histogram Equalization Tool</a>
+      </div>
+ 
+    
+    <h4 class="text-2xl font-bold dark:text-white mt-5" id="smoothing">Smoothing :</h4>
 <p class="my-3 text-gray-500 dark:text-gray-400">
   Smoothing is used to make images less pixelated or to lessen noise. Although low-pass filters are
 the foundation of the majority of smoothing techniques, we can also smooth an image by using
 the average or median value of a group of pixels (a kernel) that moves across the image.
 </p>
-<h3 class="text-3xl font-bold dark:text-white mt-8" id="frequency_domain">Blur :</h3>
+<h3 class="text-3xl font-bold dark:text-white mt-8">Blur :</h3>
 <p class="my-3 text-gray-500 dark:text-gray-400">
   If a blurred image is carefully examined, a we found out that the image is smooth, which means
 that edges are not visible. Low pass filters are used to blur images because they let low frequency
@@ -340,8 +319,21 @@ kernel. Often, we ignore the σ and just give it to the program to determine the
 the given size kernel. For example, the approximation of 3 x 3 Gaussian kernel is
 </p>
 <figure class="max-w-lg mx-auto">
-  <img class="h-auto max-w-full rounded-lg" src="/static/learn/enhancement_4.jpg" alt="Matrix">
+  <img class="h-auto max-w-full rounded-lg mx-auto border" src="/static/learn/enhancement_4.jpg" alt="Matrix">
 </figure>
+
+
+<figure class="max-w-xl mx-auto flex flex-row gap-4 mt-4">
+  <div>
+    <img class="rounded-lg border mx-auto" src="/static/learn/enhancement_14.jpg" alt="Original Image">
+    <figcaption class="mt-2 text-sm text-center text-gray-500 dark:text-gray-400">Original Image</figcaption>
+  </div>
+  <div>
+    <img class="rounded-lg border mx-auto" src="/static/learn/enhancement_13.jpg" alt="blurred Image">
+    <figcaption class="mt-2 text-sm text-center text-gray-500 dark:text-gray-400">Gaussian Blurred Image</figcaption>
+  </div>
+  </figure>
+
 
 <h5 class="text-xl font-bold dark:text-white mt-8">Box Blur :</h5>
 <p class="my-3 text-gray-500 dark:text-gray-400">
@@ -350,7 +342,7 @@ components are all same and add up to 1. There must be an odd size kernel. So, i
 of the kernel matrix is a x b, then the box filter kernel is
 </p>
 <figure class="max-w-lg mx-auto">
-  <img class="h-auto max-w-full rounded-lg" src="/static/learn/enhancement_7.jpg" alt="Matrix">
+  <img class="h-auto max-w-full rounded-lg mx-auto border" src="/static/learn/enhancement_7.jpg" alt="Matrix">
 </figure>
 <p class="my-3 text-gray-500 dark:text-gray-400">
   Order of this matrix should be odd. The sum of all the elements should be 1.
@@ -361,7 +353,7 @@ by 9, the requirement that the element sums of all the elements must equal 1 can
 </p>
 
 
-<h4 class="text-2xl font-bold dark:text-white mt-5" id="intensity_transformation">Sharpening :</h4>
+<h4 class="text-2xl font-bold dark:text-white mt-5" id="sharpening">Sharpening :</h4>
 <p class="my-3 text-gray-500 dark:text-gray-400">
   In image processing, sharpening refers to a technique used to enhance the details and edges in an
 image, making it appear more visually clear. It is usually used to improve the overall quality and
@@ -386,7 +378,7 @@ at its centre, surrounded by positive values. The negative centre value enhances
 details, while the positive values blend the surrounding pixels to create a smooth transition.
 </p>
 <figure class="max-w-lg mx-auto">
-  <img class="h-auto max-w-full rounded-lg" src="/static/learn/enhancement_11.png" alt="Matrix">
+  <img class="h-auto max-w-full rounded-lg mx-auto border" src="/static/learn/enhancement_11.png" alt="Matrix">
 </figure>
 <p class="my-3 text-gray-500 dark:text-gray-400">
   Apply the sharpening kernel to the grayscale image. This process involves convolving the kernel
@@ -410,6 +402,128 @@ pear more pronounced.
 in Laplacian filter in edge detection. So, to get more detail you can check Laplacian Filter topic
 covered in Edge detection.
 </p>
+
+    <h3 class="text-3xl font-bold dark:text-white mt-8" id="frequency_domain">Frequency Domain</h3>
+    <p class="my-3 text-gray-500 dark:text-gray-400">
+      In spatial domain we deal with images directly .but in frequency domain we deal with rate at
+      which the pixel values are changing in spatial domain.
+    </p>
+    <p class="my-3 text-gray-500 dark:text-gray-400">
+      Here,we first convert image in frequency domain then we perform operation on it and convert
+      result into spatial domain .
+    </p>
+    <p class="my-3 text-gray-500 dark:text-gray-400">
+      There are many method to convert image in frequency domain like Fourier series ,Fourier transformation ,Laplace
+      transformation , Z transformation but here we will see about Fourier transformation only.
+    </p>
+
+    <h5 class="text-xl font-bold dark:text-white mt-8">Fourier Transformation :</h5>
+    <p class="my-3 text-gray-500 dark:text-gray-400">
+      According to Fourier transformation any non periodic signals whose area under the curve is finite
+can be represented as integrals of the sines and cosines .after being multiplied by a certain weight
+    </p>
+
+    <h6 class="text-md font-bold dark:text-white mt-3">Discrete Fourier Transform ( DFT ) :</h6>
+    <figure class="max-w-lg mx-auto">
+      <img class="h-auto max-w-full rounded-lg mx-auto border" src="/static/learn/enhancement_23.gif" alt="Formula">
+      <p class="my-3 text-gray-900 dark:text-white text-center">
+      p = 0 ... M - 1
+      </p>
+      <p class="my-3 text-gray-900 dark:text-white text-center">
+      q = 0 ... N - 1
+      </p>
+    </figure>
+    <p class="my-3 text-gray-500 dark:text-gray-400">
+     p and q are frequencies along m and n, respectively
+    </p>
+
+    <h6 class="text-md font-bold dark:text-white mt-3">Inverse Discrete Fourier Transform ( IDFT ) :</h6>
+    <figure class="max-w-lg mx-auto">
+      <img class="h-auto max-w-full rounded-lg mx-auto border" src="/static/learn/enhancement_24.gif" alt="Formula">
+      <p class="my-3 text-gray-900 dark:text-white text-center">
+        m = 0 ... M - 1
+        </p>
+      <p class="my-3 text-gray-900 dark:text-white text-center">
+        n = 0 ... N - 1
+        </p>
+    </figure>
+
+    <p class="my-3 text-gray-500 dark:text-gray-400">
+      Here is an example of conversion of image from spatial domain to frequency domain using fourier transform
+    </p>
+
+    <figure class="max-w-xl mx-auto flex flex-row gap-4 my-8">
+      <div>
+        <img class="rounded-lg border mx-auto" src="/static/learn/enhancement_28.jpg" alt="">
+        <figcaption class="mt-2 text-sm text-center text-gray-500 dark:text-gray-400">Image in Spatial Domain</figcaption>
+      </div>
+      <div>
+        <img class="rounded-lg border mx-auto" src="/static/learn/enhancement_27.png" alt="">
+        <figcaption class="mt-2 text-sm text-center text-gray-500 dark:text-gray-400">Image in Frequency Domain</figcaption>
+      </div>
+      </figure>
+
+      <h5 class="text-xl font-bold dark:text-white mt-8">Filters in Frequency Domain :</h5>
+
+<p class="my-3 text-gray-500 dark:text-gray-400">
+  In frequency domain there are certain type of filters like
+</p>
+
+<ol class="max-w-md space-y-1 text-gray-500 list-decimal list-inside dark:text-gray-400">
+  <li>
+    Low Pass Filter
+  </li>
+  <li>
+    High Pass Filter
+  </li>
+  <li>
+    Gaussian Low Pass Filter
+  </li>
+  <li>
+    Gaussian High Pass Filter
+  </li>
+</ol>
+
+
+<h5 class="text-xl font-bold dark:text-white mt-8">Law Pass Filter :</h5>
+<!-- Image -->
+<p class="my-3 text-gray-500 dark:text-gray-400">
+  Low frequency part contains smooth part and high frequency part contains sharp edges .So by
+applying low pass filter the images gets blurred .
+</p>
+
+<figure class="max-w-xl mx-auto">
+  <img class="h-auto max-w-full rounded-lg mx-auto border" src="/static/learn/enhancement_25.png" alt="">
+  <figcaption class="mt-2 text-sm text-center text-gray-500 dark:text-gray-400">Process for apply low pass filter</figcaption>
+</figure>
+<p class="my-3 text-gray-500 dark:text-gray-400">
+  In the above picture, you can see that result image is blurred.
+</p>
+
+<h5 class="text-xl font-bold dark:text-white mt-8">High Pass Filter :</h5>
+<!-- image -->
+<p class="my-3 text-gray-500 dark:text-gray-400">
+  High pass filter remove smooth or constant intensity part so we get only edges.
+</p>
+
+<figure class="max-w-xl mx-auto">
+  <img class="h-auto max-w-full rounded-lg mx-auto border" src="/static/learn/enhancement_26.png" alt="">
+  <figcaption class="mt-2 text-sm text-center text-gray-500 dark:text-gray-400">Process for apply high pass filter</figcaption>
+</figure>
+<p class="my-3 text-gray-500 dark:text-gray-400">
+  In the above picture, you can see that result image has only edges & smooth part is removed.
+</p>
+
+<h5 class="text-xl font-bold dark:text-white mt-8">Gaussian Filter :</h5>
+<p class="my-3 text-gray-500 dark:text-gray-400">
+  In spatial domain we have to perform operation on every pixel to apply gaussian filter but here
+  we have to convert gaussian filter in frequency domain an multiply with image to get output here
+  is an example of gaussian smoothing filter in frequency domain .
+</p>
+
+<!-- Image -->
+
+
 
   </div>
 </section>

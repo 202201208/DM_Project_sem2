@@ -44,11 +44,16 @@
       <ul class="mt-1.5 ml-4 list-disc list-inside">
         <li>Key must be same for getting Original Image from Decryption</li>
         <li>Since DNA Encoing Process is time consuming, please wait while encrypting and decrypting</li>
+        <li class="text-md">For large Images, it takes 2 to 5 minutes to encrypt & decrypt.</li>
     </ul>
   </div>
 </div>
 
 {% endblock notes %}
+
+{% block img_size %}
+  ( Image size : 0 - 1 MB)
+{% endblock img_size %}
 
 {% block additional_form %}
 <div class="mb-6">

@@ -7,7 +7,7 @@ import cv2
 from image_encryption import encrypt_image, decrypt_image
 from image_steganography import decode_image, encode_image
 from utils import allowed_file
-from image_processing import apply_kernal, cannyedgedetector_img, embossing_img, gammatransformation_img, gaussianfilter_img, logtransformation_img, maxfilter_img, medianfilter_img, minfilter_img, negative_img, reflecting_img, resize_img, rotate_img, scale_img, shearing_img, translate_img
+from image_processing import apply_kernal, cannyedgedetector_img, embossing_img, gammatransformation_img, gaussianfilter_img, highpassfilter_img, histogramequalization_img, logtransformation_img, lowpassfilter_img, maxfilter_img, medianfilter_img, minfilter_img, negative_img, reflecting_img, resize_img, rotate_img, scale_img, shearing_img, translate_img
 
 UPLOAD_FOLDER = 'static/uploads'
 DOWNLOAD_FOLDER = 'static/downloads'
@@ -18,13 +18,16 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.config['DOWNLOAD_FOLDER'] = DOWNLOAD_FOLDER
 app.config['SECRET_KEY'] = os.getenv('SECRET_KEY') or "$(hdKY(@H51Mgk*%^sd"
 
-def get_cookie(request):
-    mode = request.cookies.get("mode")
-    if(mode == "dark"):
-        return 1
+def get_size(file_path, unit='bytes'):
+    file_size = os.path.getsize(file_path)
+    exponents_map = {'bytes': 0, 'kb': 1, 'mb': 2, 'gb': 3}
+    if unit not in exponents_map:
+        raise ValueError("Must select from \
+        ['bytes', 'kb', 'mb', 'gb']")
     else:
-        return 0
-    
+        size = file_size / 1024 ** exponents_map[unit]
+        return round(size, 3)
+   
 @app.route("/")
 def home():
   return render_template("index.html")
@@ -98,6 +101,8 @@ def encryption():
     if file and allowed_file(file.filename):
       filename = secure_filename(file.filename)
       file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+      if(get_size(f"static/uploads/{filename}", 'mb') > 1.000):
+        return render_template("tools/encryption.html", output=False, action_path="encryption", text=False, big_size=True)
       img = cv2.imread(f"static/uploads/{filename}")
       path = f"static/downloads/{filename}"
       if(encrypt == 1):
@@ -368,14 +373,6 @@ def maxfilter():
 @app.route('/downloads/<path:filename>')
 def download(filename):
     downloads = os.path.join(app.config['DOWNLOAD_FOLDER'], filename)
-    @after_this_request
-    def remove_file(response):
-        try:
-            os.remove(os.path.join(app.config['DOWNLOAD_FOLDER'],filename))
-            os.remove(os.path.join(app.config['UPLOAD_FOLDER'],filename))
-        except Exception as error:
-            app.logger.error("Error removing or closing downloaded file handle", error)
-        return response
     return send_file(downloads, download_name=filename, as_attachment=True )
     
 @app.route("/tools/cannyedgedetector", methods=['GET', 'POST'])
@@ -437,14 +434,78 @@ def steganography():
         return render_template("tools/steganography.html",output=True, original_img=filename, output_img=output, action_path="steganography", text=False)
       else:
         secret = decode_image(img)
-        print(secret)
-        return render_template("tools/steganography.html",output=True, original_img=filename, output_img=filename, action_path="steganography", text=True, secret=secret)
+        if(secret == '%%%%%%%%%%'):
+          return render_template("tools/steganography.html",output=True, original_img=filename, output_img=filename, action_path="steganography", text=True, msg="This Image is not Encoded")
+        return render_template("tools/steganography.html",output=True, original_img=filename, output_img=filename, action_path="steganography", text=True, secret=secret, msg="Decoded Text is Here")
     else:
        return render_template("tools/steganography.html", output=False, action_path="steganography", text=False)
   return render_template("tools/steganography.html", output=False, action_path="steganography", text=False)
 
+@app.route("/tools/lowpassfilter", methods=['GET', 'POST'])
+def lowpassfilter():
+  if(request.method == "POST"):
+    if 'file' not in request.files:
+      return render_template("notFound.html")
+    file = request.files['file']
+    radius = int(request.form.get("radius"))
+    if file and allowed_file(file.filename):
+      filename = secure_filename(file.filename)
+      file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+      img = cv2.imread(f"static/uploads/{filename}")
+      path = f"static/downloads/{filename}"
+      lowpassfilter_img(img, radius, path)
+      return render_template("tools/lowpassfilter.html",output=True, original_img=filename, output_img=filename, action_path="lowpassfilter", text=False)
+    else:
+       return render_template("tools/lowpassfilter.html", output=False, action_path="lowpassfilter", text=False)
+  return render_template("tools/lowpassfilter.html", output=False, action_path="lowpassfilter", text=False)
+
+@app.route("/tools/highpassfilter", methods=['GET', 'POST'])
+def highpassfilter():
+  if(request.method == "POST"):
+    if 'file' not in request.files:
+      return render_template("notFound.html")
+    file = request.files['file']
+    radius = int(request.form.get("radius"))
+    if file and allowed_file(file.filename):
+      filename = secure_filename(file.filename)
+      file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+      img = cv2.imread(f"static/uploads/{filename}")
+      path = f"static/downloads/{filename}"
+      highpassfilter_img(img, radius, path)
+      return render_template("tools/highpassfilter.html",output=True, original_img=filename, output_img=filename, action_path="highpassfilter", text=False)
+    else:
+       return render_template("tools/highpassfilter.html", output=False, action_path="highpassfilter", text=False)
+  return render_template("tools/highpassfilter.html", output=False, action_path="highpassfilter", text=False)
+
+@app.route("/tools/histogramequalization", methods=['GET', 'POST'])
+def histogramequalization():
+  if(request.method == "POST"):
+    if 'file' not in request.files:
+      return render_template("notFound.html")
+    file = request.files['file']
+    if file and allowed_file(file.filename):
+      filename = secure_filename(file.filename)
+      file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+      img = cv2.imread(f"static/uploads/{filename}")
+      path = f"static/downloads/{filename}"
+      histogramequalization_img(img, path)
+      return render_template("tools/histogramequalization.html",output=True, original_img=filename, output_img=filename, action_path="histogramequalization", text=False)
+    else:
+       return render_template("tools/histogramequalization.html", output=False, action_path="histogramequalization", text=False)
+  return render_template("tools/histogramequalization.html", output=False, action_path="histogramequalization", text=False)
+
 @app.errorhandler(404)
 def not_found(e):
    return render_template("notFound.html", e=e)
+
+@app.route("/admin/clearfolders")
+def clearuploads():
+  all_files = os.listdir(UPLOAD_FOLDER)
+  for f in all_files:
+    os.remove(os.path.join(app.config['UPLOAD_FOLDER'],f))
+  all_files = os.listdir(DOWNLOAD_FOLDER)
+  for f in all_files:
+    os.remove(os.path.join(app.config['DOWNLOAD_FOLDER'],f))
+  return redirect("/")
 
 app.run(debug=True, host="0.0.0.0", port=3000)

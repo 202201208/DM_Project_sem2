@@ -53,14 +53,14 @@ Image Steganography Tool
 {% block additional_form %}
 
 
-<ul class="grid w-full gap-6 md:grid-cols-2">
+<ul class="grid w-full gap-6">
     <li>
         <input type="radio" id="encode" name="encode" value="1" class="hidden peer" required checked>
         <label for="encode" class="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">                           
-            <div class="block">
+            <div class="block w-full">
                 <div class="w-full text-lg font-semibold">Encode</div>
-                <div class="mb-6">
-                  <label for="secret" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your secret</label>
+                <div class="my-6 w-full">
+                  <label for="secret" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your Secret Text</label>
                   <input type="text" id="secret" name="secret"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                      autocomplete="off">

@@ -87,3 +87,39 @@ def embossing_img(img, mat, dest):
     gray_img = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
     output = cv2.filter2D(gray_img, -1, mat) + 128
     cv2.imwrite(dest, output)
+
+def lowpassfilter_img(img, radius, filename):
+  dft = np.fft.fft2(img, axes=(0,1))
+  dft_shift = np.fft.fftshift(dft)
+  mag = np.abs(dft_shift)
+  mask = np.zeros_like(img)
+  cy = mask.shape[0] // 2
+  cx = mask.shape[1] // 2
+  cv2.circle(mask, (cx,cy), radius, (255,255,255), -1)[0]
+  mask2 = cv2.GaussianBlur(mask, (19,19), 0)
+  dft_shift_masked2 = np.multiply(dft_shift,mask2) / 255
+  back_ishift_masked2 = np.fft.ifftshift(dft_shift_masked2)
+  img_filtered2 = np.fft.ifft2(back_ishift_masked2, axes=(0,1))
+  img_filtered2 = np.abs(img_filtered2).clip(0,255).astype(np.uint8)
+  cv2.imwrite(filename, img_filtered2)
+
+def highpassfilter_img(img, radius, filename):
+  dft = np.fft.fft2(img, axes=(0,1))
+  dft_shift = np.fft.fftshift(dft)
+  mask = np.zeros_like(img)
+  cy = mask.shape[0] // 2
+  cx = mask.shape[1] // 2
+  cv2.circle(mask, (cx,cy), radius, (255,255,255), -1)[0]
+  mask = 255 - mask
+  mask2 = cv2.GaussianBlur(mask, (19,19), 0)
+  dft_shift_masked2 = np.multiply(dft_shift,mask2) / 255
+  back_ishift_masked2 = np.fft.ifftshift(dft_shift_masked2)
+  img_filtered2 = np.fft.ifft2(back_ishift_masked2, axes=(0,1))
+  img_filtered2 = np.abs(3*img_filtered2).clip(0,255).astype(np.uint8) 
+  cv2.imwrite(filename, img_filtered2)
+
+def histogramequalization_img(img, path):
+  ycrcb_img = cv2.cvtColor(img, cv2.COLOR_BGR2YCrCb)
+  ycrcb_img[:, :, 0] = cv2.equalizeHist(ycrcb_img[:, :, 0])
+  img = cv2.cvtColor(ycrcb_img, cv2.COLOR_YCrCb2BGR)
+  cv2.imwrite(path, img)

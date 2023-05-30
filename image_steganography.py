@@ -47,7 +47,10 @@ def decode_image(path):
         if ch == FLAG:
             break
         res += ch
-    end = int(res) + idx
+    try:
+        end = int(res) + idx
+    except:
+        return "%%%%%%%%%%"
     assert end <= total // BYTES_PER_BYTE, "Input image isn't correct."
 
     secret = ''
