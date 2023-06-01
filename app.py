@@ -507,5 +507,3 @@ def clearuploads():
   for f in all_files:
     os.remove(os.path.join(app.config['DOWNLOAD_FOLDER'],f))
   return redirect("/")
-
-app.run()
