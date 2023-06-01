@@ -1,85 +1,179 @@
 {% extends 'base.html' %}
 
+{% block title %}
+Digital Image Processing
+{% endblock title %}
+
+{% block style %}
+<style>
+  .bg_gif {
+    background: url("static/home.gif");
+    background-repeat: no-repeat;
+    background-color: black;
+    background-position: center;
+  }
+
+  @media (min-width: 640px) {
+    .sm\:justify-end {
+      justify-content: end;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .md\:items-start {
+      align-items: flex-start;
+    }
+
+    .md\:items-end {
+      align-items: flex-end;
+    }
+
+    .md\:text-left{
+      text-align: left;
+    }
+
+    .md\:text-right{
+      text-align: right;
+    }
+  }
+</style>
+{% endblock style %}
+
 {% block body %}
-  
+
 
 
 <div id="Home">
-
-
-<div id="default-carousel" class="relative w-full" data-carousel="slide">
-  <!-- Carousel wrapper -->
-  <div class="relative h-56 overflow-hidden rounded-lg md:h-96">
-       <!-- Item 1 -->
-      <div class="hidden duration-700 ease-in-out" data-carousel-item>
-          <img src="/static/home_1.jpeg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
-      </div>
-      <!-- Item 2 -->
-      <div class="hidden duration-700 ease-in-out" data-carousel-item>
-          <img src="/docs/images/carousel/carousel-2.svg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
-      </div>
-      <!-- Item 3 -->
-      <div class="hidden duration-700 ease-in-out" data-carousel-item>
-          <img src="/docs/images/carousel/carousel-3.svg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
-      </div>
-      <!-- Item 4 -->
-      <div class="hidden duration-700 ease-in-out" data-carousel-item>
-          <img src="/docs/images/carousel/carousel-4.svg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
-      </div>
-      <!-- Item 5 -->
-      <div class="hidden duration-700 ease-in-out" data-carousel-item>
-          <img src="/docs/images/carousel/carousel-5.svg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
-      </div>
-  </div>
-  <!-- Slider indicators -->
-  <div class="absolute z-30 flex space-x-3 -translate-x-1/2 bottom-5 left-1/2">
-      <button type="button" class="w-3 h-3 rounded-full" aria-current="true" aria-label="Slide 1" data-carousel-slide-to="0"></button>
-      <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 2" data-carousel-slide-to="1"></button>
-      <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 3" data-carousel-slide-to="2"></button>
-      <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 4" data-carousel-slide-to="3"></button>
-      <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 5" data-carousel-slide-to="4"></button>
-  </div>
-  <!-- Slider controls -->
-  <button type="button" class="absolute top-0 left-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
-      <span class="inline-flex items-center justify-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-          <svg aria-hidden="true" class="w-5 h-5 text-white sm:w-6 sm:h-6 dark:text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
-          <span class="sr-only">Previous</span>
-      </span>
-  </button>
-  <button type="button" class="absolute top-0 right-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-next>
-      <span class="inline-flex items-center justify-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-          <svg aria-hidden="true" class="w-5 h-5 text-white sm:w-6 sm:h-6 dark:text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
-          <span class="sr-only">Next</span>
-      </span>
-  </button>
-</div>
-
-
-<section class="bg-white dark:bg-gray-900">
-  <div class="pb-8 pt-2 px-4 mx-auto max-w-screen-xl text-center lg:pb-16 lg:pt-8">
-      <h1 class="mb-4 text-4xl font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl dark:text-white">Digital Image Processing</h1>
-      <p class="mb-8 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 lg:px-48 dark:text-gray-400">with Image Encryption with Chaotic functions and DNA Encoding & Image Steganography</p>
+  <section class="bg_gif">
+    <div class="px-4 mx-auto max-w-screen-xl text-center py-24 lg:py-56">
+      <h1 class="mb-4 text-4xl font-extrabold tracking-tight leading-none text-white md:text-5xl lg:text-6xl">Digital
+        Image Processing</h1>
+      <p class="mb-8 text-3xl font-normal text-gray-300 lg:text-2xl sm:px-16 lg:px-48">with <strong
+          class="text-white">Image
+          Encryption</strong> with Chaotic functions and DNA Encoding & <strong class="text-white">Image
+          Steganography</strong>.</p>
       <div class="flex flex-col space-y-4 sm:flex-row sm:justify-center sm:space-y-0 sm:space-x-4">
-          <a href="/learn" class="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900">
-              Learn DIP
-              <svg aria-hidden="true" class="ml-2 -mr-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
-          </a>
-          <a href="/tools" class="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-gray-900 rounded-lg border border-gray-300 hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 dark:text-white dark:border-gray-700 dark:hover:bg-gray-700 dark:focus:ring-gray-800">  
-              Explore Tools
-          </a>  
+        <a href="/learn"
+          class="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900">
+          Learn DIP
+          <svg aria-hidden="true" class="ml-2 -mr-1 w-4 h-4" fill="currentColor" viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd"
+              d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+              clip-rule="evenodd"></path>
+          </svg>
+        </a>
+        <a href="/tools"
+          class="inline-flex justify-center hover:text-gray-900 items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg border border-white hover:bg-gray-100 focus:ring-4 focus:ring-gray-400">
+          Explore Tools
+        </a>
       </div>
+    </div>
+  </section>
+
+
+  <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8 w-full max-w-screen-xl" />
+
+  <h3 class="text-3xl font-bold dark:text-white text-center mb-4">About our Project</h3>
+  <p class="mb-6 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 xl:px-48 dark:text-gray-400 text-center">This
+    Project is based on Digital Image Processing & Image Encryption using chaotic functions and DNA Encoding. Since
+    Digital Image Processing is a vast field, we explored many topics and techniques to modify given images. From basics
+    of Image to Image Encryption Algorithm, we explored Many things. We created learn section such that anyone can learn
+    this techniques and to apply them we created tools section. All thanks to Pro. Manish Gupta, Pro. Prosenjit Kundu &
+    Pro. Manoj Raut.</p>
+  <div class="dark:bg-gray-900 flex justify-center items-center">
+    <a href="/about"
+      class="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900 justify-center">
+      Read more
+    </a>
   </div>
-</section>
 
-<hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8 w-full max-w-screen-xl" />
+  <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8 w-full max-w-screen-xl" />
 
-<h3 class="text-3xl font-bold dark:text-white text-center mb-4">About our Project</h3>
-<p class="mb-6 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 xl:px-48 dark:text-gray-400 text-center">This Project is based on Digital Image Processing & Image Encryption using chaotic functions and DNA Encoding. Since Digital Image Processing is a vast field, we explored many topics and techniques to modify given images. From basics of Image to Image Encryption Algorithm, we explored Many things. We created learn section such that anyone can learn this techniques and to apply them we created tools section. All thanks to Pro. Manish Gupta, Pro. Prosenjit Kundu & Pro. Manoj Raut.</p>
-<div class="dark:bg-gray-900 flex justify-center items-center">
-<a href="/about" class="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900 justify-center">
-  Read more
-</a>
-</div>
+  <div class="dark:bg-gray-900 dark:text-gray-400 flex flex-col gap-16 max-w-screen-xl mx-auto">
+    <div class="flex flex-col md:flex-row gap-8 text-center md:text-left">
+      <div>
+        <img src="/static/tools/encrypted.jpg" alt="" class="h-auto max-w-xs rounded-lg mx-auto border">
+      </div>
+      <div class="flex flex-col items-center md:items-start">
+
+        <h3 class="text-3xl font-bold dark:text-white">Image Encryption</h3>
+        <h5 class="text-xl font-bold dark:text-white">Using Chaotic Functions & DNA Encoding</h5>
+
+        <p class="mb-3 text-gray-500 dark:text-gray-400 mt-4">
+          Image encryption using chaotic functions and DNA encoding is a secure method for protecting digital images.
+          Chaotic functions generate pseudorandom numbers as encryption keys, scrambling the pixels and making
+          decryption without the correct keys nearly impossible. DNA encoding adds an extra layer of security by
+          representing the encrypted image as a DNA sequence, making it even more complex to decipher. This technique
+          ensures confidentiality in image transmission, safeguarding sensitive information in sectors like healthcare
+          and military.
+        </p>
+        <div class="flex flex-col sm:flex-row justify-center md:justify-start mx-4 mt-4">
+          <a type="button" href="/learn/encryption"
+            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 text-center">Learn
+            Algorithm</a>
+          <a type="button" href="/tools/encryption"
+            class="text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-500 dark:focus:ring-blue-800 text-center">Encrypt/Decrypt
+            Images</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="flex flex-col md:flex-row gap-8 text-center md:text-right">
+
+
+      <div class="md:hidden">
+        <img src="/static/tools/steganography.jpg" alt="" class="h-auto max-w-xs rounded-lg mx-auto border">
+      </div>
+      <div class="flex flex-col items-center md:items-end">
+        <h3 class="text-3xl font-bold dark:text-white">Image Steganography</h3>
+        <p class="mb-3 text-gray-500 dark:text-gray-400 mt-4">Image steganography is a technique used to hide secret
+          information within an image without arousing suspicion. It involves embedding the hidden data within the
+          pixels of the image, making it imperceptible to the human eye. By exploiting the redundant information and the
+          limitations of human visual perception, steganography ensures that the hidden data remains concealed during
+          transmission or storage. Our method outputs png format image because jpg or jpeg are compressed image.</p>
+        <div class="flex flex-col sm:flex-row justify-center md:justify-end mx-4 mt-4">
+          <a type="button" href="/learn/steganography"
+            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 text-center">Learn
+            Algorithm</a>
+          <a type="button" href="/tools/steganography"
+            class="text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-500 dark:focus:ring-blue-800 text-center">Encode/Decode
+            Images</a>
+        </div>
+      </div>
+
+      <div class="hidden md:block">
+        <img src="/static/tools/steganography.jpg" alt="" class="h-auto max-w-xs rounded-lg mx-auto border">
+      </div>
+    </div>
+
+    <div class="flex flex-col md:flex-row gap-8 text-center md:text-left">
+      <div>
+        <img src="/static/home_1.jpg" alt="" class="h-auto max-w-xs rounded-lg mx-auto border">
+      </div>
+      <div class="flex flex-col items-center md:items-start">
+
+        <h3 class="text-3xl font-bold dark:text-white">Image Processing</h3>
+        <p class="mb-3 text-gray-500 dark:text-gray-400 mt-4"> Image processing encompasses various techniques such as
+          enhancement, transformation, tranoise reduction, edge detection, and image embossing. These techniques play a
+          vital role in improving image quality, reducing noise artifacts, detecting boundaries, and adding visual
+          effects to digital images, enabling a wide range of applications in fields like computer vision, medical
+          imaging, and multimedia processing.</p>
+        <div class="flex flex-col sm:flex-row justify-center md:justify-start mx-4 mt-4">
+          <a type="button" href="/learn"
+            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 text-center">Learn
+            Concepts</a>
+          <a type="button" href="/tools"
+            class="text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-500 dark:focus:ring-blue-800 text-center">Explore
+            Tools</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+
 
 </div>
 

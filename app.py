@@ -508,4 +508,4 @@ def clearuploads():
     os.remove(os.path.join(app.config['DOWNLOAD_FOLDER'],f))
   return redirect("/")
 
-app.run(debug=True, host="0.0.0.0", port=3000)
+app.run()
