@@ -133,8 +133,8 @@ def encryption():
 def applykernel():
   mat = [[1, 1, 1], [1, 1, 1], [1, 1, 1]]
   if(request.method == "POST"):
-    if 'file' not in request.files:
-      return render_template("notFound.html")
+    
+      
     file = request.files['file']
     for i in range(3):
        for j in range(3):
@@ -143,7 +143,7 @@ def applykernel():
           except:
             return jsonify({
               "output" : False,
-              "action_path" : "encryption",
+              "action_path" : "applykernel",
               "text" : False,
               "validData" : True
             })
@@ -179,8 +179,8 @@ def applykernel():
 @app.route("/tools/scaling", methods=['GET', 'POST'])
 def scaling():
   if(request.method == "POST"):
-    if 'file' not in request.files:
-      return render_template("notFound.html")
+    
+      
     file = request.files['file']
     fx = float(request.form.get("fx"))
     fy = float(request.form.get("fy"))
@@ -216,8 +216,8 @@ def scaling():
 @app.route("/tools/resizing", methods=['GET', 'POST'])
 def resizing():
   if(request.method == "POST"):
-    if 'file' not in request.files:
-      return render_template("notFound.html")
+    
+      
     file = request.files['file']
     width = int(request.form.get("width"))
     height = int(request.form.get("height"))
@@ -253,8 +253,8 @@ def resizing():
 @app.route("/tools/translate", methods=['GET', 'POST'])
 def translate():
   if(request.method == "POST"):
-    if 'file' not in request.files:
-      return render_template("notFound.html")
+    
+      
     file = request.files['file']
     tx = int(request.form.get("tx"))
     ty = int(request.form.get("ty"))
@@ -290,8 +290,8 @@ def translate():
 @app.route("/tools/rotate", methods=['GET', 'POST'])
 def rotate():
   if(request.method == "POST"):
-    if 'file' not in request.files:
-      return render_template("notFound.html")
+    
+      
     file = request.files['file']
     deg = float(request.form.get("deg"))
     scale = float(request.form.get("scale"))
@@ -327,8 +327,8 @@ def rotate():
 @app.route("/tools/shearing", methods=['GET', 'POST'])
 def shearing():
   if(request.method == "POST"):
-    if 'file' not in request.files:
-      return render_template("notFound.html")
+    
+      
     file = request.files['file']
     sx = float(request.form.get("sx"))
     sy = float(request.form.get("sy"))
@@ -364,8 +364,8 @@ def shearing():
 @app.route("/tools/reflecting", methods=['GET', 'POST'])
 def reflecting():
   if(request.method == "POST"):
-    if 'file' not in request.files:
-      return render_template("notFound.html")
+    
+      
     file = request.files['file']
     f = int(request.form.get("flip"))
     if file and allowed_file(file.filename):
@@ -400,8 +400,8 @@ def reflecting():
 @app.route("/tools/negative", methods=['GET', 'POST'])
 def negative():
   if(request.method == "POST"):
-    if 'file' not in request.files:
-      return render_template("notFound.html")
+    
+      
     file = request.files['file']
     if file and allowed_file(file.filename):
       filename = secure_filename(file.filename)
@@ -435,8 +435,8 @@ def negative():
 @app.route("/tools/logtransformation", methods=['GET', 'POST'])
 def logtransformation():
   if(request.method == "POST"):
-    if 'file' not in request.files:
-      return render_template("notFound.html")
+    
+      
     file = request.files['file']
     if file and allowed_file(file.filename):
       filename = secure_filename(file.filename)
@@ -470,8 +470,8 @@ def logtransformation():
 @app.route("/tools/gammatransformation", methods=['GET', 'POST'])
 def gammatransformation():
   if(request.method == "POST"):
-    if 'file' not in request.files:
-      return render_template("notFound.html")
+    
+      
     file = request.files['file']
     g = float(request.form.get("g"))
     if file and allowed_file(file.filename):
@@ -506,8 +506,8 @@ def gammatransformation():
 @app.route("/tools/gaussianfilter", methods=['GET', 'POST'])
 def gaussianfilter():
   if(request.method == "POST"):
-    if 'file' not in request.files:
-      return render_template("notFound.html")
+    
+      
     file = request.files['file']
     r = int(float(request.form.get("radius")))
     if file and allowed_file(file.filename):
@@ -542,8 +542,8 @@ def gaussianfilter():
 @app.route("/tools/medianfilter", methods=['GET', 'POST'])
 def medianfilter():
   if(request.method == "POST"):
-    if 'file' not in request.files:
-      return render_template("notFound.html")
+    
+      
     file = request.files['file']
     if file and allowed_file(file.filename):
       filename = secure_filename(file.filename)
@@ -577,8 +577,8 @@ def medianfilter():
 @app.route("/tools/minfilter", methods=['GET', 'POST'])
 def minfilter():
   if(request.method == "POST"):
-    if 'file' not in request.files:
-      return render_template("notFound.html")
+    
+      
     file = request.files['file']
     if file and allowed_file(file.filename):
       filename = secure_filename(file.filename)
@@ -612,8 +612,8 @@ def minfilter():
 @app.route("/tools/maxfilter", methods=['GET', 'POST'])
 def maxfilter():
   if(request.method == "POST"):
-    if 'file' not in request.files:
-      return render_template("notFound.html")
+    
+      
     file = request.files['file']
     if file and allowed_file(file.filename):
       filename = secure_filename(file.filename)
@@ -652,8 +652,8 @@ def download(filename):
 @app.route("/tools/cannyedgedetector", methods=['GET', 'POST'])
 def cannyedgedetector():
   if(request.method == "POST"):
-    if 'file' not in request.files:
-      return render_template("notFound.html")
+    
+      
     file = request.files['file']
     l = int(request.form.get("lower"))
     u = int(request.form.get("upper"))
@@ -691,12 +691,20 @@ def cannyedgedetector():
 def embossing():
   mat = [[1, 1, 1], [1, 1, 1], [1, 1, 1]]
   if(request.method == "POST"):
-    if 'file' not in request.files:
-      return render_template("notFound.html")
+    
+      
     file = request.files['file']
     for i in range(3):
        for j in range(3):
-          mat[i][j] = int(float(request.form.get(f"mat{i}{j}")))
+          try:
+            mat[i][j] = int(float(request.form.get(f"mat{i}{j}")))
+          except:
+            return jsonify({
+              "output" : False,
+              "action_path" : "embossing",
+              "text" : False,
+              "validData" : True
+            })
     if file and allowed_file(file.filename):
       filename = secure_filename(file.filename)
       file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
@@ -729,8 +737,8 @@ def embossing():
 @app.route("/tools/steganography", methods = ['GET', 'POST'])
 def steganography():
   if(request.method == "POST"):
-    if 'file' not in request.files:
-      return render_template("notFound.html")
+    
+      
     file = request.files['file']
     text = request.form.get("secret")
     encode = int(request.form.get("encode"))
@@ -783,8 +791,8 @@ def steganography():
 @app.route("/tools/lowpassfilter", methods=['GET', 'POST'])
 def lowpassfilter():
   if(request.method == "POST"):
-    if 'file' not in request.files:
-      return render_template("notFound.html")
+    
+      
     file = request.files['file']
     radius = int(request.form.get("radius"))
     if file and allowed_file(file.filename):
@@ -819,8 +827,8 @@ def lowpassfilter():
 @app.route("/tools/highpassfilter", methods=['GET', 'POST'])
 def highpassfilter():
   if(request.method == "POST"):
-    if 'file' not in request.files:
-      return render_template("notFound.html")
+    
+      
     file = request.files['file']
     radius = int(request.form.get("radius"))
     if file and allowed_file(file.filename):
@@ -855,8 +863,8 @@ def highpassfilter():
 @app.route("/tools/histogramequalization", methods=['GET', 'POST'])
 def histogramequalization():
   if(request.method == "POST"):
-    if 'file' not in request.files:
-      return render_template("notFound.html")
+    
+      
     file = request.files['file']
     if file and allowed_file(file.filename):
       filename = secure_filename(file.filename)
@@ -900,3 +908,6 @@ def clearuploads():
   for f in all_files:
     os.remove(os.path.join(app.config['DOWNLOAD_FOLDER'],f))
   return redirect("/")
+
+# if(__name__ == "__main__"):
+#   app.run(debug=True)
