@@ -1,7 +1,7 @@
 {% extends 'tools/template.html' %}
 
 {% block title %}
-  Kernal
+Kernal
 {% endblock title %}
 
 {% block styles %}
@@ -10,56 +10,130 @@
 
 
 {% block output_title %}
-  
+Output Image
 {% endblock output_title %}
 
 {% block output_subtitle %}
-  
+
 {% endblock output_subtitle %}
 
 {% block section_title %}
-  Filter Using Kernel
+Filter Using Kernel
 {% endblock section_title %}
 
 {% block section_para %}
-  Enter 3x3 Kernel to apply on Image
+Enter 3x3 Kernel to apply on Image
 {% endblock section_para %}
 
 {% block notes %}
-  
+
 
 {% endblock notes %}
 
 {% block additional_form %}
 
-<div class="grid grid-cols-3 gap-4">
-  <div>
-    <input type="text" inputmode="numeric" id="mat00" name="mat00" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" value="{{mat[0][0]}}" required>
-  </div>
-  <div>
-    <input type="text" inputmode="numeric" id="mat01" name="mat01" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" value="{{mat[0][1]}}" required>
-  </div>
-  <div>
-    <input type="text" inputmode="numeric" id="mat02" name="mat02" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" value="{{mat[0][2]}}" required>
-  </div>
-  <div>
-    <input type="text" inputmode="numeric" id="mat10" name="mat10" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" value="{{mat[1][0]}}" required>
-  </div>
-  <div>
-    <input type="text" inputmode="numeric" id="mat11" name="mat11" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" value="{{mat[1][1]}}" required>
-  </div>
-  <div>
-    <input type="text" inputmode="numeric" id="mat12" name="mat12" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" value="{{mat[1][2]}}" required>
-  </div>
-  <div>
-    <input type="text" inputmode="numeric" id="mat20" name="mat20" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" value="{{mat[2][0]}}" required>
-  </div>
-  <div>
-    <input type="text" inputmode="numeric" id="mat21" name="mat21" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" value="{{mat[2][1]}}" required>
-  </div>
-  <div>
-    <input type="text" inputmode="numeric" id="mat22" name="mat22" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" value="{{mat[2][2]}}" required>
+
+<div class="flex flex-col">
+
+
+  <label for="countries" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select Operation</label>
+  <select id="countries" onchange="changeMat(this)"
+    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 mb-8">
+    <option selected value="0">Custom</option>
+    <option value="1">Sharpening</option>
+    <option value="2">Gaussian Blur</option>
+    <option value="3">Box Blur</option>
+    <option value="4">Perwit Filter in X</option>
+    <option value="5">Perwit Filter in Y</option>
+    <option value="6">Sobel Filter in X</option>
+    <option value="7">Sobel Filter in Y</option>
+    <option value="8">Laplacian Filter</option>
+  </select>
+
+
+
+  <label for="countries" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Enter 3x3 Kernal</label>
+  <div class="grid grid-cols-3 gap-4">
+    <div>
+      <input type="text" inputmode="numeric" id="mat0" name="mat00"
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        value="" required placeholder="Enter value">
+    </div>
+    <div>
+      <input type="text" inputmode="numeric" id="mat1" name="mat01"
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        value="" required placeholder="Enter value">
+    </div>
+    <div>
+      <input type="text" inputmode="numeric" id="mat2" name="mat02"
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        value="" required placeholder="Enter value">
+    </div>
+    <div>
+      <input type="text" inputmode="numeric" id="mat3" name="mat10"
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        value="" required placeholder="Enter value">
+    </div>
+    <div>
+      <input type="text" inputmode="numeric" id="mat4" name="mat11"
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        value="" required placeholder="Enter value">
+    </div>
+    <div>
+      <input type="text" inputmode="numeric" id="mat5" name="mat12"
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        value="" required placeholder="Enter value">
+    </div>
+    <div>
+      <input type="text" inputmode="numeric" id="mat6" name="mat20"
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        value="" required placeholder="Enter value">
+    </div>
+    <div>
+      <input type="text" inputmode="numeric" id="mat7" name="mat21"
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        value="" required placeholder="Enter value">
+    </div>
+    <div>
+      <input type="text" inputmode="numeric" id="mat8" name="mat22"
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        value="" required placeholder="Enter value">
+    </div>
   </div>
 </div>
 
 {% endblock additional_form %}
+
+{% block script %}
+<script>
+  const mat = [
+    [1, 1, 1, 1, 1, 1, 1, 1, 1],
+    [0, -1, 0, -1, 5, -1, 0, -1, 0],
+    [0.0625, 0.125, 0.0625, 0.125, 0.25, 0.125, 0.0625, 0.125, 0.0625], 
+    [0.111111111, 0.111111111, 0.111111111, 0.111111111, 0.111111111, 0.111111111, 0.111111111, 0.111111111, 0.111111111],
+    [-1, 0, 1, -1, 0, 1, -1, 0, 1],
+    [-1, -1, -1, 0, 0, 0, 1, 1, 1],
+    [-1, 0, 1, -2, 0, 2, -1, 0, 1],
+    [-1, -2, -1, 0, 0, 0, 1, 2, 1],
+    [0, 1, 0, 1, -4, 1, 0, 1, 0]
+]
+  const input = []
+  for(let i = 0; i < 9; i++){
+    input[i] = document.getElementById(`mat${i}`);
+  }
+
+  console.log(input);
+
+  function changeMat(e){
+    let n = parseInt(e.value);
+    setMat(mat[n]);
+  }
+
+  function setMat(m){
+    input.forEach((e, i) => {
+      e.value = m[i];
+    })
+  }
+
+</script>
+{% endblock script %}

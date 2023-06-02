@@ -94,19 +94,13 @@ def learn_steganography():
 @app.route("/tools/encryption", methods=['GET', 'POST'])
 def encryption():
   if(request.method == "POST"):
-    # if 'file' not in request.files:
-    #   return render_template("notFound.html")
     file = request.files['file']
     key = request.form.get("key")
-    print(key)
-    print(file)
     encrypt = int(request.form.get("encrypt"))
-    print(encrypt)
     if file and allowed_file(file.filename):
       filename = secure_filename(file.filename)
       file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
       if(get_size(f"static/uploads/{filename}", 'mb') > 1.000):
-        # return render_template("tools/encryption.html", output=False, action_path="encryption", text=False, big_size=True)
         return jsonify({
           "output" : False,
           "action_path" : "encryption",
@@ -119,8 +113,6 @@ def encryption():
         encrypt_image(img, path, key)
       else:
         decrypt_image(img, path, key)
-      
-      # return render_template("tools/encryption.html",output=True, original_img=filename, output_img=filename, action_path="encryption", text=False)
       return jsonify({
         "output" : True,
         "original_img" : filename,
@@ -129,36 +121,60 @@ def encryption():
         "text" : False
       })
     else:
-      #  return render_template("tools/encryption.html", output=False, action_path="encryption", text=False)
       return jsonify({
         "output" : False,
         "action_path" : "encryption",
-        "text" : False
+        "text" : False,
+        "validData" : True
       })
-  # return render_template("tools/encryption.html", output=False, action_path="encryption", text=False)
   return render_template("tools/encryption.html")
 
 @app.route("/tools/applykernel", methods=['GET', 'POST'])
 def applykernel():
   mat = [[1, 1, 1], [1, 1, 1], [1, 1, 1]]
   if(request.method == "POST"):
-    
     if 'file' not in request.files:
       return render_template("notFound.html")
     file = request.files['file']
     for i in range(3):
        for j in range(3):
-          mat[i][j] = float(request.form.get(f"mat{i}{j}"))
+          try:
+            mat[i][j] = float(request.form.get(f"mat{i}{j}"))
+          except:
+            return jsonify({
+              "output" : False,
+              "action_path" : "encryption",
+              "text" : False,
+              "validData" : True
+            })
     if file and allowed_file(file.filename):
       filename = secure_filename(file.filename)
       file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+      if(get_size(f"static/uploads/{filename}", 'mb') > 50.000):
+        return jsonify({
+          "output" : False,
+          "action_path" : "applykernel",
+          "text" : False,
+          "big_size" : True
+        })
       img = cv2.imread(f"static/uploads/{filename}")
       path = f"static/downloads/{filename}"
       apply_kernal(img, mat, path)
-      return render_template("tools/kernel.html",output=True, original_img=filename, output_img=filename, action_path="applykernel", mat=mat, text=False)
+      return jsonify({
+        "output" : True,
+        "original_img" : filename,
+        "output_img" : filename,
+        "action_path" : "applykernel",
+        "text" : False
+      })
     else:
-       return render_template("tools/kernel.html", output=False, action_path="applykernel", mat=mat, text=False)
-  return render_template("tools/kernel.html", output=False, action_path="applykernel", mat=mat, text=False)
+      return jsonify({
+        "output" : False,
+        "action_path" : "applykernel",
+        "text" : False,
+        "validData" : True
+      })
+  return render_template("tools/kernel.html")
 
 @app.route("/tools/scaling", methods=['GET', 'POST'])
 def scaling():
@@ -171,13 +187,31 @@ def scaling():
     if file and allowed_file(file.filename):
       filename = secure_filename(file.filename)
       file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+      if(get_size(f"static/uploads/{filename}", 'mb') > 50.000):
+        return jsonify({
+          "output" : False,
+          "action_path" : "scaling",
+          "text" : False,
+          "big_size" : True
+        })
       img = cv2.imread(f"static/uploads/{filename}")
       path = f"static/downloads/{filename}"
       scale_img(img, fx, fy, path)
-      return render_template("tools/scaling.html",output=True, original_img=filename, output_img=filename, action_path="scaling", text=False)
+      return jsonify({
+        "output" : True,
+        "original_img" : filename,
+        "output_img" : filename,
+        "action_path" : "scaling",
+        "text" : False
+      })
     else:
-       return render_template("tools/scaling.html", output=False, action_path="scaling", text=False)
-  return render_template("tools/scaling.html", output=False, action_path="scaling", text=False)  
+      return jsonify({
+        "output" : False,
+        "action_path" : "scaling",
+        "text" : False,
+        "validData" : True
+      })
+  return render_template("tools/scaling.html")  
 
 @app.route("/tools/resizing", methods=['GET', 'POST'])
 def resizing():
@@ -190,13 +224,31 @@ def resizing():
     if file and allowed_file(file.filename):
       filename = secure_filename(file.filename)
       file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+      if(get_size(f"static/uploads/{filename}", 'mb') > 50.000):
+        return jsonify({
+          "output" : False,
+          "action_path" : "resizing",
+          "text" : False,
+          "big_size" : True
+        })
       img = cv2.imread(f"static/uploads/{filename}")
       path = f"static/downloads/{filename}"
       resize_img(img, width, height, path)
-      return render_template("tools/resizing.html",output=True, original_img=filename, output_img=filename, action_path="resizing", text=False)
+      return jsonify({
+        "output" : True,
+        "original_img" : filename,
+        "output_img" : filename,
+        "action_path" : "resizing",
+        "text" : False
+      })
     else:
-       return render_template("tools/resizing.html", output=False, action_path="resizing", text=False)
-  return render_template("tools/resizing.html", output=False, action_path="resizing", text=False)  
+      return jsonify({
+        "output" : False,
+        "action_path" : "resizing",
+        "text" : False,
+        "validData" : True
+      })
+  return render_template("tools/resizing.html")  
 
 @app.route("/tools/translate", methods=['GET', 'POST'])
 def translate():
@@ -209,13 +261,31 @@ def translate():
     if file and allowed_file(file.filename):
       filename = secure_filename(file.filename)
       file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+      if(get_size(f"static/uploads/{filename}", 'mb') > 50.000):
+        return jsonify({
+          "output" : False,
+          "action_path" : "translate",
+          "text" : False,
+          "big_size" : True
+        })
       img = cv2.imread(f"static/uploads/{filename}")
       path = f"static/downloads/{filename}"
       translate_img(img, tx, ty, path)
-      return render_template("tools/translate.html",output=True, original_img=filename, output_img=filename, action_path="translate", text=False)
+      return jsonify({
+        "output" : True,
+        "original_img" : filename,
+        "output_img" : filename,
+        "action_path" : "translate",
+        "text" : False
+      })
     else:
-       return render_template("tools/translate.html", output=False, action_path="translate", text=False)
-  return render_template("tools/translate.html", output=False, action_path="translate", text=False)
+       return jsonify({
+        "output" : False,
+        "action_path" : "translate",
+        "text" : False,
+        "validData" : True
+      })
+  return render_template("tools/translate.html")
 
 @app.route("/tools/rotate", methods=['GET', 'POST'])
 def rotate():
@@ -228,13 +298,31 @@ def rotate():
     if file and allowed_file(file.filename):
       filename = secure_filename(file.filename)
       file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+      if(get_size(f"static/uploads/{filename}", 'mb') > 50.000):
+        return jsonify({
+          "output" : False,
+          "action_path" : "rotate",
+          "text" : False,
+          "big_size" : True
+        })
       img = cv2.imread(f"static/uploads/{filename}")
       path = f"static/downloads/{filename}"
       rotate_img(img, deg, scale, path)
-      return render_template("tools/rotate.html",output=True, original_img=filename, output_img=filename, action_path="rotate", text=False)
+      return jsonify({
+        "output" : True,
+        "original_img" : filename,
+        "output_img" : filename,
+        "action_path" : "rotate",
+        "text" : False
+      })
     else:
-       return render_template("tools/rotate.html", output=False, action_path="rotate", text=False)
-  return render_template("tools/rotate.html", output=False, action_path="rotate", text=False)
+       return jsonify({
+        "output" : False,
+        "action_path" : "rotate",
+        "text" : False,
+        "validData" : True
+      })
+  return render_template("tools/rotate.html")
 
 @app.route("/tools/shearing", methods=['GET', 'POST'])
 def shearing():
@@ -247,13 +335,31 @@ def shearing():
     if file and allowed_file(file.filename):
       filename = secure_filename(file.filename)
       file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+      if(get_size(f"static/uploads/{filename}", 'mb') > 50.000):
+        return jsonify({
+          "output" : False,
+          "action_path" : "shearing",
+          "text" : False,
+          "big_size" : True
+        })
       img = cv2.imread(f"static/uploads/{filename}")
       path = f"static/downloads/{filename}"
       shearing_img(img, sx, sy, path)
-      return render_template("tools/shearing.html",output=True, original_img=filename, output_img=filename, action_path="shearing", text=False)
+      return jsonify({
+        "output" : True,
+        "original_img" : filename,
+        "output_img" : filename,
+        "action_path" : "shearing",
+        "text" : False
+      })
     else:
-       return render_template("tools/shearing.html", output=False, action_path="shearing", text=False)
-  return render_template("tools/shearing.html", output=False, action_path="shearing", text=False)
+       return jsonify({
+        "output" : False,
+        "action_path" : "shearing",
+        "text" : False,
+        "validData" : True
+      })
+  return render_template("tools/shearing.html")
 
 @app.route("/tools/reflecting", methods=['GET', 'POST'])
 def reflecting():
@@ -265,13 +371,31 @@ def reflecting():
     if file and allowed_file(file.filename):
       filename = secure_filename(file.filename)
       file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+      if(get_size(f"static/uploads/{filename}", 'mb') > 50.000):
+        return jsonify({
+          "output" : False,
+          "action_path" : "reflecting",
+          "text" : False,
+          "big_size" : True
+        })
       img = cv2.imread(f"static/uploads/{filename}")
       path = f"static/downloads/{filename}"
       reflecting_img(img, f, path)
-      return render_template("tools/reflecting.html",output=True, original_img=filename, output_img=filename, action_path="reflecting", text=False)
+      return jsonify({
+        "output" : True,
+        "original_img" : filename,
+        "output_img" : filename,
+        "action_path" : "reflecting",
+        "text" : False
+      })
     else:
-       return render_template("tools/reflecting.html", output=False, action_path="reflecting", text=False)
-  return render_template("tools/reflecting.html", output=False, action_path="reflecting", text=False)
+       return jsonify({
+        "output" : False,
+        "action_path" : "reflecting",
+        "text" : False,
+        "validData" : True
+      })
+  return render_template("tools/reflecting.html")
 
 @app.route("/tools/negative", methods=['GET', 'POST'])
 def negative():
@@ -282,13 +406,31 @@ def negative():
     if file and allowed_file(file.filename):
       filename = secure_filename(file.filename)
       file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+      if(get_size(f"static/uploads/{filename}", 'mb') > 50.000):
+        return jsonify({
+          "output" : False,
+          "action_path" : "negative",
+          "text" : False,
+          "big_size" : True
+        })
       img = cv2.imread(f"static/uploads/{filename}")
       path = f"static/downloads/{filename}"
       negative_img(img, path)
-      return render_template("tools/negative.html",output=True, original_img=filename, output_img=filename, action_path="negative", text=False)
+      return jsonify({
+        "output" : True,
+        "original_img" : filename,
+        "output_img" : filename,
+        "action_path" : "negative",
+        "text" : False
+      })
     else:
-       return render_template("tools/negative.html", output=False, action_path="negative", text=False)
-  return render_template("tools/negative.html", output=False, action_path="negative", text=False)
+       return jsonify({
+        "output" : False,
+        "action_path" : "negative",
+        "text" : False,
+        "validData" : True
+      })
+  return render_template("tools/negative.html")
 
 @app.route("/tools/logtransformation", methods=['GET', 'POST'])
 def logtransformation():
@@ -299,13 +441,31 @@ def logtransformation():
     if file and allowed_file(file.filename):
       filename = secure_filename(file.filename)
       file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+      if(get_size(f"static/uploads/{filename}", 'mb') > 50.000):
+        return jsonify({
+          "output" : False,
+          "action_path" : "logtransformation",
+          "text" : False,
+          "big_size" : True
+        })
       img = cv2.imread(f"static/uploads/{filename}")
       path = f"static/downloads/{filename}"
       logtransformation_img(img, path)
-      return render_template("tools/logtransformation.html",output=True, original_img=filename, output_img=filename, action_path="logtransformation", text=False)
+      return jsonify({
+        "output" : True,
+        "original_img" : filename,
+        "output_img" : filename,
+        "action_path" : "logtransformation",
+        "text" : False
+      })
     else:
-       return render_template("tools/logtransformation.html", output=False, action_path="logtransformation", text=False)
-  return render_template("tools/logtransformation.html", output=False, action_path="logtransformation", text=False)
+       return jsonify({
+        "output" : False,
+        "action_path" : "logtransformation",
+        "text" : False,
+        "validData" : True
+      })
+  return render_template("tools/logtransformation.html")
 
 @app.route("/tools/gammatransformation", methods=['GET', 'POST'])
 def gammatransformation():
@@ -317,13 +477,31 @@ def gammatransformation():
     if file and allowed_file(file.filename):
       filename = secure_filename(file.filename)
       file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+      if(get_size(f"static/uploads/{filename}", 'mb') > 50.000):
+        return jsonify({
+          "output" : False,
+          "action_path" : "gammatransformation",
+          "text" : False,
+          "big_size" : True
+        })
       img = cv2.imread(f"static/uploads/{filename}")
       path = f"static/downloads/{filename}"
       gammatransformation_img(img, g, path)
-      return render_template("tools/gammatransformation.html",output=True, original_img=filename, output_img=filename, action_path="gammatransformation", text=False)
+      return jsonify({
+        "output" : True,
+        "original_img" : filename,
+        "output_img" : filename,
+        "action_path" : "gammatransformation",
+        "text" : False
+      })
     else:
-       return render_template("tools/gammatransformation.html", output=False, action_path="gammatransformation", text=False)
-  return render_template("tools/gammatransformation.html", output=False, action_path="gammatransformation", text=False)
+       return jsonify({
+        "output" : False,
+        "action_path" : "gammatransformation",
+        "text" : False,
+        "validData" : True
+      })
+  return render_template("tools/gammatransformation.html")
 
 @app.route("/tools/gaussianfilter", methods=['GET', 'POST'])
 def gaussianfilter():
@@ -335,13 +513,31 @@ def gaussianfilter():
     if file and allowed_file(file.filename):
       filename = secure_filename(file.filename)
       file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+      if(get_size(f"static/uploads/{filename}", 'mb') > 50.000):
+        return jsonify({
+          "output" : False,
+          "action_path" : "gaussianfilter",
+          "text" : False,
+          "big_size" : True
+        })
       original_path = f"static/uploads/{filename}"
       path = f"static/downloads/{filename}"
       gaussianfilter_img(original_path,r,  path)
-      return render_template("tools/gaussianfilter.html",output=True, original_img=filename, output_img=filename, action_path="gaussianfilter", text=False)
+      return jsonify({
+        "output" : True,
+        "original_img" : filename,
+        "output_img" : filename,
+        "action_path" : "gaussianfilter",
+        "text" : False
+      })
     else:
-       return render_template("tools/gaussianfilter.html", output=False, action_path="gaussianfilter", text=False)
-  return render_template("tools/gaussianfilter.html", output=False, action_path="gaussianfilter", text=False)
+       return jsonify({
+        "output" : False,
+        "action_path" : "gaussianfilter",
+        "text" : False,
+        "validData" : True
+      })
+  return render_template("tools/gaussianfilter.html")
 
 @app.route("/tools/medianfilter", methods=['GET', 'POST'])
 def medianfilter():
@@ -352,13 +548,31 @@ def medianfilter():
     if file and allowed_file(file.filename):
       filename = secure_filename(file.filename)
       file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+      if(get_size(f"static/uploads/{filename}", 'mb') > 50.000):
+        return jsonify({
+          "output" : False,
+          "action_path" : "medianfilter",
+          "text" : False,
+          "big_size" : True
+        })
       original_path = f"static/uploads/{filename}"
       path = f"static/downloads/{filename}"
       medianfilter_img(original_path, path)
-      return render_template("tools/medianfilter.html",output=True, original_img=filename, output_img=filename, action_path="medianfilter", text=False)
+      return jsonify({
+        "output" : True,
+        "original_img" : filename,
+        "output_img" : filename,
+        "action_path" : "medianfilter",
+        "text" : False
+      })
     else:
-       return render_template("tools/medianfilter.html", output=False, action_path="medianfilter", text=False)
-  return render_template("tools/medianfilter.html", output=False, action_path="medianfilter", text=False)
+       return jsonify({
+        "output" : False,
+        "action_path" : "medianfilter",
+        "text" : False,
+        "validData" : True
+      })
+  return render_template("tools/medianfilter.html")
 
 @app.route("/tools/minfilter", methods=['GET', 'POST'])
 def minfilter():
@@ -369,13 +583,31 @@ def minfilter():
     if file and allowed_file(file.filename):
       filename = secure_filename(file.filename)
       file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+      if(get_size(f"static/uploads/{filename}", 'mb') > 50.000):
+        return jsonify({
+          "output" : False,
+          "action_path" : "minfilter",
+          "text" : False,
+          "big_size" : True
+        })
       original_path = f"static/uploads/{filename}"
       path = f"static/downloads/{filename}"
       minfilter_img(original_path, path)
-      return render_template("tools/minfilter.html",output=True, original_img=filename, output_img=filename, action_path="minfilter", text=False)
+      return jsonify({
+        "output" : True,
+        "original_img" : filename,
+        "output_img" : filename,
+        "action_path" : "minfilter",
+        "text" : False
+      })
     else:
-       return render_template("tools/minfilter.html", output=False, action_path="minfilter", text=False)
-  return render_template("tools/minfilter.html", output=False, action_path="minfilter", text=False)
+       return jsonify({
+        "output" : False,
+        "action_path" : "minfilter",
+        "text" : False,
+        "validData" : True
+      })
+  return render_template("tools/minfilter.html")
 
 @app.route("/tools/maxfilter", methods=['GET', 'POST'])
 def maxfilter():
@@ -386,13 +618,31 @@ def maxfilter():
     if file and allowed_file(file.filename):
       filename = secure_filename(file.filename)
       file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+      if(get_size(f"static/uploads/{filename}", 'mb') > 50.000):
+        return jsonify({
+          "output" : False,
+          "action_path" : "maxfilter",
+          "text" : False,
+          "big_size" : True
+        })
       original_path = f"static/uploads/{filename}"
       path = f"static/downloads/{filename}"
       maxfilter_img(original_path, path)
-      return render_template("tools/maxfilter.html",output=True, original_img=filename, output_img=filename, action_path="maxfilter", text=False)
+      return jsonify({
+        "output" : True,
+        "original_img" : filename,
+        "output_img" : filename,
+        "action_path" : "maxfilter",
+        "text" : False
+      })
     else:
-       return render_template("tools/maxfilter.html", output=False, action_path="maxfilter", text=False)
-  return render_template("tools/maxfilter.html", output=False, action_path="maxfilter", text=False)
+       return jsonify({
+        "output" : False,
+        "action_path" : "maxfilter",
+        "text" : False,
+        "validData" : True
+      })
+  return render_template("tools/maxfilter.html")
 
 @app.route('/downloads/<path:filename>')
 def download(filename):
@@ -411,13 +661,31 @@ def cannyedgedetector():
     if file and allowed_file(file.filename):
       filename = secure_filename(file.filename)
       file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+      if(get_size(f"static/uploads/{filename}", 'mb') > 50.000):
+        return jsonify({
+          "output" : False,
+          "action_path" : "cannyedgedetector",
+          "text" : False,
+          "big_size" : True
+        })
       img = cv2.imread(f"static/uploads/{filename}")
       path = f"static/downloads/{filename}"
       cannyedgedetector_img(img, l, u, a, path)
-      return render_template("tools/cannyedgedetector.html",output=True, original_img=filename, output_img=filename, action_path="cannyedgedetector", text=False)
+      return jsonify({
+        "output" : True,
+        "original_img" : filename,
+        "output_img" : filename,
+        "action_path" : "cannyedgedetector",
+        "text" : False
+      })
     else:
-       return render_template("tools/cannyedgedetector.html", output=False, action_path="cannyedgedetector", text=False)
-  return render_template("tools/cannyedgedetector.html", output=False, action_path="cannyedgedetector", text=False)
+       return jsonify({
+        "output" : False,
+        "action_path" : "cannyedgedetector",
+        "text" : False,
+        "validData" : True
+      })
+  return render_template("tools/cannyedgedetector.html")
 
 @app.route("/tools/embossing", methods=['GET', 'POST'])
 def embossing():
@@ -432,13 +700,31 @@ def embossing():
     if file and allowed_file(file.filename):
       filename = secure_filename(file.filename)
       file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+      if(get_size(f"static/uploads/{filename}", 'mb') > 50.000):
+        return jsonify({
+          "output" : False,
+          "action_path" : "embossing",
+          "text" : False,
+          "big_size" : True
+        })
       img = cv2.imread(f"static/uploads/{filename}")
       path = f"static/downloads/{filename}"
       embossing_img(img, mat, path)
-      return render_template("tools/embossing.html",output=True, original_img=filename, output_img=filename, action_path="embossing", mat=mat, text=False)
+      return jsonify({
+        "output" : True,
+        "original_img" : filename,
+        "output_img" : filename,
+        "action_path" : "embossing",
+        "text" : False
+      })
     else:
-       return render_template("tools/embossing.html", output=False, action_path="embossing", mat=mat, text=False)
-  return render_template("tools/embossing.html", output=False, action_path="embossing", mat=mat, text=False)
+       return jsonify({
+        "output" : False,
+        "action_path" : "embossing",
+        "text" : False,
+        "validData" : True
+      })
+  return render_template("tools/embossing.html")
 
 @app.route("/tools/steganography", methods = ['GET', 'POST'])
 def steganography():
@@ -451,19 +737,48 @@ def steganography():
     if file and allowed_file(file.filename):
       filename = secure_filename(file.filename)
       file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+      if(get_size(f"static/uploads/{filename}", 'mb') > 50.000):
+        return jsonify({
+          "output" : False,
+          "action_path" : "steganography",
+          "text" : False,
+          "big_size" : True
+        })
       img = f"static/uploads/{filename}"
       d_path = f"static/downloads/"
       if(encode == 1):
         output = encode_image(img, text, d_path, filename)
-        return render_template("tools/steganography.html",output=True, original_img=filename, output_img=output, action_path="steganography", text=False)
+        return jsonify({
+          "output" : True,
+          "original_img" : filename,
+          "output_img" : output,
+          "action_path" : "steganography",
+          "text" : False
+        })
       else:
         secret = decode_image(img)
         if(secret == '%%%%%%%%%%'):
-          return render_template("tools/steganography.html",output=True, original_img=filename, output_img=filename, action_path="steganography", text=True, msg="This Image is not Encoded")
-        return render_template("tools/steganography.html",output=True, original_img=filename, output_img=filename, action_path="steganography", text=True, secret=secret, msg="Decoded Text is Here")
+          return jsonify({
+            "output" : False,
+            "action_path" : "steganography",
+            "text" : True,
+            "msg" : "This Image is not Encoded"
+          })
+        return jsonify({
+          "output" : False,
+          "action_path" : "steganography",
+          "text" : True,
+          "msg" : "Decoded Text is Here",
+          "secret" : secret
+        })
     else:
-       return render_template("tools/steganography.html", output=False, action_path="steganography", text=False)
-  return render_template("tools/steganography.html", output=False, action_path="steganography", text=False)
+       return jsonify({
+        "output" : False,
+        "action_path" : "steganography",
+        "text" : False,
+        "validData" : True
+      })
+  return render_template("tools/steganography.html")
 
 @app.route("/tools/lowpassfilter", methods=['GET', 'POST'])
 def lowpassfilter():
@@ -475,13 +790,31 @@ def lowpassfilter():
     if file and allowed_file(file.filename):
       filename = secure_filename(file.filename)
       file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+      if(get_size(f"static/uploads/{filename}", 'mb') > 50.000):
+        return jsonify({
+          "output" : False,
+          "action_path" : "lowpassfilter",
+          "text" : False,
+          "big_size" : True
+        })
       img = cv2.imread(f"static/uploads/{filename}")
       path = f"static/downloads/{filename}"
       lowpassfilter_img(img, radius, path)
-      return render_template("tools/lowpassfilter.html",output=True, original_img=filename, output_img=filename, action_path="lowpassfilter", text=False)
+      return jsonify({
+        "output" : True,
+        "original_img" : filename,
+        "output_img" : filename,
+        "action_path" : "lowpassfilter",
+        "text" : False
+      })
     else:
-       return render_template("tools/lowpassfilter.html", output=False, action_path="lowpassfilter", text=False)
-  return render_template("tools/lowpassfilter.html", output=False, action_path="lowpassfilter", text=False)
+       return jsonify({
+        "output" : False,
+        "action_path" : "lowpassfilter",
+        "text" : False,
+        "validData" : True
+      })
+  return render_template("tools/lowpassfilter.html")
 
 @app.route("/tools/highpassfilter", methods=['GET', 'POST'])
 def highpassfilter():
@@ -493,13 +826,31 @@ def highpassfilter():
     if file and allowed_file(file.filename):
       filename = secure_filename(file.filename)
       file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+      if(get_size(f"static/uploads/{filename}", 'mb') > 50.000):
+        return jsonify({
+          "output" : False,
+          "action_path" : "highpassfilter",
+          "text" : False,
+          "big_size" : True
+        })
       img = cv2.imread(f"static/uploads/{filename}")
       path = f"static/downloads/{filename}"
       highpassfilter_img(img, radius, path)
-      return render_template("tools/highpassfilter.html",output=True, original_img=filename, output_img=filename, action_path="highpassfilter", text=False)
+      return jsonify({
+        "output" : True,
+        "original_img" : filename,
+        "output_img" : filename,
+        "action_path" : "highpassfilter",
+        "text" : False
+      })
     else:
-       return render_template("tools/highpassfilter.html", output=False, action_path="highpassfilter", text=False)
-  return render_template("tools/highpassfilter.html", output=False, action_path="highpassfilter", text=False)
+       return jsonify({
+        "output" : False,
+        "action_path" : "highpassfilter",
+        "text" : False,
+        "validData" : True
+      })
+  return render_template("tools/highpassfilter.html")
 
 @app.route("/tools/histogramequalization", methods=['GET', 'POST'])
 def histogramequalization():
@@ -510,13 +861,31 @@ def histogramequalization():
     if file and allowed_file(file.filename):
       filename = secure_filename(file.filename)
       file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+      if(get_size(f"static/uploads/{filename}", 'mb') > 50.000):
+        return jsonify({
+          "output" : False,
+          "action_path" : "histogramequalization",
+          "text" : False,
+          "big_size" : True
+        })
       img = cv2.imread(f"static/uploads/{filename}")
       path = f"static/downloads/{filename}"
       histogramequalization_img(img, path)
-      return render_template("tools/histogramequalization.html",output=True, original_img=filename, output_img=filename, action_path="histogramequalization", text=False)
+      return jsonify({
+        "output" : True,
+        "original_img" : filename,
+        "output_img" : filename,
+        "action_path" : "histogramequalization",
+        "text" : False
+      })
     else:
-       return render_template("tools/histogramequalization.html", output=False, action_path="histogramequalization", text=False)
-  return render_template("tools/histogramequalization.html", output=False, action_path="histogramequalization", text=False)
+       return jsonify({
+        "output" : False,
+        "action_path" : "histogramequalization",
+        "text" : False,
+        "validData" : True
+      })
+  return render_template("tools/histogramequalization.html")
 
 @app.errorhandler(404)
 def not_found(e):

@@ -98,7 +98,7 @@
   </svg>
   <span class="sr-only">Info</span>
   <div class="ml-3 text-sm font-medium">
-    Image size exceeded 1 mb.
+    Image size exceeded.
   </div>
   <button type="button"
     class="ml-auto -mx-1.5 -my-1.5 bg-red-50 text-red-500 rounded-lg focus:ring-2 focus:ring-yellow-400 p-1.5 hover:bg-yellow-200 inline-flex h-8 w-8 dark:bg-gray-800 dark:text-yellow-300 dark:hover:bg-gray-700"
@@ -112,8 +112,33 @@
   </button>
 </div>
 
+<div id="alert-5"
+  class="validData hidden flex p-4 mb-4 text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-300"
+  role="alert">
+  <svg aria-hidden="true" class="flex-shrink-0 w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
+    xmlns="http://www.w3.org/2000/svg">
+    <path fill-rule="evenodd"
+      d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
+      clip-rule="evenodd"></path>
+  </svg>
+  <span class="sr-only">Info</span>
+  <div class="ml-3 text-sm font-medium">
+    Please Enter Some Valid Data.
+  </div>
+  <button type="button"
+    class="ml-auto -mx-1.5 -my-1.5 bg-red-50 text-red-500 rounded-lg focus:ring-2 focus:ring-yellow-400 p-1.5 hover:bg-yellow-200 inline-flex h-8 w-8 dark:bg-gray-800 dark:text-yellow-300 dark:hover:bg-gray-700"
+    data-dismiss-target="#alert-5" aria-label="Close">
+    <span class="sr-only">Close</span>
+    <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+      <path fill-rule="evenodd"
+        d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+        clip-rule="evenodd"></path>
+    </svg>
+  </button>
+</div>
 
-<div class="hidden outputt_textf" id="alert-4">
+
+<div class="hidden outputt_textf" id="alert-3">
   <div class="hidden flex p-4 mb-4 text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-300"
     role="alert">
     <svg aria-hidden="true" class="flex-shrink-0 w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
@@ -128,7 +153,7 @@
     </div>
     <button type="button"
       class="ml-auto -mx-1.5 -my-1.5 bg-green-50 text-green-500 rounded-lg focus:ring-2 focus:ring-green-400 p-1.5 hover:bg-green-200 inline-flex h-8 w-8 dark:bg-gray-800 dark:text-yellow-300 dark:hover:bg-gray-700"
-      data-dismiss-target="#alert-4" aria-label="Close">
+      data-dismiss-target="#alert-3" aria-label="Close">
       <span class="sr-only">Close</span>
       <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
         xmlns="http://www.w3.org/2000/svg">
@@ -156,14 +181,14 @@
       <div class="mx-auto">
 
         <figure class="max-w-lg">
-          <img class="h-auto max-w-full rounded-lg mx-auto border" alt="image description" id="original_img">
+          <img loading="lazy" class="h-auto max-w-full rounded-lg mx-auto border" alt="image description" id="original_img">
           <figcaption class="mt-2 text-sm text-center text-gray-500 dark:text-gray-400">Original Image</figcaption>
         </figure>
 
       </div>
       <div class="mx-auto">
         <figure class="max-w-lg">
-          <img class="h-auto max-w-full rounded-lg mx-auto border" alt="image description" id="output_img">
+          <img loading="lazy" class="h-auto max-w-full rounded-lg mx-auto border" alt="image description" id="output_img">
           <figcaption class="mt-2 text-sm text-center text-gray-500 dark:text-gray-400">Final Image</figcaption>
         </figure>
       </div>
@@ -186,7 +211,7 @@
 </div>
 
 
-<div id="alert-4"
+<div id="alert-6"
   class="textt hidden flex p-4 mb-4 text-yellow-800 rounded-lg bg-yellow-50 dark:bg-gray-800 dark:text-yellow-300"
   role="alert">
   <svg aria-hidden="true" class="flex-shrink-0 w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
@@ -201,7 +226,7 @@
   </div>
   <button type="button"
     class="ml-auto -mx-1.5 -my-1.5 bg-yellow-50 text-yellow-500 rounded-lg focus:ring-2 focus:ring-yellow-400 p-1.5 hover:bg-yellow-200 inline-flex h-8 w-8 dark:bg-gray-800 dark:text-yellow-300 dark:hover:bg-gray-700"
-    data-dismiss-target="#alert-4" aria-label="Close">
+    data-dismiss-target="#alert-6" aria-label="Close">
     <span class="sr-only">Close</span>
     <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
       <path fill-rule="evenodd"
@@ -212,10 +237,9 @@
 </div>
 
 
-<div id="msgdecoded"
-  class="hidden max-w-xl mx-auto p-4 text-center bg-white border border-gray-200 rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700 md:pt-16">
+<div id="msgdecoded" class="hidden max-w-xl mx-auto p-4 text-center bg-white border border-gray-200 rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700 md:pt-16 flex flex-col items-center">
   <h5 class="mb-2 text-3xl font-bold text-gray-900 dark:text-white">Your Secret Message</h5>
-  <p class="mb-5 text-base text-gray-500 sm:text-lg dark:text-gray-400" id="secret"></p>
+  <textarea class="mb-5 text-gray-500 sm:text-lg dark:text-gray-400 text-center overflow-y-scroll" id="secret" rows="6" cols="30" readonly style="resize: none; height: 25vh; width: 35vw;"></textarea>
 
 </div>
 
@@ -246,7 +270,7 @@
           aria-describedby="file_input_help" id="file" type="file" required name="file">
         <p class="mt-1 text-sm text-gray-500 dark:text-gray-300" id="file_input_help">PNG, JPG, JPEG, WEBP {% block
           img_size %}
-
+          ( 0 - 50 Mb )
           {% endblock img_size %}</p>
 
       </div>
@@ -291,6 +315,11 @@
 
 </section>
 
+{% endblock body %}
+
+
+{% block scripts %}
+
 <script>
   const form = document.querySelector('form');
   form.addEventListener('submit', handleSubmit);
@@ -325,12 +354,13 @@
     }
 
     modal.click();
-
+    form.reset();
   }
 
   function showData(data) {
     const big_size = document.getElementsByClassName("big_size")[0];
     const outputt_textf = document.getElementsByClassName("outputt_textf")[0];
+    const validData = document.getElementsByClassName("validData")[0];
     const outputt = document.getElementById("outputt");
     const textf = document.getElementById("textf");
     const textt = document.getElementsByClassName("textt")[0];
@@ -343,39 +373,56 @@
 
     if (data.big_size == true) {
       big_size.classList.remove("hidden");
+    }else{
+      big_size.classList.add("hidden");
     }
     if (data.output == true && data.text == false) {
       outputt_textf.classList.remove("hidden");
+    }else{
+      outputt_textf.classList.add("hidden");
     }
     if (data.output == true) {
       outputt.classList.remove("hidden");
       original_img.setAttribute("src", `/static/uploads/${data.original_img}`);
       output_img.setAttribute("src", `/static/downloads/${data.output_img}`);
       output_btn.setAttribute("href", `/downloads/${data.output_img}`)
+    }else{
+      outputt.classList.add("hidden");
     }
     if (data.text == false) {
       textf.classList.remove("hidden");
+    }else{
+      textf.classList.add("hidden");
     }
     if (data.text == true) {
       textt.classList.remove("hidden");
+    }else{
+      textt.classList.add("hidden");
     }
     if (data.msg) {
       msg.innerText = data.msg;
     }
     if (data.msg && data.msg == "Decoded Text is Here") {
       msgdecoded.classList.remove("hidden");
+    }else{
+      msgdecoded.classList.add("hidden");
     }
     if (data.secret) {
-      secret.innerText = data.secret;
+      secret.value = data.secret;
+    }
+    if(data.validData == true){
+      validData.classList.remove("hidden");
+    }else{
+      validData.classList.add("hidden");
     }
   }
 
 </script>
 
-
-
 {% block script %}
-
+  
 {% endblock script %}
 
-{% endblock body %}
+{% endblock scripts %}
+
+
