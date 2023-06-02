@@ -1,6 +1,6 @@
 import os
 from PIL import Image
-from flask import Flask, redirect, render_template, request, send_file, after_this_request, session
+from flask import Flask, jsonify, redirect, render_template, request, send_file, after_this_request, session
 from werkzeug.utils import secure_filename
 import cv2
 
@@ -90,29 +90,53 @@ def learn_edgedetection():
 def learn_steganography():
     return render_template("learn/steganography.html")
 
+
 @app.route("/tools/encryption", methods=['GET', 'POST'])
 def encryption():
   if(request.method == "POST"):
-    if 'file' not in request.files:
-      return render_template("notFound.html")
+    # if 'file' not in request.files:
+    #   return render_template("notFound.html")
     file = request.files['file']
     key = request.form.get("key")
+    print(key)
+    print(file)
     encrypt = int(request.form.get("encrypt"))
+    print(encrypt)
     if file and allowed_file(file.filename):
       filename = secure_filename(file.filename)
       file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
       if(get_size(f"static/uploads/{filename}", 'mb') > 1.000):
-        return render_template("tools/encryption.html", output=False, action_path="encryption", text=False, big_size=True)
+        # return render_template("tools/encryption.html", output=False, action_path="encryption", text=False, big_size=True)
+        return jsonify({
+          "output" : False,
+          "action_path" : "encryption",
+          "text" : False,
+          "big_size" : True
+        })
       img = cv2.imread(f"static/uploads/{filename}")
       path = f"static/downloads/{filename}"
       if(encrypt == 1):
         encrypt_image(img, path, key)
       else:
         decrypt_image(img, path, key)
-      return render_template("tools/encryption.html",output=True, original_img=filename, output_img=filename, action_path="encryption", text=False)
+      
+      # return render_template("tools/encryption.html",output=True, original_img=filename, output_img=filename, action_path="encryption", text=False)
+      return jsonify({
+        "output" : True,
+        "original_img" : filename,
+        "output_img" : filename,
+        "action_path" : "encryption",
+        "text" : False
+      })
     else:
-       return render_template("tools/encryption.html", output=False, action_path="encryption", text=False)
-  return render_template("tools/encryption.html", output=False, action_path="encryption", text=False)
+      #  return render_template("tools/encryption.html", output=False, action_path="encryption", text=False)
+      return jsonify({
+        "output" : False,
+        "action_path" : "encryption",
+        "text" : False
+      })
+  # return render_template("tools/encryption.html", output=False, action_path="encryption", text=False)
+  return render_template("tools/encryption.html")
 
 @app.route("/tools/applykernel", methods=['GET', 'POST'])
 def applykernel():
@@ -507,3 +531,5 @@ def clearuploads():
   for f in all_files:
     os.remove(os.path.join(app.config['DOWNLOAD_FOLDER'],f))
   return redirect("/")
+
+app.run(debug=True, host='0.0.0.0', port=3000)

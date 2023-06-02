@@ -52,7 +52,7 @@
 
 <ul class="grid w-full gap-6 md:grid-cols-2">
     <li>
-        <input type="radio" id="encrypt" name="encrypt" value="1" class="hidden peer" required>
+        <input type="radio" id="encrypt" name="encrypt" value="1" class="hidden peer" required checked>
         <label for="encrypt" class="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">                           
             <div class="block">
                 <div class="w-full text-lg font-semibold">Encrypt</div>
@@ -60,7 +60,7 @@
         </label>
     </li>
     <li>
-        <input type="radio" id="decrypt" name="encrypt" value="0" class="hidden peer">
+        <input type="radio" id="decrypt" name="encrypt" class="hidden peer" value="0" required>
         <label for="decrypt" class="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
             <div class="block">
                 <div class="w-full text-lg font-semibold">Decrypt</div>
@@ -70,3 +70,31 @@
 </ul>
 
 {% endblock additional_form %}
+
+
+{% block script %}
+  <script>
+    function getData(modal){
+      key = document.getElementById("key")
+      if(key.value == ""){
+        modal.click();
+        return -1;
+      }
+      let a;
+      en = document.getElementsByName("encrypt")
+      if(en[0].checked == true){
+        a = 1
+      }else{
+        a = 0
+      }
+
+      let data = {
+        "key" : key.value,
+        "encrypt" : a,
+        "url": "encryption"
+      }
+
+      return data;
+    }
+  </script>
+{% endblock script %}
