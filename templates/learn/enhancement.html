@@ -334,6 +334,10 @@ the given size kernel. For example, the approximation of 3 x 3 Gaussian kernel i
   </div>
   </figure>
 
+  <div class="dark:bg-gray-900 text-center">
+    <a type="button" href="/tools/applykernel" class="text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-500 dark:focus:ring-blue-800 mt-4">Apply Gaussian Blur</a>
+  </div>
+
 
 <h5 class="text-xl font-bold dark:text-white mt-8">Box Blur :</h5>
 <p class="my-3 text-gray-500 dark:text-gray-400">
@@ -351,6 +355,10 @@ of the kernel matrix is a x b, then the box filter kernel is
   All the elements should be same. It is a 3x3 mask, therefore it has 9 cells. By dividing each value
 by 9, the requirement that the element sums of all the elements must equal 1 can be achieved.
 </p>
+
+<div class="dark:bg-gray-900 text-center">
+  <a type="button" href="/tools/applykernel" class="text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-500 dark:focus:ring-blue-800 mt-4">Apply Box Blur</a>
+</div>
 
 
 <h4 class="text-2xl font-bold dark:text-white mt-5" id="sharpening">Sharpening :</h4>
@@ -396,12 +404,17 @@ employed to improve the image quality.
 pear more pronounced.
 </p>
 
+<div class="dark:bg-gray-900 text-center">
+  <a type="button" href="/tools/applykernel" class="text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-500 dark:focus:ring-blue-800 mt-4">Apply Sharpening</a>
+</div>
+
 <h5 class="text-xl font-bold dark:text-white mt-8">Laplacian Sharpening :</h5>
 <p class="my-3 text-gray-500 dark:text-gray-400">
   We can also use Laplacian filter to sharpen the edges of an image. Which has already discussed
 in Laplacian filter in edge detection. So, to get more detail you can check Laplacian Filter topic
 covered in Edge detection.
 </p>
+
 
     <h3 class="text-3xl font-bold dark:text-white mt-8" id="frequency_domain">Frequency Domain</h3>
     <p class="my-3 text-gray-500 dark:text-gray-400">
@@ -500,6 +513,10 @@ applying low pass filter the images gets blurred .
   In the above picture, you can see that result image is blurred.
 </p>
 
+<div class="dark:bg-gray-900 text-center">
+  <a type="button" href="/tools/lowpassfilter" class="text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-500 dark:focus:ring-blue-800 mt-4">Apply Low filter</a>
+</div>
+
 <h5 class="text-xl font-bold dark:text-white mt-8">High Pass Filter :</h5>
 <!-- image -->
 <p class="my-3 text-gray-500 dark:text-gray-400">
@@ -514,6 +531,10 @@ applying low pass filter the images gets blurred .
   In the above picture, you can see that result image has only edges & smooth part is removed.
 </p>
 
+<div class="dark:bg-gray-900 text-center">
+  <a type="button" href="/tools/highpassfilter" class="text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-500 dark:focus:ring-blue-800 mt-4">Apply High filter</a>
+</div>
+
 <h5 class="text-xl font-bold dark:text-white mt-8">Gaussian Filter :</h5>
 <p class="my-3 text-gray-500 dark:text-gray-400">
   In spatial domain we have to perform operation on every pixel to apply gaussian filter but here
@@ -522,9 +543,6 @@ applying low pass filter the images gets blurred .
 </p>
 
 <!-- Image -->
-
-
-
   </div>
 </section>
 
