@@ -72,29 +72,3 @@
 {% endblock additional_form %}
 
 
-{% block script %}
-  <script>
-    function getData(modal){
-      key = document.getElementById("key")
-      if(key.value == ""){
-        modal.click();
-        return -1;
-      }
-      let a;
-      en = document.getElementsByName("encrypt")
-      if(en[0].checked == true){
-        a = 1
-      }else{
-        a = 0
-      }
-
-      let data = {
-        "key" : key.value,
-        "encrypt" : a,
-        "url": "encryption"
-      }
-
-      return data;
-    }
-  </script>
-{% endblock script %}

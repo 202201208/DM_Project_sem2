@@ -97,10 +97,13 @@ def encryption():
     file = request.files['file']
     key = request.form.get("key")
     encrypt = int(request.form.get("encrypt"))
+    print(file)
+    print(key)
+    print(encrypt)
     if file and allowed_file(file.filename):
       filename = secure_filename(file.filename)
       file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-      if(get_size(f"static/uploads/{filename}", 'mb') > 1.000):
+      if(get_size(f"static/uploads/{filename}", 'mb') > 0.100):
         return jsonify({
           "output" : False,
           "action_path" : "encryption",
@@ -910,4 +913,4 @@ def clearuploads():
   return redirect("/")
 
 # if(__name__ == "__main__"):
-#   app.run(debug=True)
+#   app.run(debug=True, port=8000)
