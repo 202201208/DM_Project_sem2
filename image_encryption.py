@@ -422,8 +422,6 @@ def decrypt_image(im, target_file_name, key):
   output_img = dna_opers_decode(encode_img, encoded_key_image, ts)
   decoded_output_img2 = decode_dna_mat(output_img, ts)
 
-  
-
   img = Image.new("RGB", (im.shape[1], im.shape[0]))
   pix = img.load()
   pix = assign_matrix_image(pix, decoded_output_img, decoded_output_img1, decoded_output_img2)
