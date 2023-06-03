@@ -103,7 +103,7 @@ def encryption():
     if file and allowed_file(file.filename):
       filename = secure_filename(file.filename)
       file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-      if(get_size(f"static/uploads/{filename}", 'mb') > 0.100):
+      if(get_size(f"static/uploads/{filename}", 'mb') > 1.000):
         return jsonify({
           "output" : False,
           "action_path" : "encryption",
