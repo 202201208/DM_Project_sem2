@@ -340,6 +340,7 @@ def get_initial_values(hash):
 def encrypt_image(im, target_file_name, key):
   hash = hashlib.sha256(key.encode())
   hash = hash.hexdigest()
+  print(hash)
   v = get_initial_values(hash)
   mat = get_matrix(im, 0)
   rs = renyi_seq(v[0], (v[2]+v[4])*10, (v[5]+v[6])*10, (v[1]+v[7])*12345, len(mat)*len(mat[0]))
@@ -385,7 +386,9 @@ def encrypt_image(im, target_file_name, key):
 def decrypt_image(im, target_file_name, key):
   hash = hashlib.sha256(key.encode())
   hash = hash.hexdigest()
+  print(hash)
   v = get_initial_values(hash)
+  print(v)
   mat = get_matrix(im, 0)
   rs = renyi_seq(v[0], (v[2]+v[4])*10, (v[5]+v[6])*10, (v[1]+v[7])*12345, len(mat)*len(mat[0]))
   ts_r = (v[6] + 1.4)

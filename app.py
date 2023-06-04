@@ -103,7 +103,7 @@ def encryption():
     if file and allowed_file(file.filename):
       filename = secure_filename(file.filename)
       file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-      if(get_size(f"static/uploads/{filename}", 'mb') > 1.000):
+      if(get_size(f"static/uploads/{filename}", 'mb') > 2.000):
         return jsonify({
           "output" : False,
           "action_path" : "encryption",
@@ -912,5 +912,5 @@ def clearuploads():
     os.remove(os.path.join(app.config['DOWNLOAD_FOLDER'],f))
   return redirect("/")
 
-if(__name__ == "__main__"):
-  app.run(debug=True, port=8000)
+# if(__name__ == "__main__"):
+#   app.run(debug=True, port=8000)

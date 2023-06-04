@@ -206,14 +206,14 @@
       <div class="mx-auto">
 
         <figure class="max-w-lg">
-          <img loading="lazy" class="h-auto max-w-full rounded-lg mx-auto border" alt="image description" id="original_img">
+          <img class="h-auto max-w-full rounded-lg mx-auto border" alt="image description" id="original_img">
           <figcaption class="mt-2 text-sm text-center text-gray-500 dark:text-gray-400">Original Image</figcaption>
         </figure>
 
       </div>
       <div class="mx-auto">
         <figure class="max-w-lg">
-          <img loading="lazy" class="h-auto max-w-full rounded-lg mx-auto border" alt="image description" id="output_img">
+          <img class="h-auto max-w-full rounded-lg mx-auto border" alt="image description" id="output_img">
           <figcaption class="mt-2 text-sm text-center text-gray-500 dark:text-gray-400">Final Image</figcaption>
         </figure>
       </div>
@@ -366,12 +366,12 @@
       "method": form.method,
       "body": formData
     };
-    console.log(formData);
+    
     console.log(fetchOptions);
     try {
       const res = await fetch(url, fetchOptions);
       const data = await res.json()
-      console.log(data);
+      clearData();
       showData(data);
       document.querySelector('nav').scrollIntoView();
     }
@@ -411,9 +411,9 @@
     }
     if (data.output == true) {
       outputt.classList.remove("hidden");
-      original_img.setAttribute("src", `/static/uploads/${data.original_img}`);
-      output_img.setAttribute("src", `/static/downloads/${data.output_img}`);
-      output_btn.setAttribute("href", `/downloads/${data.output_img}`)
+      original_img.setAttribute("src", `/static/uploads/${data.original_img}?${(new Date()).getTime()}`);
+      output_img.setAttribute("src", `/static/downloads/${data.output_img}?${(new Date()).getTime()}`);
+      output_btn.setAttribute("href", `/downloads/${data.output_img}?${(new Date()).getTime()}`)
     }else{
       outputt.classList.add("hidden");
     }
@@ -445,6 +445,34 @@
     }
   }
 
+
+  function clearData(data) {
+    const big_size = document.getElementsByClassName("big_size")[0];
+    const outputt_textf = document.getElementsByClassName("outputt_textf")[0];
+    const validData = document.getElementsByClassName("validData")[0];
+    const outputt = document.getElementById("outputt");
+    const textf = document.getElementById("textf");
+    const textt = document.getElementsByClassName("textt")[0];
+    const msgdecoded = document.getElementById("msgdecoded");
+    const original_img = document.getElementById("original_img");
+    const output_img = document.getElementById("output_img");
+    const output_btn = document.getElementById("output_btn");
+    const msg = document.getElementById("msg");
+    const secret = document.getElementById("secret");
+
+    big_size.classList.add("hidden");
+    outputt_textf.classList.add("hidden");
+    outputt.classList.add("hidden");
+    original_img.setAttribute("src", "");
+    output_img.setAttribute("src", "");
+    output_btn.setAttribute("href", "")
+    textf.classList.add("hidden");
+    textt.classList.add("hidden");
+    msgdecoded.classList.add("hidden");
+    validData.classList.add("hidden");
+    secret.value = "";
+    
+  }
 </script>
 
 {% block script %}
